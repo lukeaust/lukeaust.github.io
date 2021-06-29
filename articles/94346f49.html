@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TensorFlow笔记2-3-自动微分机制 | 叶小白</title><meta name="keywords" content=" 深度学习,TensorFlow"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文章内容源于https:&#x2F;&#x2F;github.com&#x2F;lyhue1991&#x2F;eat_tensorflow2_in_30_days。 神经网络通常依赖反向传播求梯度来更新网络参数，求梯度过程通常是一件非常复杂而容易出错的事情。 而深度学习框架可以帮助我们自动地完成这种求梯度运算。 Tensorflow一般使用梯度磁带tf.GradientTape来记录正向运算过程，然后反播磁带自动得到梯度值。 这种利用t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow笔记2-3-自动微分机制">
-<meta property="og:url" content="https://lukeaust.gitee.io/articles/94346f49.html">
+<meta property="og:url" content="https://lukeaust.github.io/articles/94346f49.html">
 <meta property="og:site_name" content="叶小白">
 <meta property="og:description" content="文章内容源于https:&#x2F;&#x2F;github.com&#x2F;lyhue1991&#x2F;eat_tensorflow2_in_30_days。 神经网络通常依赖反向传播求梯度来更新网络参数，求梯度过程通常是一件非常复杂而容易出错的事情。 而深度学习框架可以帮助我们自动地完成这种求梯度运算。 Tensorflow一般使用梯度磁带tf.GradientTape来记录正向运算过程，然后反播磁带自动得到梯度值。 这种利用t">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="叶小白">
 <meta property="article:tag" content="tensorflow2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/94346f49"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.github.io/articles/94346f49"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";

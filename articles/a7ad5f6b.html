@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TensorFlow笔记1-2-图片数据建模流程范例 | 叶小白</title><meta name="keywords" content=" 深度学习,TensorFlow"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、准备数据 cifar2数据集为cifar10数据集的子集，只包括前两种类别airplane和automobile。 训练集有airplane和automobile图片各5000张，测试集有airplane和automobile图片各1000张。 cifar2任务的目标是训练一个模型来对飞机airplane和机动车automobile两种图片进行分类。 我们准备的Cifar2数据集的文件结构如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow笔记1-2-图片数据建模流程范例">
-<meta property="og:url" content="https://lukeaust.gitee.io/articles/a7ad5f6b.html">
+<meta property="og:url" content="https://lukeaust.github.io/articles/a7ad5f6b.html">
 <meta property="og:site_name" content="叶小白">
 <meta property="og:description" content="一、准备数据 cifar2数据集为cifar10数据集的子集，只包括前两种类别airplane和automobile。 训练集有airplane和automobile图片各5000张，测试集有airplane和automobile图片各1000张。 cifar2任务的目标是训练一个模型来对飞机airplane和机动车automobile两种图片进行分类。 我们准备的Cifar2数据集的文件结构如">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="叶小白">
 <meta property="article:tag" content="tensorflow2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/a7ad5f6b"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.github.io/articles/a7ad5f6b"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";

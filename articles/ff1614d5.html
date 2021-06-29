@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TensorFlow笔记1-0-建模流程 | 叶小白</title><meta name="keywords" content="tensorflow2"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文章内容源于https:&#x2F;&#x2F;github.com&#x2F;lyhue1991&#x2F;eat_tensorflow2_in_30_days，能力有限，未做太多修改，未来会加入自己的理解。  TensorFlow的建模流程 TensorFlow设计上足够灵活，可以用于进行各种复杂的数值计算。人们通常使用TensorFlow来实现机器学习模型，尤其常用于实现神经网络模型。 从原理上说可以使用张量构建计算图来定义神经网">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow笔记1-0-建模流程">
-<meta property="og:url" content="https://lukeaust.gitee.io/articles/ff1614d5.html">
+<meta property="og:url" content="https://lukeaust.github.io/articles/ff1614d5.html">
 <meta property="og:site_name" content="叶小白">
 <meta property="og:description" content="文章内容源于https:&#x2F;&#x2F;github.com&#x2F;lyhue1991&#x2F;eat_tensorflow2_in_30_days，能力有限，未做太多修改，未来会加入自己的理解。  TensorFlow的建模流程 TensorFlow设计上足够灵活，可以用于进行各种复杂的数值计算。人们通常使用TensorFlow来实现机器学习模型，尤其常用于实现神经网络模型。 从原理上说可以使用张量构建计算图来定义神经网">
 <meta property="og:locale" content="zh_CN">
@@ -11,7 +11,7 @@
 <meta property="article:author" content="叶小白">
 <meta property="article:tag" content="tensorflow2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/ff1614d5"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.github.io/articles/ff1614d5"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";
