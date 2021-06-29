@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ubuntu安装Tensorflow2 | 叶小白</title><meta name="keywords" content="Ubuntu,转载,Tensorflow2.0"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、安装Anaconda   1. 安装Anaconda (1)下载及安装 从清华大学的镜像站下载：https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;?C&#x3D;N&amp;O&#x3D;D ，下载“Anaconda3-5.2.0-Linux-x86_64.sh”文件，输入： bash Anaconda3-5.2.0-Linux-x86_64.sh (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu安装Tensorflow2">
+<meta property="og:url" content="https://lukeaust.gitee.io/articles/54ccc14c.html">
+<meta property="og:site_name" content="叶小白">
+<meta property="og:description" content="一、安装Anaconda   1. 安装Anaconda (1)下载及安装 从清华大学的镜像站下载：https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;archive&#x2F;?C&#x3D;N&amp;O&#x3D;D ，下载“Anaconda3-5.2.0-Linux-x86_64.sh”文件，输入： bash Anaconda3-5.2.0-Linux-x86_64.sh (">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg">
+<meta property="article:published_time" content="2020-06-11T14:19:45.000Z">
+<meta property="article:modified_time" content="2021-06-29T07:50:09.000Z">
+<meta property="article:author" content="叶小白">
+<meta property="article:tag" content="Ubuntu">
+<meta property="article:tag" content="转载">
+<meta property="article:tag" content="Tensorflow2.0">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/54ccc14c"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Ubuntu安装Tensorflow2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-29 15:50:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="叶小白" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">叶小白</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Ubuntu安装Tensorflow2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-11T14:19:45.000Z" title="发表于 2020-06-11 22:19:45">2020-06-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-29T07:50:09.000Z" title="更新于 2021-06-29 15:50:09">2021-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">502</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Ubuntu安装Tensorflow2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr />
+<h2 id="一-安装anaconda"><a class="markdownIt-Anchor" href="#一-安装anaconda"></a> 一、安装Anaconda</h2>
+<hr />
+<h3 id="1-安装anaconda"><a class="markdownIt-Anchor" href="#1-安装anaconda"></a> 1. 安装Anaconda</h3>
+<p>(1)下载及安装<br />
+从清华大学的镜像站下载：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=N&amp;O=D">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/?C=N&amp;O=D</a> ，下载“Anaconda3-5.2.0-Linux-x86_64.sh”文件，输入：</p>
+<p><code>bash Anaconda3-5.2.0-Linux-x86_64.sh</code></p>
+<p>(2)提示需要阅读licenses，一路回车；提示是否接受，输入<code>yes</code><br />
+yes</p>
+<p>(3)提示是否要写入配置文件，输入<code>yes</code></p>
+<p>(4)提示是否安装&quot;VSCode&quot;，输入<code>no</code></p>
+<p>(5)使配置生效（此时如果输入python3，显示内置的python），输入：</p>
+<p><code>source ~/.bashrc</code></p>
+<p>此时再执行python3，显示为Anaconda</p>
+<h3 id="2-配置"><a class="markdownIt-Anchor" href="#2-配置"></a> 2. 配置</h3>
+<p>(1)在Anaconda中创建一个虚拟Python环境，输入：</p>
+<p><code>conda create --name apython python=3.6</code></p>
+<p>(2)接着出现提示是否继续，输入<code>y</code></p>
+<p>(3)设置别名</p>
+<p>此时系统中有多个版本的Python，为了方便使用，我们配置一下环境变量，为每个版本的Python设置一个别名。另外为了后面方便使用“pip”来管理虚拟环境的包，我们为虚拟环境的“pip”命令也创建一个别名。</p>
+<p><code>sudo gedit ~/.bashrc</code></p>
+<p>在文件末尾加上下面一段（<strong>不能直接复制粘贴，要将<code>/home/</code>后的<code>look</code>换成自己的用户名</strong>）</p>
+<pre class="highlight"><code class="">	alias python=&quot;/usr/bin/python2&quot;
+	alias python3=&quot;/usr/bin/python3&quot;
+	alias apython=&quot;/home/look/anaconda3/envs/apython/bin/python3&quot;
+	alias apip=&quot;/home/look/anaconda3/envs/apython/bin/pip&quot;
+</code></pre>
+<p>配置完成后让配置生效<br />
+<code>source ~/.bashrc</code></p>
+<p>之后我们分别执行“python”、“python3”和“apython”命令测试别名。</p>
+<hr />
+<h2 id="二-安装tensorflow20"><a class="markdownIt-Anchor" href="#二-安装tensorflow20"></a> 二、安装TensorFlow2.0</h2>
+<h3 id="1-下载tensorflow20文件"><a class="markdownIt-Anchor" href="#1-下载tensorflow20文件"></a> 1. 下载tensorflow2.0文件</h3>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://pypi.org/project/tensorflow/2.0.0a0/#files">点此进入</a>，下载文件：“tensorflow-2.0.0a0-cp36-cp36m-manylinux1_x86_64.whl”</p>
+<h3 id="2-安装"><a class="markdownIt-Anchor" href="#2-安装"></a> 2. 安装</h3>
+<p><code>apip install tensorflow-2.0.0a0-cp36-cp36m-manylinux1_x86_64.whl</code></p>
+<h3 id="3-验证tensorflow"><a class="markdownIt-Anchor" href="#3-验证tensorflow"></a> 3. 验证tensorflow</h3>
+<p><code>import tensorflow as tf</code></p>
+<h3 id="4-输出版本信息"><a class="markdownIt-Anchor" href="#4-输出版本信息"></a> 4. 输出版本信息</h3>
+<p><code>print(tf.__version__)</code></p>
+<hr />
+<h2 id="三-运行"><a class="markdownIt-Anchor" href="#三-运行"></a> 三、运行</h2>
+<h3 id="1-安装jupytext"><a class="markdownIt-Anchor" href="#1-安装jupytext"></a> 1. 安装jupytext</h3>
+<p>在jupyter notebook上安装jupytext，以便能够将markdown文件视作ipynb文件运行<br />
+<code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -U jupytext</code></p>
+<h3 id="2-启动jupyter-notebook"><a class="markdownIt-Anchor" href="#2-启动jupyter-notebook"></a> 2. 启动Jupyter Notebook</h3>
+<p>终端直接输入<br />
+<code>jupyter-notebook</code></p>
+<h2 id="四-创建快捷方式"><a class="markdownIt-Anchor" href="#四-创建快捷方式"></a> 四、创建快捷方式</h2>
+<p>== 原文来自 ==<br />
+<a target="_blank" rel="noopener external nofollow noreferrer" href="https://baijiahao.baidu.com/s?id=1642214623524909281&amp;wfr=spider&amp;for=pc">一文上手最新Tensorflow2.0系列｜TensorFlow2.0安装</a></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ubuntu/">Ubuntu</a><a class="post-meta__tags" href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a><a class="post-meta__tags" href="/tags/Tensorflow2-0/">Tensorflow2.0</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/articles/e88ae413.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ubuntu全盘备份与恢复</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/articles/e88ae413.html" title="Ubuntu全盘备份与恢复"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-11</div><div class="title">Ubuntu全盘备份与恢复</div></div></a></div><div><a href="/articles/17ecc9c0.html" title="hexo+github pages走过的弯路"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-12</div><div class="title">hexo+github pages走过的弯路</div></div></a></div><div><a href="/articles/506b889.html" title="同步Ubuntu文件夹同步到百度云"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-12</div><div class="title">同步Ubuntu文件夹同步到百度云</div></div></a></div><div><a href="/articles/9049ed66.html" title="Theano简介"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-03</div><div class="title">Theano简介</div></div></a></div><div><a href="/articles/110aeb3a.html" title="Poll的笔记 - 转载"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-27</div><div class="title">Poll的笔记 - 转载</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">叶小白</div><div class="author-info__description">用智慧丈量人生</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lukeaust"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lukeaust" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lukeaust@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">一入学术深似海</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%AE%89%E8%A3%85anaconda"><span class="toc-number">1.</span> <span class="toc-text"> 一、安装Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85anaconda"><span class="toc-number">1.1.</span> <span class="toc-text"> 1. 安装Anaconda</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text"> 2. 配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85tensorflow20"><span class="toc-number">2.</span> <span class="toc-text"> 二、安装TensorFlow2.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDtensorflow20%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. 下载tensorflow2.0文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%AA%8C%E8%AF%81tensorflow"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. 验证tensorflow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BE%93%E5%87%BA%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. 输出版本信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E8%BF%90%E8%A1%8C"><span class="toc-number">3.</span> <span class="toc-text"> 三、运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85jupytext"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. 安装jupytext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%AF%E5%8A%A8jupyter-notebook"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. 启动Jupyter Notebook</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%88%9B%E5%BB%BA%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text"> 四、创建快捷方式</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/a57c573c.html" title="从事件日志到目标"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从事件日志到目标"/></a><div class="content"><a class="title" href="/articles/a57c573c.html" title="从事件日志到目标">从事件日志到目标</a><time datetime="2021-06-29T08:17:57.735Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/d737cada.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/d737cada.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.731Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/aecffc40.html" title="论文题目"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论文题目"/></a><div class="content"><a class="title" href="/articles/aecffc40.html" title="论文题目">论文题目</a><time datetime="2021-06-29T08:17:57.619Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/85537cbc.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/85537cbc.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.611Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Poll的笔记 - 转载"/></a><div class="content"><a class="title" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载">Poll的笔记 - 转载</a><time datetime="2020-09-27T12:40:06.000Z" title="发表于 2020-09-27 20:40:06">2020-09-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 叶小白</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Sa9Gr02xMinB8aMKhiaxPCsP-gzGzoHsz',
+      appKey: 'Q99L5wMhgk70QnUTbJxiEcA5',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>叶小白</title>
+  
+  <subtitle>一入学术深似海</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://lukeaust.gitee.io/"/>
+  <updated>2021-06-29T07:50:09.000Z</updated>
+  <id>https://lukeaust.gitee.io/</id>
+  
+  <author>
+    <name>叶小白</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从事件日志到目标</title>
+    <link href="https://lukeaust.gitee.io/articles/a57c573c.html"/>
+    <id>https://lukeaust.gitee.io/articles/a57c573c.html</id>
+    <published>2021-06-29T08:17:57.735Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;
+&lt;script&gt;
+function doDecrypt (pwd, onError) {
+	console.log(&#39;in doDecrypt&#39;);
+	const txt =
+        
+      
+    
+    </summary>
+    
+    
+      <category term="综述" scheme="https://lukeaust.gitee.io/categories/%E7%BB%BC%E8%BF%B0/"/>
+    
+    
+      <category term="goal PM" scheme="https://lukeaust.gitee.io/tags/goal-PM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lukeaust.gitee.io/articles/d737cada.html"/>
+    <id>https://lukeaust.gitee.io/articles/d737cada.html</id>
+    <published>2021-06-29T08:17:57.731Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;术语&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#术语&quot;&gt;&lt;/a&gt; 术语&lt;/h1&gt;
+&lt;h2 id=&quot;1-discovering-process-maps-from-event-streams&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>论文题目</title>
+    <link href="https://lukeaust.gitee.io/articles/aecffc40.html"/>
+    <id>https://lukeaust.gitee.io/articles/aecffc40.html</id>
+    <published>2021-06-29T08:17:57.619Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;论文导读&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#论文导读&quot;&gt;&lt;/a&gt; 论文导读&lt;/h1&gt;
+&lt;p&gt;（一段话概括全文以及我的观点/思考）&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;一-文章速览&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文品读" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"/>
+    
+    
+      <category term="标签1" scheme="https://lukeaust.gitee.io/tags/%E6%A0%87%E7%AD%BE1/"/>
+    
+      <category term="标签2" scheme="https://lukeaust.gitee.io/tags/%E6%A0%87%E7%AD%BE2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lukeaust.gitee.io/articles/85537cbc.html"/>
+    <id>https://lukeaust.gitee.io/articles/85537cbc.html</id>
+    <published>2021-06-29T08:17:57.611Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Hexo
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Poll的笔记 - 转载</title>
+    <link href="https://lukeaust.gitee.io/articles/110aeb3a.html"/>
+    <id>https://lukeaust.gitee.io/articles/110aeb3a.html</id>
+    <published>2020-09-27T12:40:06.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;
+&lt;script&gt;
+function doDecrypt (pwd, onError) {
+	console.log(&#39;in doDecrypt&#39;);
+	const txt =
+        
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://lukeaust.gitee.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="转载" scheme="https://lukeaust.gitee.io/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+      <category term="ML" scheme="https://lukeaust.gitee.io/tags/ML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>精确率和召回率</title>
+    <link href="https://lukeaust.gitee.io/articles/dbacfd48.html"/>
+    <id>https://lukeaust.gitee.io/articles/dbacfd48.html</id>
+    <published>2020-09-23T08:55:00.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;
+&lt;script&gt;
+function doDecrypt (pwd, onError) {
+	console.log(&#39;in doDecrypt&#39;);
+	const txt =
+        
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://lukeaust.gitee.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="ML" scheme="https://lukeaust.gitee.io/tags/ML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>群晖</title>
+    <link href="https://lukeaust.gitee.io/articles/c3fd198e.html"/>
+    <id>https://lukeaust.gitee.io/articles/c3fd198e.html</id>
+    <published>2020-09-12T12:39:55.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;进入正在运行的docker镜像&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#进入正在运行的docker镜像&quot;&gt;&lt;/a&gt; 进入正在运行的docker镜像&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ docker ps  
+$ docker
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>过程挖掘综述(一)的参考文献</title>
+    <link href="https://lukeaust.gitee.io/articles/b0604bee.html"/>
+    <id>https://lukeaust.gitee.io/articles/b0604bee.html</id>
+    <published>2020-08-03T00:39:22.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;h3 id=&quot;文献1-15&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#文献1-15&quot;&gt;&lt;/a&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="PM" scheme="https://lukeaust.gitee.io/tags/PM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python知识点</title>
+    <link href="https://lukeaust.gitee.io/articles/5501fa44.html"/>
+    <id>https://lukeaust.gitee.io/articles/5501fa44.html</id>
+    <published>2020-08-02T07:45:17.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;正则表达式取doi&lt;/p&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;python&quot;&gt;    str1= &lt;span class=&quot;hljs-string&quot;&gt;&#39;Zhang, Y., Padman, R., &amp;amp;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技巧积累" scheme="https://lukeaust.gitee.io/categories/%E6%8A%80%E5%B7%A7%E7%A7%AF%E7%B4%AF/"/>
+    
+    
+      <category term="python" scheme="https://lukeaust.gitee.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>配置类论文</title>
+    <link href="https://lukeaust.gitee.io/articles/8a13261d.html"/>
+    <id>https://lukeaust.gitee.io/articles/8a13261d.html</id>
+    <published>2020-08-01T04:29:52.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Discovering block-structured process models from
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="配置" scheme="https://lukeaust.gitee.io/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>过程挖掘类论文</title>
+    <link href="https://lukeaust.gitee.io/articles/6f90666c.html"/>
+    <id>https://lukeaust.gitee.io/articles/6f90666c.html</id>
+    <published>2020-08-01T04:28:03.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A data warehouse for workflow logs &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="PM" scheme="https://lukeaust.gitee.io/tags/PM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Van Der Aalst论文</title>
+    <link href="https://lukeaust.gitee.io/articles/a9b26a16.html"/>
+    <id>https://lukeaust.gitee.io/articles/a9b26a16.html</id>
+    <published>2020-08-01T03:48:38.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt;  Wanna improve process mining results? &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="V.D.Aalst" scheme="https://lukeaust.gitee.io/tags/V-D-Aalst/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Petri网行为方面论文</title>
+    <link href="https://lukeaust.gitee.io/articles/79636068.html"/>
+    <id>https://lukeaust.gitee.io/articles/79636068.html</id>
+    <published>2020-08-01T01:41:06.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Behavioral service substitution &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="行为" scheme="https://lukeaust.gitee.io/tags/%E8%A1%8C%E4%B8%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>对齐类论文</title>
+    <link href="https://lukeaust.gitee.io/articles/887ecb96.html"/>
+    <id>https://lukeaust.gitee.io/articles/887ecb96.html</id>
+    <published>2020-08-01T01:40:55.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Active network alignment: A matching-based approach
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="Align" scheme="https://lukeaust.gitee.io/tags/Align/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初始阅读论文</title>
+    <link href="https://lukeaust.gitee.io/articles/ae589eec.html"/>
+    <id>https://lukeaust.gitee.io/articles/ae589eec.html</id>
+    <published>2020-08-01T01:40:50.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; Data- and resource-aware conformance checking of
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="初始" scheme="https://lukeaust.gitee.io/tags/%E5%88%9D%E5%A7%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>噪音&amp;低频&amp;在线类论文</title>
+    <link href="https://lukeaust.gitee.io/articles/8a2a61f.html"/>
+    <id>https://lukeaust.gitee.io/articles/8a2a61f.html</id>
+    <published>2020-08-01T01:37:35.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A procedural approach for evaluating the
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="噪音" scheme="https://lukeaust.gitee.io/tags/%E5%99%AA%E9%9F%B3/"/>
+    
+      <category term="低频" scheme="https://lukeaust.gitee.io/tags/%E4%BD%8E%E9%A2%91/"/>
+    
+      <category term="在线" scheme="https://lukeaust.gitee.io/tags/%E5%9C%A8%E7%BA%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习&amp;过程挖掘</title>
+    <link href="https://lukeaust.gitee.io/articles/344b61d3.html"/>
+    <id>https://lukeaust.gitee.io/articles/344b61d3.html</id>
+    <published>2020-07-31T11:45:36.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A comparative analysis of business process model
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="机器学习" scheme="https://lukeaust.gitee.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习路线</title>
+    <link href="https://lukeaust.gitee.io/articles/f50bee0c.html"/>
+    <id>https://lukeaust.gitee.io/articles/f50bee0c.html</id>
+    <published>2020-07-31T11:00:30.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A Neural Algorithm of Artistic Style &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="DeepLearning" scheme="https://lukeaust.gitee.io/tags/DeepLearning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>预测类过程挖掘</title>
+    <link href="https://lukeaust.gitee.io/articles/321740e4.html"/>
+    <id>https://lukeaust.gitee.io/articles/321740e4.html</id>
+    <published>2020-07-31T04:20:40.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A Data Mining Approach to Predict E-Commerce
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文摘要" scheme="https://lukeaust.gitee.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
+    
+    
+      <category term="预测" scheme="https://lukeaust.gitee.io/tags/%E9%A2%84%E6%B5%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用网站</title>
+    <link href="https://lukeaust.gitee.io/articles/dc34c405.html"/>
+    <id>https://lukeaust.gitee.io/articles/dc34c405.html</id>
+    <published>2020-07-25T02:08:44.000Z</published>
+    <updated>2021-06-29T07:50:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;在线学习数据科学&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#在线学习数据科学&quot;&gt;&lt;/a&gt; 在线学习数据科学&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="技巧积累" scheme="https://lukeaust.gitee.io/categories/%E6%8A%80%E5%B7%A7%E7%A7%AF%E7%B4%AF/"/>
+    
+      <category term="网站" scheme="https://lukeaust.gitee.io/categories/%E6%8A%80%E5%B7%A7%E7%A7%AF%E7%B4%AF/%E7%BD%91%E7%AB%99/"/>
+    
+    
+      <category term="网页" scheme="https://lukeaust.gitee.io/tags/%E7%BD%91%E9%A1%B5/"/>
+    
+  </entry>
+  
+</feed>

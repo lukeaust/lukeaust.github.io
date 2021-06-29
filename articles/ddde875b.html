@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mining Process Models with Non-Free-Choice Constructs | 叶小白</title><meta name="keywords" content="α++,indirect dependency,complete"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、文章速览   1.论文信息  题目-作者-时间-出版社-引用  Wen, Lijie et al. “Mining process models with non-free-choice constructs.” Data Mining and Knowledge Discovery 15 (2007): 145-180.   2.背景 现实生活中的许多进程不具有自由选择属性。因此，提供能够">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mining Process Models with Non-Free-Choice Constructs">
+<meta property="og:url" content="https://lukeaust.gitee.io/articles/ddde875b.html">
+<meta property="og:site_name" content="叶小白">
+<meta property="og:description" content="一、文章速览   1.论文信息  题目-作者-时间-出版社-引用  Wen, Lijie et al. “Mining process models with non-free-choice constructs.” Data Mining and Knowledge Discovery 15 (2007): 145-180.   2.背景 现实生活中的许多进程不具有自由选择属性。因此，提供能够">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg">
+<meta property="article:published_time" content="2020-06-22T09:02:59.000Z">
+<meta property="article:modified_time" content="2021-06-29T07:50:09.000Z">
+<meta property="article:author" content="叶小白">
+<meta property="article:tag" content="α++">
+<meta property="article:tag" content="indirect dependency">
+<meta property="article:tag" content="complete">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/ddde875b"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Mining Process Models with Non-Free-Choice Constructs',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-29 15:50:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="叶小白" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">叶小白</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Mining Process Models with Non-Free-Choice Constructs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-22T09:02:59.000Z" title="发表于 2020-06-22 17:02:59">2020-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-29T07:50:09.000Z" title="更新于 2021-06-29 15:50:09">2021-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/">论文品读</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Mining Process Models with Non-Free-Choice Constructs"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一-文章速览"><a class="markdownIt-Anchor" href="#一-文章速览"></a> 一、文章速览</h2>
+<hr />
+<h3 id="1论文信息"><a class="markdownIt-Anchor" href="#1论文信息"></a> 1.论文信息</h3>
+<blockquote>
+<p>题目-作者-时间-出版社-引用</p>
+</blockquote>
+<p>Wen, Lijie et al. “Mining process models with non-free-choice constructs.” <em>Data Mining and Knowledge Discovery</em> 15 (2007): 145-180.</p>
+<hr />
+<h3 id="2背景"><a class="markdownIt-Anchor" href="#2背景"></a> 2.背景</h3>
+<p>现实生活中的许多进程不具有自由选择属性。因此，提供能够成功发现<strong>非自由选择结构</strong>的技术非常重要。目前存在的算法不能充分处理这样的结构。</p>
+<hr />
+<h3 id="3方法"><a class="markdownIt-Anchor" href="#3方法"></a> 3.方法</h3>
+<p>本文介绍了一种成功挖掘隐式依赖关系的方法α++ 。</p>
+<hr />
+<h3 id="4概述"><a class="markdownIt-Anchor" href="#4概述"></a> 4.概述</h3>
+<p>假设：</p>
+<ul>
+<li>(i) 日志必须是完整的</li>
+<li>(ii)日志是无噪声的</li>
+<li>(iii)日志中变迁名称唯一(无重名变迁)</li>
+</ul>
+<p>本文关注挖掘非自由选择结构，即同时存在选择和同步的情况。使用基于Petri网的算法α++，可以挖掘非自有选择结构。即，一些非自由选择的Petri网可以被正确地发现。</p>
+<hr />
+<h3 id="5局限"><a class="markdownIt-Anchor" href="#5局限"></a> 5.局限</h3>
+<p>并非所有合理的工作流网都能成功地从其相应的事件日志中导出。</p>
+<ul>
+<li>
+<p>在N4 ={ABCE, ACBE, ABDDCE}中，A和D以及D和E之间都有隐式的依赖关系。任务D涉及到一阶循环和两个隐式依赖项。在定义6中，假设一阶循环中的任务不涉及任何隐式依赖。因此在定义的第4步和第5步中无法正确检测到连接到D的库所。</p>
+<p>N5中的A与D，H与E存在隐式依赖，和N4类似。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/16.png" class="">
+<p>以上可以通过定义3和5进行细微调整得到正确结果。但是也一些不能修复的。</p>
+</li>
+<li>
+<p>(1) N6={ABDEHF I, ADBEHF I, ACDFGEI, ADCF GEI}，只有在B和C之间的选择是自由选择的。H和E, G和F, E和G, F和H之间的顺序关系对于今天的任何挖掘算法来说都太困难了。</p>
+<p>(2) N7，它的一个完整事件日志是{ABCE, ACDF, ADBG}。所有生成的事件跟踪都是基于B、C和D之间的选择。B和B、C和C、D和D、A和E、A和F、A和G之间的顺序关系更难挖掘。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/17.png" class="">
+</li>
+</ul>
+<p><strong>上面的例子涉及相当复杂的结构，难于分解，但同时却很少见。从实用的角度来看，更重要的问题是与  <em>噪声和完整性</em>  有关的问题。</strong></p>
+<hr />
+<h3 id="6未来方向"><a class="markdownIt-Anchor" href="#6未来方向"></a> 6.未来方向</h3>
+<ul>
+<li>将α算法应用于更多实际过程中</li>
+<li>探索一些处理不完整性的技术</li>
+<li>希望解决过程挖掘领域中的其他未解决问题，例如，不可见的任务(例如，跳过未记录的任务)，重名的任务(即，模型中的不同任务无法在日志中区分 )，噪音(例如，处理异常行为或错误日志)等。</li>
+</ul>
+<hr />
+<h2 id="二-算法具体描述"><a class="markdownIt-Anchor" href="#二-算法具体描述"></a> 二、算法具体描述</h2>
+<h3 id="1问题描述"><a class="markdownIt-Anchor" href="#1问题描述"></a> 1.问题描述</h3>
+<p>要从事件日志中直接提取具有非自由选择构造的流程模型，必须有一种挖掘所有依赖的方法。</p>
+<ul>
+<li>free-choice：自由选择Petri网是Petri网的一个子类，消耗来自相同库所标识的变迁应该具有相同的输入集。</li>
+<li>两种因果依赖关系，即显性和隐性的。</li>
+</ul>
+<ol>
+<li>
+<p>**依赖分为两种类型：**显式依赖(直接依赖)和隐式依赖(间接依赖)，定义如下。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/1.png" class="">
+<p>定义1中，<code>s-·a+a·</code>表示网N在发生a后的标识下可以到达b(其中-·a+a·表示a消耗的和a生成的标识的差值)。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/2.png" class="">
+</li>
+<li>
+<p><strong>具有隐式依赖的过程模型具有什么特征?</strong></p>
+<p>假设A和之间存在隐式依赖关系，一旦执行了A，<strong>在执行B之前一定还有其他任务</strong>。之后，执行B。B永远不可能在某种程度上直接跟随A，因为“依赖距离”至少是2。所以A和B之间的隐式依赖使用经典的α方法不能直接检测到，比如使用弱序关系&gt;。</p>
+<p>隐式库所不会影响流程模型的行为，即，可以在不改变可达状态集的情况下删除它们。如果没有其他任务连接到P1、P2和P3, P1将成为一个隐式库所。虽然添加它们是无害的，但我们更喜欢避免构造隐式库所的挖掘算法。请注意，并非所有隐式依赖都对应于隐式库所。下面将图4所示的基本情况的扩展为图5。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/4.png" class=""><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/5.png" class="">
+<p>在本文中，我们将考虑三种情况:</p>
+<ol>
+<li>
+<p>图5中的模式(b)和(g)所描述的情况，其中，α算法错误地将库所P1替换为两个或多个库所。</p>
+</li>
+<li>
+<p>模式©, (d), (e)和(f)所描述的情况，在这种情况下，α算法漏掉了A和P1 (A, P1)或P1和B (P1, B)之间的弧线。</p>
+</li>
+<li>
+<p>模式(a)所描述的P1库所根本没有被发现的情况。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="2检测隐式依赖"><a class="markdownIt-Anchor" href="#2检测隐式依赖"></a> 2.检测隐式依赖</h3>
+<ul>
+<li>
+<p><strong>显式依赖用α算法挖掘</strong></p>
+</li>
+<li>
+<p><strong>隐式依赖</strong></p>
+<p>改进阿尔法中的定义——<strong>高级序关系</strong></p>
+<ul>
+<li>
+<p>序关系(&gt;w反映了长度为1的关系，&gt;&gt;w反映长度为2及以上的关系)</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/6.png" class="">
+<p>示例：对于{T1T3T4, T2T3T5}，任务之间的高级排序关系为</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/7.png" class="">
+</li>
+<li>
+<p>完全事件日志</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/8.png" class=""> 
+</li>
+<li>
+<p><strong>隐式序关系</strong></p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/9.png" class="">
+<p>不同类型日志中的隐式依赖关系：</p>
+<ul>
+<li>类似图5(b)和(g)。 <strong><em>→W1：<em><strong>确保一旦在挖掘的模型中存在</strong>连接两个连续变迁的库所</em></em>，而</strong>后一个任务具有多个输入库所**，则后一个任务始终可以有机会在前一个任务之后直接执行。</li>
+<li>类似图5©-(f)。 <strong><em>→W2：<em><strong>如果任务从</strong>多个并行分支之一</em></em>获取标识，则它及其并行任务</strong>也必须消耗其他分支的标识**。</li>
+<li>类似图5(a)。 **<em>→W3：<em><strong>如果</strong>两个排他任务(即XOR联接中涉及的任务)导致了不同的并行分支集</em></em>，并且这两个集合及其任务满足一定条件，则挖掘的工作流网仍然是正确的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3挖掘算法"><a class="markdownIt-Anchor" href="#3挖掘算法"></a> 3.挖掘算法</h3>
+<ul>
+<li>
+<p>首先分析上一节中提出的三种隐式序关系之间的相互关系。检测的顺序如下：</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/10.png" class="">
+</li>
+<li>
+<p>然后，我们引入两个归约规则，以消除那些<strong>导致冗余隐式依赖的隐式排序关系</strong>。</p>
+<p>不是所有的隐式依赖都是有意义的，因此引入约简规则进行简化，目的是消除所有非基本的隐式依赖，同时保留基本的依赖。</p>
+<ul>
+<li>
+<p>第一种涉及冗余隐式依赖的类型及约简规则1——通过消除相关的隐式排序关系</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/11.png" class=""><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/12.png" class="">
+</li>
+<li>
+<p>第二种涉及冗余隐式依赖的类型及约简规则2——根据所有基本隐式依赖的传递闭包来消除距离较长的隐式依赖</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/14.png" class=""><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/13.png" class="">
+</li>
+</ul>
+</li>
+<li>
+<p>随后，给出了一种名为α++的挖掘算法，用于使用涉及隐式依赖性的非自由选择构造来构造过程模型。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/ddde875b/14.png" class="">
+<p>算法的解释：</p>
+<ul>
+<li>步骤1到3直接借鉴了[42]</li>
+<li>步骤4、5中，确定了连接一阶循环变迁的库所，并将其包含在LW中。</li>
+<li>步骤6、7，从输入日志W中删除所有一阶循环变迁，并推导出新的输入日志W‘(方便起见，把W-L1L记作W’)，用α算法处理</li>
+<li>步骤8，检测W’中的所有隐式排序关系→W1</li>
+<li>步骤9中，α算法基于W’和定义3中定义的排序关系发现WF网</li>
+<li>步骤10到13，所有涉及→W1和→W2关系的库所都被导出并包含在YW中。 首先，一旦将IDW1中的所有→W1都视为→W，就检测到W中的所有隐式依赖性→W2(步骤10)。 然后应用规则1来减少IDW2中的冗余隐式依赖性(步骤11)。 最后，所有涉及前两种隐式依赖关系的库所都从PW’(将PW−L1L记作PW‘)导出，而保留PW’中的其他库所(步骤12和13)。</li>
+<li>步骤14到17，所有与→W3关系有关的库所都被导出并包含在ZW中。 首先，将IDW2中的所有→W2视为→W，并检测W’中的所有隐式依赖性→W3(步骤14)。 然后应用规则2来减少IDW3中的冗余隐式依赖关系(步骤15)。 最后，所有基于第三种隐式依赖关系的场所都是基于这些→W3关系得出的(步骤16和17)。</li>
+<li>步骤18到20，收集了已挖掘的WF网络中的所有库所，并将一阶循环的变迁添加到了网中，并且还导出了网的所有弧。</li>
+<li>步骤21，返回带有非自由选择结构、一阶循环和隐式依赖项的工作流网</li>
+</ul>
+</li>
+<li>
+<p>最后，我们简要讨论了α++算法的复杂性。</p>
+<p>α<ins>算法是由&gt; W，△W和≫W关系驱动的，其构建时间是线性的。而α</ins>算法中其余步骤的复杂度在任务数量上呈指数级增长。但是通常任务数量较少，因此瓶颈不在于复杂度。真正的限制因素是模型的可视化和分析人员对模型的解释。</p>
+</li>
+</ul>
+<h2 id="三-他评"><a class="markdownIt-Anchor" href="#三-他评"></a> 三、他评</h2>
+<hr />
+<p>下载：</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%CE%B1/">α++</a><a class="post-meta__tags" href="/tags/indirect-dependency/">indirect dependency</a><a class="post-meta__tags" href="/tags/complete/">complete</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/61179b00.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Applying Sequence Mining for Outlier Detection in Process Mining</div></div></a></div><div class="next-post pull-right"><a href="/articles/2e73a29e.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Inductive Miner</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">叶小白</div><div class="author-info__description">用智慧丈量人生</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lukeaust"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lukeaust" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lukeaust@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">一入学术深似海</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%96%87%E7%AB%A0%E9%80%9F%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text"> 一、文章速览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E8%AE%BA%E6%96%87%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.论文信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E8%83%8C%E6%99%AF"><span class="toc-number">1.2.</span> <span class="toc-text"> 2.背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text"> 3.方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%A6%82%E8%BF%B0"><span class="toc-number">1.4.</span> <span class="toc-text"> 4.概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E5%B1%80%E9%99%90"><span class="toc-number">1.5.</span> <span class="toc-text"> 5.局限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E6%9C%AA%E6%9D%A5%E6%96%B9%E5%90%91"><span class="toc-number">1.6.</span> <span class="toc-text"> 6.未来方向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E7%AE%97%E6%B3%95%E5%85%B7%E4%BD%93%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text"> 二、算法具体描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.问题描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E6%A3%80%E6%B5%8B%E9%9A%90%E5%BC%8F%E4%BE%9D%E8%B5%96"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.检测隐式依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text"> 3.挖掘算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BB%96%E8%AF%84"><span class="toc-number">3.</span> <span class="toc-text"> 三、他评</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/a57c573c.html" title="从事件日志到目标"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从事件日志到目标"/></a><div class="content"><a class="title" href="/articles/a57c573c.html" title="从事件日志到目标">从事件日志到目标</a><time datetime="2021-06-29T08:17:57.735Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/d737cada.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/d737cada.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.731Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/aecffc40.html" title="论文题目"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论文题目"/></a><div class="content"><a class="title" href="/articles/aecffc40.html" title="论文题目">论文题目</a><time datetime="2021-06-29T08:17:57.619Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/85537cbc.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/85537cbc.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.611Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Poll的笔记 - 转载"/></a><div class="content"><a class="title" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载">Poll的笔记 - 转载</a><time datetime="2020-09-27T12:40:06.000Z" title="发表于 2020-09-27 20:40:06">2020-09-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 叶小白</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Sa9Gr02xMinB8aMKhiaxPCsP-gzGzoHsz',
+      appKey: 'Q99L5wMhgk70QnUTbJxiEcA5',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,1824 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Matplotlib的50个常用图表 | 叶小白</title><meta name="keywords" content="python,Matplotlib"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Matplotlib 必须掌握的 50 个可视化图表（附完整 Python 源代码） 本文总结了 Matplotlib 以及 Seaborn 用的最多的50个图形，掌握这些图形的绘制，对于数据分析的可视化有莫大的作用。 Tips： （1）本文原文部分代码有不准确的地方，已进行修改； （2）所有正确的源代码，我已整合到 jupyter notebook 文件中，可以在公众号『Python数据之道』">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matplotlib的50个常用图表">
+<meta property="og:url" content="https://lukeaust.gitee.io/articles/8d8eb3e8.html">
+<meta property="og:site_name" content="叶小白">
+<meta property="og:description" content="Matplotlib 必须掌握的 50 个可视化图表（附完整 Python 源代码） 本文总结了 Matplotlib 以及 Seaborn 用的最多的50个图形，掌握这些图形的绘制，对于数据分析的可视化有莫大的作用。 Tips： （1）本文原文部分代码有不准确的地方，已进行修改； （2）所有正确的源代码，我已整合到 jupyter notebook 文件中，可以在公众号『Python数据之道』">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg">
+<meta property="article:published_time" content="2020-07-16T13:38:36.000Z">
+<meta property="article:modified_time" content="2021-06-29T07:50:09.000Z">
+<meta property="article:author" content="叶小白">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="Matplotlib">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/8d8eb3e8"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Matplotlib的50个常用图表',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-29 15:50:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="叶小白" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">叶小白</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Matplotlib的50个常用图表</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-16T13:38:36.000Z" title="发表于 2020-07-16 21:38:36">2020-07-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-29T07:50:09.000Z" title="更新于 2021-06-29 15:50:09">2021-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E5%B7%A7%E7%A7%AF%E7%B4%AF/">技巧积累</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>60分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Matplotlib的50个常用图表"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="matplotlib-必须掌握的-50-个可视化图表附完整-python-源代码"><a class="markdownIt-Anchor" href="#matplotlib-必须掌握的-50-个可视化图表附完整-python-源代码"></a> Matplotlib 必须掌握的 50 个可视化图表（附完整 Python 源代码）</h1>
+<p>本文总结了 Matplotlib 以及 Seaborn 用的最多的50个图形，掌握这些图形的绘制，对于数据分析的可视化有莫大的作用。</p>
+<p>Tips：</p>
+<p>（1）本文原文部分代码有不准确的地方，已进行修改；</p>
+<p>（2）所有正确的源代码，我已整合到 jupyter notebook 文件中，可以在公众号『Python数据之道』后台回复 “code”，可获得本文源代码；</p>
+<p>（3）运行本文代码，除了安装 matplotlib 和 seaborn 可视化库外，还需要安装其他的一些辅助可视化库，已在代码部分作标注，具体内容请查看下面文章内容。</p>
+<p>（4）本文完整的翻译文章来自 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://liyangbit.com/">http://liyangbit.com/</a></p>
+<p>在数据分析和可视化中最有用的 50 个 Matplotlib 图表。 这些图表列表允许您使用 python 的 matplotlib 和 seaborn 库选择要显示的可视化对象。</p>
+<h2 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h2>
+<p>这些图表根据可视化目标的7个不同情景进行分组。 例如，如果要想象两个变量之间的关系，请查看“相关”部分下的图表。 或者，如果您想要显示值如何随时间变化，请查看“更改”部分，依此类推。</p>
+<p>有效图表的重要特征：</p>
+<ul>
+<li>在不歪曲事实的情况下传达正确和必要的信息。</li>
+<li>设计简单，您不必太费力就能理解它。</li>
+<li>从审美角度支持信息而不是掩盖信息。</li>
+<li>信息没有超负荷。</li>
+</ul>
+<h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2>
+<p>在代码运行前先引入下面的设置内容。 当然，单独的图表，可以重新设置显示要素。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># !pip install brewer2mpl</span>
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> matplotlib <span class="hljs-keyword">as</span> mpl
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+<span class="hljs-keyword">import</span> warnings; warnings.filterwarnings(action=<span class="hljs-string">'once'</span>)
+
+large = <span class="hljs-number">22</span>; med = <span class="hljs-number">16</span>; small = <span class="hljs-number">12</span>
+params = &#123;<span class="hljs-string">'axes.titlesize'</span>: large,
+          <span class="hljs-string">'legend.fontsize'</span>: med,
+          <span class="hljs-string">'figure.figsize'</span>: (<span class="hljs-number">16</span>, <span class="hljs-number">10</span>),
+          <span class="hljs-string">'axes.labelsize'</span>: med,
+          <span class="hljs-string">'axes.titlesize'</span>: med,
+          <span class="hljs-string">'xtick.labelsize'</span>: med,
+          <span class="hljs-string">'ytick.labelsize'</span>: med,
+          <span class="hljs-string">'figure.titlesize'</span>: large&#125;
+plt.rcParams.update(params)
+plt.style.use(<span class="hljs-string">'seaborn-whitegrid'</span>)
+sns.set_style(<span class="hljs-string">"white"</span>)
+%matplotlib inline
+
+<span class="hljs-comment"># Version</span>
+print(mpl.__version__)  <span class="hljs-comment">#&gt; 3.0.0</span>
+print(sns.__version__)  <span class="hljs-comment">#&gt; 0.9.0</span>
+</code></pre>
+<pre><code>3.2.2
+0.10.1
+
+
+/usr/local/lib/python3.6/dist-packages/statsmodels/tools/_testing.py:19: FutureWarning: pandas.util.testing is deprecated. Use the functions in the public API at pandas.testing instead.
+  import pandas.util.testing as tm
+</code></pre>
+<h2 id="关联-correlation"><a class="markdownIt-Anchor" href="#关联-correlation"></a> 关联 （Correlation）</h2>
+<p>关联图表用于可视化2个或更多变量之间的关系。 也就是说，一个变量如何相对于另一个变化。</p>
+<h3 id="散点图scatter-plot"><a class="markdownIt-Anchor" href="#散点图scatter-plot"></a> 散点图（Scatter plot）</h3>
+<p>散点图是用于研究两个变量之间关系的经典的和基本的图表。 如果数据中有多个组，则可能需要以不同颜色可视化每个组。 在 matplotlib 中，您可以使用 <code>plt.scatterplot（）</code> 方便地执行此操作。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import dataset </span>
+midwest = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/midwest_filter.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data </span>
+<span class="hljs-comment"># Create as many colors as there are unique midwest['category']</span>
+categories = np.unique(midwest[<span class="hljs-string">'category'</span>])
+colors = [plt.cm.tab10(i/float(len(categories)<span class="hljs-number">-1</span>)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(categories))]
+
+<span class="hljs-comment"># Draw Plot for Each Category</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>, facecolor=<span class="hljs-string">'w'</span>, edgecolor=<span class="hljs-string">'k'</span>)
+
+<span class="hljs-keyword">for</span> i, category <span class="hljs-keyword">in</span> enumerate(categories):
+    plt.scatter(<span class="hljs-string">'area'</span>, <span class="hljs-string">'poptotal'</span>, 
+                data=midwest.loc[midwest.category==category, :], 
+                s=<span class="hljs-number">20</span>, cmap=colors[i], label=str(category))
+    <span class="hljs-comment"># "c=" 修改为 "cmap="，Python数据之道 备注 </span>
+
+<span class="hljs-comment"># Decorations</span>
+plt.gca().set(xlim=(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.1</span>), ylim=(<span class="hljs-number">0</span>, <span class="hljs-number">90000</span>),
+              xlabel=<span class="hljs-string">'Area'</span>, ylabel=<span class="hljs-string">'Population'</span>)
+
+plt.xticks(fontsize=<span class="hljs-number">12</span>); plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">"Scatterplot of Midwest Area vs Population"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.legend(fontsize=<span class="hljs-number">12</span>)    
+plt.show()    
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_5_0.png" class="">
+<h3 id="带边界的气泡图bubble-plot-with-encircling"><a class="markdownIt-Anchor" href="#带边界的气泡图bubble-plot-with-encircling"></a> 带边界的气泡图（Bubble plot with Encircling）</h3>
+<p>有时，您希望在边界内显示一组点以强调其重要性。 在这个例子中，你从数据框中获取记录，并用下面代码中描述的 <code>encircle（）</code> 来使边界显示出来。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> matplotlib <span class="hljs-keyword">import</span> patches
+<span class="hljs-keyword">from</span> scipy.spatial <span class="hljs-keyword">import</span> ConvexHull
+<span class="hljs-keyword">import</span> warnings; warnings.simplefilter(<span class="hljs-string">'ignore'</span>)
+sns.set_style(<span class="hljs-string">"white"</span>)
+
+<span class="hljs-comment"># Step 1: Prepare Data</span>
+midwest = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/midwest_filter.csv"</span>)
+
+<span class="hljs-comment"># As many colors as there are unique midwest['category']</span>
+categories = np.unique(midwest[<span class="hljs-string">'category'</span>])
+colors = [plt.cm.tab10(i/float(len(categories)<span class="hljs-number">-1</span>)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(categories))]
+
+<span class="hljs-comment"># Step 2: Draw Scatterplot with unique color for each category</span>
+fig = plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>, facecolor=<span class="hljs-string">'w'</span>, edgecolor=<span class="hljs-string">'k'</span>)    
+
+<span class="hljs-keyword">for</span> i, category <span class="hljs-keyword">in</span> enumerate(categories):
+    plt.scatter(<span class="hljs-string">'area'</span>, <span class="hljs-string">'poptotal'</span>, data=midwest.loc[midwest.category==category, :], 
+                s=<span class="hljs-string">'dot_size'</span>, cmap=colors[i], label=str(category), edgecolors=<span class="hljs-string">'black'</span>, linewidths=<span class="hljs-number">.5</span>)
+    <span class="hljs-comment"># "c=" 修改为 "cmap="，Python数据之道 备注 </span>
+
+<span class="hljs-comment"># Step 3: Encircling</span>
+<span class="hljs-comment"># https://stackoverflow.com/questions/44575681/how-do-i-encircle-different-data-sets-in-scatter-plot</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encircle</span><span class="hljs-params">(x,y, ax=None, **kw)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ax: ax=plt.gca()
+    p = np.c_[x,y]
+    hull = ConvexHull(p)
+    poly = plt.Polygon(p[hull.vertices,:], **kw)
+    ax.add_patch(poly)
+
+<span class="hljs-comment"># Select data to be encircled</span>
+midwest_encircle_data = midwest.loc[midwest.state==<span class="hljs-string">'IN'</span>, :]                         
+
+<span class="hljs-comment"># Draw polygon surrounding vertices    </span>
+encircle(midwest_encircle_data.area, midwest_encircle_data.poptotal, ec=<span class="hljs-string">"k"</span>, fc=<span class="hljs-string">"gold"</span>, alpha=<span class="hljs-number">0.1</span>)
+encircle(midwest_encircle_data.area, midwest_encircle_data.poptotal, ec=<span class="hljs-string">"firebrick"</span>, fc=<span class="hljs-string">"none"</span>, linewidth=<span class="hljs-number">1.5</span>)
+
+<span class="hljs-comment"># Step 4: Decorations</span>
+plt.gca().set(xlim=(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.1</span>), ylim=(<span class="hljs-number">0</span>, <span class="hljs-number">90000</span>),
+              xlabel=<span class="hljs-string">'Area'</span>, ylabel=<span class="hljs-string">'Population'</span>)
+
+plt.xticks(fontsize=<span class="hljs-number">12</span>); plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">"Bubble Plot with Encircling"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.legend(fontsize=<span class="hljs-number">12</span>)    
+plt.show()    
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_7_0.png" class="">
+<h3 id="带线性回归最佳拟合线的散点图-scatter-plot-with-linear-regression-line-of-best-fit"><a class="markdownIt-Anchor" href="#带线性回归最佳拟合线的散点图-scatter-plot-with-linear-regression-line-of-best-fit"></a> 带线性回归最佳拟合线的散点图 （Scatter plot with linear regression line of best fit）</h3>
+<p>如果你想了解两个变量如何相互改变，那么最佳拟合线就是常用的方法。 下图显示了数据中各组之间最佳拟合线的差异。 要禁用分组并仅为整个数据集绘制一条最佳拟合线，请从下面的<code>sns.lmplot（）</code>调用中删除<code>hue ='cyl'</code>参数。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv"</span>)
+df_select = df.loc[df.cyl.isin([<span class="hljs-number">4</span>,<span class="hljs-number">8</span>]), :]
+
+<span class="hljs-comment"># Plot</span>
+sns.set_style(<span class="hljs-string">"white"</span>)
+gridobj = sns.lmplot(x=<span class="hljs-string">"displ"</span>, y=<span class="hljs-string">"hwy"</span>, hue=<span class="hljs-string">"cyl"</span>, data=df_select, 
+                     height=<span class="hljs-number">7</span>, aspect=<span class="hljs-number">1.6</span>, robust=<span class="hljs-literal">True</span>, palette=<span class="hljs-string">'tab10'</span>, 
+                     scatter_kws=dict(s=<span class="hljs-number">60</span>, linewidths=<span class="hljs-number">.7</span>, edgecolors=<span class="hljs-string">'black'</span>))
+
+<span class="hljs-comment"># Decorations</span>
+gridobj.set(xlim=(<span class="hljs-number">0.5</span>, <span class="hljs-number">7.5</span>), ylim=(<span class="hljs-number">0</span>, <span class="hljs-number">50</span>))
+plt.title(<span class="hljs-string">"Scatterplot with line of best fit grouped by number of cylinders"</span>, fontsize=<span class="hljs-number">20</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_9_0.png" class="">
+<p><strong>针对每列绘制线性回归线</strong></p>
+<p>或者，可以在其每列中显示每个组的最佳拟合线。 可以通过在 <code>sns.lmplot()</code> 中设置 <code>col=groupingcolumn</code> 参数来实现，如下：</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv"</span>)
+df_select = df.loc[df.cyl.isin([<span class="hljs-number">4</span>,<span class="hljs-number">8</span>]), :]
+
+<span class="hljs-comment"># Each line in its own column</span>
+sns.set_style(<span class="hljs-string">"white"</span>)
+gridobj = sns.lmplot(x=<span class="hljs-string">"displ"</span>, y=<span class="hljs-string">"hwy"</span>, 
+                     data=df_select, 
+                     height=<span class="hljs-number">7</span>, 
+                     robust=<span class="hljs-literal">True</span>, 
+                     palette=<span class="hljs-string">'Set1'</span>, 
+                     col=<span class="hljs-string">"cyl"</span>,
+                     scatter_kws=dict(s=<span class="hljs-number">60</span>, linewidths=<span class="hljs-number">.7</span>, edgecolors=<span class="hljs-string">'black'</span>))
+
+<span class="hljs-comment"># Decorations</span>
+gridobj.set(xlim=(<span class="hljs-number">0.5</span>, <span class="hljs-number">7.5</span>), ylim=(<span class="hljs-number">0</span>, <span class="hljs-number">50</span>))
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_11_0.png" class="">
+<h3 id="抖动图-jittering-with-stripplot"><a class="markdownIt-Anchor" href="#抖动图-jittering-with-stripplot"></a> 抖动图 （Jittering with stripplot）</h3>
+<p>通常，多个数据点具有完全相同的 X 和 Y 值。 结果，多个点绘制会重叠并隐藏。 为避免这种情况，请将数据点稍微抖动，以便您可以直观地看到它们。 使用 seaborn 的 <code>stripplot（）</code> 很方便实现这个功能。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Stripplot</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)    
+sns.stripplot(df.cty, df.hwy, jitter=<span class="hljs-number">0.25</span>, size=<span class="hljs-number">8</span>, ax=ax, linewidth=<span class="hljs-number">.5</span>)
+
+<span class="hljs-comment"># Decorations</span>
+plt.title(<span class="hljs-string">'Use jittered plots to avoid overlapping of points'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_13_0.png" class="">
+<h3 id="计数图-counts-plot"><a class="markdownIt-Anchor" href="#计数图-counts-plot"></a> 计数图 （Counts Plot）</h3>
+<p>避免点重叠问题的另一个选择是增加点的大小，这取决于该点中有多少点。 因此，点的大小越大，其周围的点的集中度越高。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv"</span>)
+df_counts = df.groupby([<span class="hljs-string">'hwy'</span>, <span class="hljs-string">'cty'</span>]).size().reset_index(name=<span class="hljs-string">'counts'</span>)
+
+<span class="hljs-comment"># Draw Stripplot</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)    
+sns.stripplot(df_counts.cty, df_counts.hwy, size=df_counts.counts*<span class="hljs-number">2</span>, ax=ax)
+
+<span class="hljs-comment"># Decorations</span>
+plt.title(<span class="hljs-string">'Counts Plot - Size of circle is bigger as more points overlap'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_15_0.png" class="">
+<h3 id="边缘直方图-marginal-histogram"><a class="markdownIt-Anchor" href="#边缘直方图-marginal-histogram"></a> 边缘直方图 （Marginal Histogram）</h3>
+<p>边缘直方图具有沿 X 和 Y 轴变量的直方图。 这用于可视化 X 和 Y 之间的关系以及单独的 X 和 Y 的单变量分布。 这种图经常用于探索性数据分析（EDA）。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Create Fig and gridspec</span>
+fig = plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+grid = plt.GridSpec(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>, hspace=<span class="hljs-number">0.5</span>, wspace=<span class="hljs-number">0.2</span>)
+
+<span class="hljs-comment"># Define the axes</span>
+ax_main = fig.add_subplot(grid[:<span class="hljs-number">-1</span>, :<span class="hljs-number">-1</span>])
+ax_right = fig.add_subplot(grid[:<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>], xticklabels=[], yticklabels=[])
+ax_bottom = fig.add_subplot(grid[<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>:<span class="hljs-number">-1</span>], xticklabels=[], yticklabels=[])
+
+<span class="hljs-comment"># Scatterplot on main ax</span>
+ax_main.scatter(<span class="hljs-string">'displ'</span>, <span class="hljs-string">'hwy'</span>, s=df.cty*<span class="hljs-number">4</span>, c=df.manufacturer.astype(<span class="hljs-string">'category'</span>).cat.codes, alpha=<span class="hljs-number">.9</span>, data=df, cmap=<span class="hljs-string">"tab10"</span>, edgecolors=<span class="hljs-string">'gray'</span>, linewidths=<span class="hljs-number">.5</span>)
+
+<span class="hljs-comment"># histogram on the right</span>
+ax_bottom.hist(df.displ, <span class="hljs-number">40</span>, histtype=<span class="hljs-string">'stepfilled'</span>, orientation=<span class="hljs-string">'vertical'</span>, color=<span class="hljs-string">'deeppink'</span>)
+ax_bottom.invert_yaxis()
+
+<span class="hljs-comment"># histogram in the bottom</span>
+ax_right.hist(df.hwy, <span class="hljs-number">40</span>, histtype=<span class="hljs-string">'stepfilled'</span>, orientation=<span class="hljs-string">'horizontal'</span>, color=<span class="hljs-string">'deeppink'</span>)
+
+<span class="hljs-comment"># Decorations</span>
+ax_main.set(title=<span class="hljs-string">'Scatterplot with Histograms \n displ vs hwy'</span>, xlabel=<span class="hljs-string">'displ'</span>, ylabel=<span class="hljs-string">'hwy'</span>)
+ax_main.title.set_fontsize(<span class="hljs-number">20</span>)
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> ([ax_main.xaxis.label, ax_main.yaxis.label] + ax_main.get_xticklabels() + ax_main.get_yticklabels()):
+    item.set_fontsize(<span class="hljs-number">14</span>)
+
+xlabels = ax_main.get_xticks().tolist()
+ax_main.set_xticklabels(xlabels)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_17_0.png" class="">
+<h3 id="边缘箱形图-marginal-boxplot"><a class="markdownIt-Anchor" href="#边缘箱形图-marginal-boxplot"></a> 边缘箱形图 （Marginal Boxplot）</h3>
+<p>边缘箱图与边缘直方图具有相似的用途。 然而，箱线图有助于精确定位 X 和 Y 的中位数、第25和第75百分位数。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Create Fig and gridspec</span>
+fig = plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+grid = plt.GridSpec(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>, hspace=<span class="hljs-number">0.5</span>, wspace=<span class="hljs-number">0.2</span>)
+
+<span class="hljs-comment"># Define the axes</span>
+ax_main = fig.add_subplot(grid[:<span class="hljs-number">-1</span>, :<span class="hljs-number">-1</span>])
+ax_right = fig.add_subplot(grid[:<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>], xticklabels=[], yticklabels=[])
+ax_bottom = fig.add_subplot(grid[<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>:<span class="hljs-number">-1</span>], xticklabels=[], yticklabels=[])
+
+<span class="hljs-comment"># Scatterplot on main ax</span>
+ax_main.scatter(<span class="hljs-string">'displ'</span>, <span class="hljs-string">'hwy'</span>, s=df.cty*<span class="hljs-number">5</span>, c=df.manufacturer.astype(<span class="hljs-string">'category'</span>).cat.codes, alpha=<span class="hljs-number">.9</span>, data=df, cmap=<span class="hljs-string">"Set1"</span>, edgecolors=<span class="hljs-string">'black'</span>, linewidths=<span class="hljs-number">.5</span>)
+
+<span class="hljs-comment"># Add a graph in each part</span>
+sns.boxplot(df.hwy, ax=ax_right, orient=<span class="hljs-string">"v"</span>)
+sns.boxplot(df.displ, ax=ax_bottom, orient=<span class="hljs-string">"h"</span>)
+
+<span class="hljs-comment"># Decorations ------------------</span>
+<span class="hljs-comment"># Remove x axis name for the boxplot</span>
+ax_bottom.set(xlabel=<span class="hljs-string">''</span>)
+ax_right.set(ylabel=<span class="hljs-string">''</span>)
+
+<span class="hljs-comment"># Main Title, Xlabel and YLabel</span>
+ax_main.set(title=<span class="hljs-string">'Scatterplot with Histograms \n displ vs hwy'</span>, xlabel=<span class="hljs-string">'displ'</span>, ylabel=<span class="hljs-string">'hwy'</span>)
+
+<span class="hljs-comment"># Set font size of different components</span>
+ax_main.title.set_fontsize(<span class="hljs-number">20</span>)
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> ([ax_main.xaxis.label, ax_main.yaxis.label] + ax_main.get_xticklabels() + ax_main.get_yticklabels()):
+    item.set_fontsize(<span class="hljs-number">14</span>)
+
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_19_0.png" class="">
+<h3 id="相关图-correllogram"><a class="markdownIt-Anchor" href="#相关图-correllogram"></a> 相关图 （Correllogram）</h3>
+<p>相关图用于直观地查看给定数据框（或二维数组）中所有可能的数值变量对之间的相关度量。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Dataset</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mtcars.csv"</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+sns.heatmap(df.corr(), xticklabels=df.corr().columns, yticklabels=df.corr().columns, cmap=<span class="hljs-string">'RdYlGn'</span>, center=<span class="hljs-number">0</span>, annot=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Decorations</span>
+plt.title(<span class="hljs-string">'Correlogram of mtcars'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.xticks(fontsize=<span class="hljs-number">12</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_21_0.png" class="">
+<h3 id="矩阵图-pairwise-plot"><a class="markdownIt-Anchor" href="#矩阵图-pairwise-plot"></a> 矩阵图 （Pairwise Plot）</h3>
+<p>矩阵图是探索性分析中的最爱，用于理解所有可能的数值变量对之间的关系。 它是双变量分析的必备工具。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Load Dataset</span>
+df = sns.load_dataset(<span class="hljs-string">'iris'</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">8</span>), dpi= <span class="hljs-number">80</span>)
+sns.pairplot(df, kind=<span class="hljs-string">"scatter"</span>, hue=<span class="hljs-string">"species"</span>, plot_kws=dict(s=<span class="hljs-number">80</span>, edgecolor=<span class="hljs-string">"white"</span>, linewidth=<span class="hljs-number">2.5</span>))
+plt.show()
+</code></pre>
+<pre><code>&lt;Figure size 800x640 with 0 Axes&gt;
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_23_1.png" class="">
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Load Dataset</span>
+df = sns.load_dataset(<span class="hljs-string">'iris'</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">8</span>), dpi= <span class="hljs-number">80</span>)
+sns.pairplot(df, kind=<span class="hljs-string">"reg"</span>, hue=<span class="hljs-string">"species"</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_24_1.png" class="">
+<h2 id="偏差-deviation"><a class="markdownIt-Anchor" href="#偏差-deviation"></a> 偏差 （Deviation）</h2>
+<h3 id="发散型条形图-diverging-bars"><a class="markdownIt-Anchor" href="#发散型条形图-diverging-bars"></a> 发散型条形图 （Diverging Bars）</h3>
+<p>如果您想根据单个指标查看项目的变化情况，并可视化此差异的顺序和数量，那么散型条形图 （Diverging Bars） 是一个很好的工具。 它有助于快速区分数据中组的性能，并且非常直观，并且可以立即传达这一点。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mtcars.csv"</span>)
+x = df.loc[:, [<span class="hljs-string">'mpg'</span>]]
+df[<span class="hljs-string">'mpg_z'</span>] = (x - x.mean())/x.std()
+df[<span class="hljs-string">'colors'</span>] = [<span class="hljs-string">'red'</span> <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'green'</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> df[<span class="hljs-string">'mpg_z'</span>]]
+df.sort_values(<span class="hljs-string">'mpg_z'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Draw plot</span>
+plt.figure(figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.hlines(y=df.index, xmin=<span class="hljs-number">0</span>, xmax=df.mpg_z, color=df.colors, alpha=<span class="hljs-number">0.4</span>, linewidth=<span class="hljs-number">5</span>)
+
+<span class="hljs-comment"># Decorations</span>
+plt.gca().set(ylabel=<span class="hljs-string">'$Model$'</span>, xlabel=<span class="hljs-string">'$Mileage$'</span>)
+plt.yticks(df.index, df.cars, fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">'Diverging Bars of Car Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">20</span>&#125;)
+plt.grid(linestyle=<span class="hljs-string">'--'</span>, alpha=<span class="hljs-number">0.5</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_26_0.png" class="">
+<h3 id="发散型文本-diverging-texts"><a class="markdownIt-Anchor" href="#发散型文本-diverging-texts"></a> 发散型文本 （Diverging Texts）</h3>
+<p>发散型文本 （Diverging Texts）与发散型条形图 （Diverging Bars）相似，如果你想以一种漂亮和可呈现的方式显示图表中每个项目的价值，就可以使用这种方法。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mtcars.csv"</span>)
+x = df.loc[:, [<span class="hljs-string">'mpg'</span>]]
+df[<span class="hljs-string">'mpg_z'</span>] = (x - x.mean())/x.std()
+df[<span class="hljs-string">'colors'</span>] = [<span class="hljs-string">'red'</span> <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'green'</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> df[<span class="hljs-string">'mpg_z'</span>]]
+df.sort_values(<span class="hljs-string">'mpg_z'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Draw plot</span>
+plt.figure(figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">14</span>), dpi= <span class="hljs-number">80</span>)
+plt.hlines(y=df.index, xmin=<span class="hljs-number">0</span>, xmax=df.mpg_z)
+<span class="hljs-keyword">for</span> x, y, tex <span class="hljs-keyword">in</span> zip(df.mpg_z, df.index, df.mpg_z):
+    t = plt.text(x, y, round(tex, <span class="hljs-number">2</span>), horizontalalignment=<span class="hljs-string">'right'</span> <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'left'</span>, 
+                 verticalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'color'</span>:<span class="hljs-string">'red'</span> <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'green'</span>, <span class="hljs-string">'size'</span>:<span class="hljs-number">14</span>&#125;)
+
+<span class="hljs-comment"># Decorations    </span>
+plt.yticks(df.index, df.cars, fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">'Diverging Text Bars of Car Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">20</span>&#125;)
+plt.grid(linestyle=<span class="hljs-string">'--'</span>, alpha=<span class="hljs-number">0.5</span>)
+plt.xlim(<span class="hljs-number">-2.5</span>, <span class="hljs-number">2.5</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_28_0.png" class="">
+<h3 id="发散型包点图-diverging-dot-plot"><a class="markdownIt-Anchor" href="#发散型包点图-diverging-dot-plot"></a> 发散型包点图 （Diverging Dot Plot）</h3>
+<p>发散型包点图 （Diverging Dot Plot）也类似于发散型条形图 （Diverging Bars）。 然而，与发散型条形图 （Diverging Bars）相比，条的缺失减少了组之间的对比度和差异。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mtcars.csv"</span>)
+x = df.loc[:, [<span class="hljs-string">'mpg'</span>]]
+df[<span class="hljs-string">'mpg_z'</span>] = (x - x.mean())/x.std()
+df[<span class="hljs-string">'colors'</span>] = [<span class="hljs-string">'red'</span> <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'darkgreen'</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> df[<span class="hljs-string">'mpg_z'</span>]]
+df.sort_values(<span class="hljs-string">'mpg_z'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Draw plot</span>
+plt.figure(figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">16</span>), dpi= <span class="hljs-number">80</span>)
+plt.scatter(df.mpg_z, df.index, s=<span class="hljs-number">450</span>, alpha=<span class="hljs-number">.6</span>, color=df.colors)
+<span class="hljs-keyword">for</span> x, y, tex <span class="hljs-keyword">in</span> zip(df.mpg_z, df.index, df.mpg_z):
+    t = plt.text(x, y, round(tex, <span class="hljs-number">1</span>), horizontalalignment=<span class="hljs-string">'center'</span>, 
+                 verticalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'color'</span>:<span class="hljs-string">'white'</span>&#125;)
+
+<span class="hljs-comment"># Decorations</span>
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+plt.yticks(df.index, df.cars)
+plt.title(<span class="hljs-string">'Diverging Dotplot of Car Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">20</span>&#125;)
+plt.xlabel(<span class="hljs-string">'$Mileage$'</span>)
+plt.grid(linestyle=<span class="hljs-string">'--'</span>, alpha=<span class="hljs-number">0.5</span>)
+plt.xlim(<span class="hljs-number">-2.5</span>, <span class="hljs-number">2.5</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_30_0.png" class="">
+<h3 id="带标记的发散型棒棒糖图-diverging-lollipop-chart-with-markers"><a class="markdownIt-Anchor" href="#带标记的发散型棒棒糖图-diverging-lollipop-chart-with-markers"></a> 带标记的发散型棒棒糖图 （Diverging Lollipop Chart with Markers）</h3>
+<p>带标记的棒棒糖图通过强调您想要引起注意的任何重要数据点并在图表中适当地给出推理，提供了一种对差异进行可视化的灵活方式。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mtcars.csv"</span>)
+x = df.loc[:, [<span class="hljs-string">'mpg'</span>]]
+df[<span class="hljs-string">'mpg_z'</span>] = (x - x.mean())/x.std()
+df[<span class="hljs-string">'colors'</span>] = <span class="hljs-string">'black'</span>
+
+<span class="hljs-comment"># color fiat differently</span>
+df.loc[df.cars == <span class="hljs-string">'Fiat X1-9'</span>, <span class="hljs-string">'colors'</span>] = <span class="hljs-string">'darkorange'</span>
+df.sort_values(<span class="hljs-string">'mpg_z'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+
+<span class="hljs-comment"># Draw plot</span>
+<span class="hljs-keyword">import</span> matplotlib.patches <span class="hljs-keyword">as</span> patches
+
+plt.figure(figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">16</span>), dpi= <span class="hljs-number">80</span>)
+plt.hlines(y=df.index, xmin=<span class="hljs-number">0</span>, xmax=df.mpg_z, color=df.colors, alpha=<span class="hljs-number">0.4</span>, linewidth=<span class="hljs-number">1</span>)
+plt.scatter(df.mpg_z, df.index, color=df.colors, s=[<span class="hljs-number">600</span> <span class="hljs-keyword">if</span> x == <span class="hljs-string">'Fiat X1-9'</span> <span class="hljs-keyword">else</span> <span class="hljs-number">300</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> df.cars], alpha=<span class="hljs-number">0.6</span>)
+plt.yticks(df.index, df.cars)
+plt.xticks(fontsize=<span class="hljs-number">12</span>)
+
+<span class="hljs-comment"># Annotate</span>
+plt.annotate(<span class="hljs-string">'Mercedes Models'</span>, xy=(<span class="hljs-number">0.0</span>, <span class="hljs-number">11.0</span>), xytext=(<span class="hljs-number">1.0</span>, <span class="hljs-number">11</span>), xycoords=<span class="hljs-string">'data'</span>, 
+            fontsize=<span class="hljs-number">15</span>, ha=<span class="hljs-string">'center'</span>, va=<span class="hljs-string">'center'</span>,
+            bbox=dict(boxstyle=<span class="hljs-string">'square'</span>, fc=<span class="hljs-string">'firebrick'</span>),
+            arrowprops=dict(arrowstyle=<span class="hljs-string">'-[, widthB=2.0, lengthB=1.5'</span>, lw=<span class="hljs-number">2.0</span>, color=<span class="hljs-string">'steelblue'</span>), color=<span class="hljs-string">'white'</span>)
+
+<span class="hljs-comment"># Add Patches</span>
+p1 = patches.Rectangle((<span class="hljs-number">-2.0</span>, <span class="hljs-number">-1</span>), width=<span class="hljs-number">.3</span>, height=<span class="hljs-number">3</span>, alpha=<span class="hljs-number">.2</span>, facecolor=<span class="hljs-string">'red'</span>)
+p2 = patches.Rectangle((<span class="hljs-number">1.5</span>, <span class="hljs-number">27</span>), width=<span class="hljs-number">.8</span>, height=<span class="hljs-number">5</span>, alpha=<span class="hljs-number">.2</span>, facecolor=<span class="hljs-string">'green'</span>)
+plt.gca().add_patch(p1)
+plt.gca().add_patch(p2)
+
+<span class="hljs-comment"># Decorate</span>
+plt.title(<span class="hljs-string">'Diverging Bars of Car Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">20</span>&#125;)
+plt.grid(linestyle=<span class="hljs-string">'--'</span>, alpha=<span class="hljs-number">0.5</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_32_0.png" class="">
+<h3 id="面积图-area-chart"><a class="markdownIt-Anchor" href="#面积图-area-chart"></a> 面积图 （Area Chart）</h3>
+<p>通过对轴和线之间的区域进行着色，面积图不仅强调峰和谷，而且还强调高点和低点的持续时间。 高点持续时间越长，线下面积越大。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+
+<span class="hljs-comment"># Prepare Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/economics.csv"</span>, parse_dates=[<span class="hljs-string">'date'</span>]).head(<span class="hljs-number">100</span>)
+x = np.arange(df.shape[<span class="hljs-number">0</span>])
+y_returns = (df.psavert.diff().fillna(<span class="hljs-number">0</span>)/df.psavert.shift(<span class="hljs-number">1</span>)).fillna(<span class="hljs-number">0</span>) * <span class="hljs-number">100</span>
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.fill_between(x[<span class="hljs-number">1</span>:], y_returns[<span class="hljs-number">1</span>:], <span class="hljs-number">0</span>, where=y_returns[<span class="hljs-number">1</span>:] &gt;= <span class="hljs-number">0</span>, facecolor=<span class="hljs-string">'green'</span>, interpolate=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">0.7</span>)
+plt.fill_between(x[<span class="hljs-number">1</span>:], y_returns[<span class="hljs-number">1</span>:], <span class="hljs-number">0</span>, where=y_returns[<span class="hljs-number">1</span>:] &lt;= <span class="hljs-number">0</span>, facecolor=<span class="hljs-string">'red'</span>, interpolate=<span class="hljs-literal">True</span>, alpha=<span class="hljs-number">0.7</span>)
+
+<span class="hljs-comment"># Annotate</span>
+plt.annotate(<span class="hljs-string">'Peak \n1975'</span>, xy=(<span class="hljs-number">94.0</span>, <span class="hljs-number">21.0</span>), xytext=(<span class="hljs-number">88.0</span>, <span class="hljs-number">28</span>),
+             bbox=dict(boxstyle=<span class="hljs-string">'square'</span>, fc=<span class="hljs-string">'firebrick'</span>),
+             arrowprops=dict(facecolor=<span class="hljs-string">'steelblue'</span>, shrink=<span class="hljs-number">0.05</span>), fontsize=<span class="hljs-number">15</span>, color=<span class="hljs-string">'white'</span>)
+
+
+<span class="hljs-comment"># Decorations</span>
+xtickvals = [str(m)[:<span class="hljs-number">3</span>].upper()+<span class="hljs-string">"-"</span>+str(y) <span class="hljs-keyword">for</span> y,m <span class="hljs-keyword">in</span> zip(df.date.dt.year, df.date.dt.month_name())]
+plt.gca().set_xticks(x[::<span class="hljs-number">6</span>])
+plt.gca().set_xticklabels(xtickvals[::<span class="hljs-number">6</span>], rotation=<span class="hljs-number">90</span>, fontdict=&#123;<span class="hljs-string">'horizontalalignment'</span>: <span class="hljs-string">'center'</span>, <span class="hljs-string">'verticalalignment'</span>: <span class="hljs-string">'center_baseline'</span>&#125;)
+plt.ylim(<span class="hljs-number">-35</span>,<span class="hljs-number">35</span>)
+plt.xlim(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>)
+plt.title(<span class="hljs-string">"Month Economics Return %"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.ylabel(<span class="hljs-string">'Monthly returns %'</span>)
+plt.grid(alpha=<span class="hljs-number">0.5</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_34_0.png" class="">
+<h2 id="排序-ranking"><a class="markdownIt-Anchor" href="#排序-ranking"></a> 排序 （Ranking）</h2>
+<h3 id="有序条形图-ordered-bar-chart"><a class="markdownIt-Anchor" href="#有序条形图-ordered-bar-chart"></a> 有序条形图 （Ordered Bar Chart）</h3>
+<p>有序条形图有效地传达了项目的排名顺序。 但是，在图表上方添加度量标准的值，用户可以从图表本身获取精确信息。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+df = df_raw[[<span class="hljs-string">'cty'</span>, <span class="hljs-string">'manufacturer'</span>]].groupby(<span class="hljs-string">'manufacturer'</span>).apply(<span class="hljs-keyword">lambda</span> x: x.mean())
+df.sort_values(<span class="hljs-string">'cty'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Draw plot</span>
+<span class="hljs-keyword">import</span> matplotlib.patches <span class="hljs-keyword">as</span> patches
+
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), facecolor=<span class="hljs-string">'white'</span>, dpi= <span class="hljs-number">80</span>)
+ax.vlines(x=df.index, ymin=<span class="hljs-number">0</span>, ymax=df.cty, color=<span class="hljs-string">'firebrick'</span>, alpha=<span class="hljs-number">0.7</span>, linewidth=<span class="hljs-number">20</span>)
+
+<span class="hljs-comment"># Annotate Text</span>
+<span class="hljs-keyword">for</span> i, cty <span class="hljs-keyword">in</span> enumerate(df.cty):
+    ax.text(i, cty+<span class="hljs-number">0.5</span>, round(cty, <span class="hljs-number">1</span>), horizontalalignment=<span class="hljs-string">'center'</span>)
+
+
+<span class="hljs-comment"># Title, Label, Ticks and Ylim</span>
+ax.set_title(<span class="hljs-string">'Bar Chart for Highway Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">22</span>&#125;)
+ax.set(ylabel=<span class="hljs-string">'Miles Per Gallon'</span>, ylim=(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>))
+plt.xticks(df.index, df.manufacturer.str.upper(), rotation=<span class="hljs-number">60</span>, horizontalalignment=<span class="hljs-string">'right'</span>, fontsize=<span class="hljs-number">12</span>)
+
+<span class="hljs-comment"># Add patches to color the X axis labels</span>
+p1 = patches.Rectangle((<span class="hljs-number">.57</span>, <span class="hljs-number">-0.005</span>), width=<span class="hljs-number">.33</span>, height=<span class="hljs-number">.13</span>, alpha=<span class="hljs-number">.1</span>, facecolor=<span class="hljs-string">'green'</span>, transform=fig.transFigure)
+p2 = patches.Rectangle((<span class="hljs-number">.124</span>, <span class="hljs-number">-0.005</span>), width=<span class="hljs-number">.446</span>, height=<span class="hljs-number">.13</span>, alpha=<span class="hljs-number">.1</span>, facecolor=<span class="hljs-string">'red'</span>, transform=fig.transFigure)
+fig.add_artist(p1)
+fig.add_artist(p2)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_36_0.png" class="">
+<h3 id="棒棒糖图-lollipop-chart"><a class="markdownIt-Anchor" href="#棒棒糖图-lollipop-chart"></a> 棒棒糖图 （Lollipop Chart）</h3>
+<p>棒棒糖图表以一种视觉上令人愉悦的方式提供与有序条形图类似的目的。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+df = df_raw[[<span class="hljs-string">'cty'</span>, <span class="hljs-string">'manufacturer'</span>]].groupby(<span class="hljs-string">'manufacturer'</span>).apply(<span class="hljs-keyword">lambda</span> x: x.mean())
+df.sort_values(<span class="hljs-string">'cty'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Draw plot</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+ax.vlines(x=df.index, ymin=<span class="hljs-number">0</span>, ymax=df.cty, color=<span class="hljs-string">'firebrick'</span>, alpha=<span class="hljs-number">0.7</span>, linewidth=<span class="hljs-number">2</span>)
+ax.scatter(x=df.index, y=df.cty, s=<span class="hljs-number">75</span>, color=<span class="hljs-string">'firebrick'</span>, alpha=<span class="hljs-number">0.7</span>)
+
+<span class="hljs-comment"># Title, Label, Ticks and Ylim</span>
+ax.set_title(<span class="hljs-string">'Lollipop Chart for Highway Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">22</span>&#125;)
+ax.set_ylabel(<span class="hljs-string">'Miles Per Gallon'</span>)
+ax.set_xticks(df.index)
+ax.set_xticklabels(df.manufacturer.str.upper(), rotation=<span class="hljs-number">60</span>, fontdict=&#123;<span class="hljs-string">'horizontalalignment'</span>: <span class="hljs-string">'right'</span>, <span class="hljs-string">'size'</span>:<span class="hljs-number">12</span>&#125;)
+ax.set_ylim(<span class="hljs-number">0</span>, <span class="hljs-number">30</span>)
+
+<span class="hljs-comment"># Annotate</span>
+<span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> df.itertuples():
+    ax.text(row.Index, row.cty+<span class="hljs-number">.5</span>, s=round(row.cty, <span class="hljs-number">2</span>), horizontalalignment= <span class="hljs-string">'center'</span>, verticalalignment=<span class="hljs-string">'bottom'</span>, fontsize=<span class="hljs-number">14</span>)
+
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_38_0.png" class="">
+<h3 id="包点图-dot-plot"><a class="markdownIt-Anchor" href="#包点图-dot-plot"></a> 包点图 （Dot Plot）</h3>
+<p>包点图表传达了项目的排名顺序，并且由于它沿水平轴对齐，因此您可以更容易地看到点彼此之间的距离。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Prepare Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+df = df_raw[[<span class="hljs-string">'cty'</span>, <span class="hljs-string">'manufacturer'</span>]].groupby(<span class="hljs-string">'manufacturer'</span>).apply(<span class="hljs-keyword">lambda</span> x: x.mean())
+df.sort_values(<span class="hljs-string">'cty'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Draw plot</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+ax.hlines(y=df.index, xmin=<span class="hljs-number">11</span>, xmax=<span class="hljs-number">26</span>, color=<span class="hljs-string">'gray'</span>, alpha=<span class="hljs-number">0.7</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dashdot'</span>)
+ax.scatter(y=df.index, x=df.cty, s=<span class="hljs-number">75</span>, color=<span class="hljs-string">'firebrick'</span>, alpha=<span class="hljs-number">0.7</span>)
+
+<span class="hljs-comment"># Title, Label, Ticks and Ylim</span>
+ax.set_title(<span class="hljs-string">'Dot Plot for Highway Mileage'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">22</span>&#125;)
+ax.set_xlabel(<span class="hljs-string">'Miles Per Gallon'</span>)
+ax.set_yticks(df.index)
+ax.set_yticklabels(df.manufacturer.str.title(), fontdict=&#123;<span class="hljs-string">'horizontalalignment'</span>: <span class="hljs-string">'right'</span>&#125;)
+ax.set_xlim(<span class="hljs-number">10</span>, <span class="hljs-number">27</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_40_0.png" class="">
+<h3 id="坡度图-slope-chart"><a class="markdownIt-Anchor" href="#坡度图-slope-chart"></a> 坡度图 （Slope Chart）</h3>
+<p>坡度图最适合比较给定人/项目的“前”和“后”位置。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> matplotlib.lines <span class="hljs-keyword">as</span> mlines
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/gdppercap.csv"</span>)
+
+left_label = [str(c) + <span class="hljs-string">', '</span>+ str(round(y)) <span class="hljs-keyword">for</span> c, y <span class="hljs-keyword">in</span> zip(df.continent, df[<span class="hljs-string">'1952'</span>])]
+right_label = [str(c) + <span class="hljs-string">', '</span>+ str(round(y)) <span class="hljs-keyword">for</span> c, y <span class="hljs-keyword">in</span> zip(df.continent, df[<span class="hljs-string">'1957'</span>])]
+klass = [<span class="hljs-string">'red'</span> <span class="hljs-keyword">if</span> (y1-y2) &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'green'</span> <span class="hljs-keyword">for</span> y1, y2 <span class="hljs-keyword">in</span> zip(df[<span class="hljs-string">'1952'</span>], df[<span class="hljs-string">'1957'</span>])]
+
+<span class="hljs-comment"># draw line</span>
+<span class="hljs-comment"># https://stackoverflow.com/questions/36470343/how-to-draw-a-line-with-matplotlib/36479941</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">newline</span><span class="hljs-params">(p1, p2, color=<span class="hljs-string">'black'</span>)</span>:</span>
+    ax = plt.gca()
+    l = mlines.Line2D([p1[<span class="hljs-number">0</span>],p2[<span class="hljs-number">0</span>]], [p1[<span class="hljs-number">1</span>],p2[<span class="hljs-number">1</span>]], color=<span class="hljs-string">'red'</span> <span class="hljs-keyword">if</span> p1[<span class="hljs-number">1</span>]-p2[<span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-string">'green'</span>, marker=<span class="hljs-string">'o'</span>, markersize=<span class="hljs-number">6</span>)
+    ax.add_line(l)
+    <span class="hljs-keyword">return</span> l
+
+fig, ax = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">14</span>), dpi= <span class="hljs-number">80</span>)
+
+<span class="hljs-comment"># Vertical Lines</span>
+ax.vlines(x=<span class="hljs-number">1</span>, ymin=<span class="hljs-number">500</span>, ymax=<span class="hljs-number">13000</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.7</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dotted'</span>)
+ax.vlines(x=<span class="hljs-number">3</span>, ymin=<span class="hljs-number">500</span>, ymax=<span class="hljs-number">13000</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.7</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dotted'</span>)
+
+<span class="hljs-comment"># Points</span>
+ax.scatter(y=df[<span class="hljs-string">'1952'</span>], x=np.repeat(<span class="hljs-number">1</span>, df.shape[<span class="hljs-number">0</span>]), s=<span class="hljs-number">10</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.7</span>)
+ax.scatter(y=df[<span class="hljs-string">'1957'</span>], x=np.repeat(<span class="hljs-number">3</span>, df.shape[<span class="hljs-number">0</span>]), s=<span class="hljs-number">10</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.7</span>)
+
+<span class="hljs-comment"># Line Segmentsand Annotation</span>
+<span class="hljs-keyword">for</span> p1, p2, c <span class="hljs-keyword">in</span> zip(df[<span class="hljs-string">'1952'</span>], df[<span class="hljs-string">'1957'</span>], df[<span class="hljs-string">'continent'</span>]):
+    newline([<span class="hljs-number">1</span>,p1], [<span class="hljs-number">3</span>,p2])
+    ax.text(<span class="hljs-number">1</span><span class="hljs-number">-0.05</span>, p1, c + <span class="hljs-string">', '</span> + str(round(p1)), horizontalalignment=<span class="hljs-string">'right'</span>, verticalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">14</span>&#125;)
+    ax.text(<span class="hljs-number">3</span>+<span class="hljs-number">0.05</span>, p2, c + <span class="hljs-string">', '</span> + str(round(p2)), horizontalalignment=<span class="hljs-string">'left'</span>, verticalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">14</span>&#125;)
+
+<span class="hljs-comment"># 'Before' and 'After' Annotations</span>
+ax.text(<span class="hljs-number">1</span><span class="hljs-number">-0.05</span>, <span class="hljs-number">13000</span>, <span class="hljs-string">'BEFORE'</span>, horizontalalignment=<span class="hljs-string">'right'</span>, verticalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">18</span>, <span class="hljs-string">'weight'</span>:<span class="hljs-number">700</span>&#125;)
+ax.text(<span class="hljs-number">3</span>+<span class="hljs-number">0.05</span>, <span class="hljs-number">13000</span>, <span class="hljs-string">'AFTER'</span>, horizontalalignment=<span class="hljs-string">'left'</span>, verticalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">18</span>, <span class="hljs-string">'weight'</span>:<span class="hljs-number">700</span>&#125;)
+
+<span class="hljs-comment"># Decoration</span>
+ax.set_title(<span class="hljs-string">"Slopechart: Comparing GDP Per Capita between 1952 vs 1957"</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">22</span>&#125;)
+ax.set(xlim=(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>), ylim=(<span class="hljs-number">0</span>,<span class="hljs-number">14000</span>), ylabel=<span class="hljs-string">'Mean GDP Per Capita'</span>)
+ax.set_xticks([<span class="hljs-number">1</span>,<span class="hljs-number">3</span>])
+ax.set_xticklabels([<span class="hljs-string">"1952"</span>, <span class="hljs-string">"1957"</span>])
+plt.yticks(np.arange(<span class="hljs-number">500</span>, <span class="hljs-number">13000</span>, <span class="hljs-number">2000</span>), fontsize=<span class="hljs-number">12</span>)
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">.0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.0</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">.0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.0</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_42_0.png" class="">
+<h3 id="哑铃图-dumbbell-plot"><a class="markdownIt-Anchor" href="#哑铃图-dumbbell-plot"></a> 哑铃图 （Dumbbell Plot）</h3>
+<p>哑铃图表传达了各种项目的“前”和“后”位置以及项目的等级排序。 如果您想要将特定项目/计划对不同对象的影响可视化，那么它非常有用。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> matplotlib.lines <span class="hljs-keyword">as</span> mlines
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/health.csv"</span>)
+df.sort_values(<span class="hljs-string">'pct_2014'</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Func to draw line segment</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">newline</span><span class="hljs-params">(p1, p2, color=<span class="hljs-string">'black'</span>)</span>:</span>
+    ax = plt.gca()
+    l = mlines.Line2D([p1[<span class="hljs-number">0</span>],p2[<span class="hljs-number">0</span>]], [p1[<span class="hljs-number">1</span>],p2[<span class="hljs-number">1</span>]], color=<span class="hljs-string">'skyblue'</span>)
+    ax.add_line(l)
+    <span class="hljs-keyword">return</span> l
+
+<span class="hljs-comment"># Figure and Axes</span>
+fig, ax = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">14</span>), facecolor=<span class="hljs-string">'#f7f7f7'</span>, dpi= <span class="hljs-number">80</span>)
+
+<span class="hljs-comment"># Vertical Lines</span>
+ax.vlines(x=<span class="hljs-number">.05</span>, ymin=<span class="hljs-number">0</span>, ymax=<span class="hljs-number">26</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">1</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dotted'</span>)
+ax.vlines(x=<span class="hljs-number">.10</span>, ymin=<span class="hljs-number">0</span>, ymax=<span class="hljs-number">26</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">1</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dotted'</span>)
+ax.vlines(x=<span class="hljs-number">.15</span>, ymin=<span class="hljs-number">0</span>, ymax=<span class="hljs-number">26</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">1</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dotted'</span>)
+ax.vlines(x=<span class="hljs-number">.20</span>, ymin=<span class="hljs-number">0</span>, ymax=<span class="hljs-number">26</span>, color=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">1</span>, linewidth=<span class="hljs-number">1</span>, linestyles=<span class="hljs-string">'dotted'</span>)
+
+<span class="hljs-comment"># Points</span>
+ax.scatter(y=df[<span class="hljs-string">'index'</span>], x=df[<span class="hljs-string">'pct_2013'</span>], s=<span class="hljs-number">50</span>, color=<span class="hljs-string">'#0e668b'</span>, alpha=<span class="hljs-number">0.7</span>)
+ax.scatter(y=df[<span class="hljs-string">'index'</span>], x=df[<span class="hljs-string">'pct_2014'</span>], s=<span class="hljs-number">50</span>, color=<span class="hljs-string">'#a3c4dc'</span>, alpha=<span class="hljs-number">0.7</span>)
+
+<span class="hljs-comment"># Line Segments</span>
+<span class="hljs-keyword">for</span> i, p1, p2 <span class="hljs-keyword">in</span> zip(df[<span class="hljs-string">'index'</span>], df[<span class="hljs-string">'pct_2013'</span>], df[<span class="hljs-string">'pct_2014'</span>]):
+    newline([p1, i], [p2, i])
+
+<span class="hljs-comment"># Decoration</span>
+ax.set_facecolor(<span class="hljs-string">'#f7f7f7'</span>)
+ax.set_title(<span class="hljs-string">"Dumbell Chart: Pct Change - 2013 vs 2014"</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">22</span>&#125;)
+ax.set(xlim=(<span class="hljs-number">0</span>,<span class="hljs-number">.25</span>), ylim=(<span class="hljs-number">-1</span>, <span class="hljs-number">27</span>), ylabel=<span class="hljs-string">'Mean GDP Per Capita'</span>)
+ax.set_xticks([<span class="hljs-number">.05</span>, <span class="hljs-number">.1</span>, <span class="hljs-number">.15</span>, <span class="hljs-number">.20</span>])
+ax.set_xticklabels([<span class="hljs-string">'5%'</span>, <span class="hljs-string">'15%'</span>, <span class="hljs-string">'20%'</span>, <span class="hljs-string">'25%'</span>])
+ax.set_xticklabels([<span class="hljs-string">'5%'</span>, <span class="hljs-string">'15%'</span>, <span class="hljs-string">'20%'</span>, <span class="hljs-string">'25%'</span>])    
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_44_0.png" class="">
+<h2 id="分布-distribution"><a class="markdownIt-Anchor" href="#分布-distribution"></a> 分布 （Distribution）</h2>
+<h3 id="连续变量的直方图-histogram-for-continuous-variable"><a class="markdownIt-Anchor" href="#连续变量的直方图-histogram-for-continuous-variable"></a> 连续变量的直方图 （Histogram for Continuous Variable）</h3>
+<p>直方图显示给定变量的频率分布。 下面的图表示基于类型变量对频率条进行分组，从而更好地了解连续变量和类型变量。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare data</span>
+x_var = <span class="hljs-string">'displ'</span>
+groupby_var = <span class="hljs-string">'class'</span>
+df_agg = df.loc[:, [x_var, groupby_var]].groupby(groupby_var)
+vals = [df[x_var].values.tolist() <span class="hljs-keyword">for</span> i, df <span class="hljs-keyword">in</span> df_agg]
+
+<span class="hljs-comment"># Draw</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+colors = [plt.cm.Spectral(i/float(len(vals)<span class="hljs-number">-1</span>)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(vals))]
+n, bins, patches = plt.hist(vals, <span class="hljs-number">30</span>, stacked=<span class="hljs-literal">True</span>, density=<span class="hljs-literal">False</span>, color=colors[:len(vals)])
+
+<span class="hljs-comment"># Decoration</span>
+plt.legend(&#123;group:col <span class="hljs-keyword">for</span> group, col <span class="hljs-keyword">in</span> zip(np.unique(df[groupby_var]).tolist(), colors[:len(vals)])&#125;)
+plt.title(<span class="hljs-string">f"Stacked Histogram of $<span class="hljs-subst">&#123;x_var&#125;</span>$ colored by $<span class="hljs-subst">&#123;groupby_var&#125;</span>$"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.xlabel(x_var)
+plt.ylabel(<span class="hljs-string">"Frequency"</span>)
+plt.ylim(<span class="hljs-number">0</span>, <span class="hljs-number">25</span>)
+plt.xticks(ticks=bins[::<span class="hljs-number">3</span>], labels=[round(b,<span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> bins[::<span class="hljs-number">3</span>]])
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_46_0.png" class="">
+<h3 id="类型变量的直方图-histogram-for-categorical-variable"><a class="markdownIt-Anchor" href="#类型变量的直方图-histogram-for-categorical-variable"></a> 类型变量的直方图 （Histogram for Categorical Variable）</h3>
+<p>类型变量的直方图显示该变量的频率分布。 通过对条形图进行着色，可以将分布与表示颜色的另一个类型变量相关联。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare data</span>
+x_var = <span class="hljs-string">'manufacturer'</span>
+groupby_var = <span class="hljs-string">'class'</span>
+df_agg = df.loc[:, [x_var, groupby_var]].groupby(groupby_var)
+vals = [df[x_var].values.tolist() <span class="hljs-keyword">for</span> i, df <span class="hljs-keyword">in</span> df_agg]
+
+<span class="hljs-comment"># Draw</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+colors = [plt.cm.Spectral(i/float(len(vals)<span class="hljs-number">-1</span>)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(vals))]
+n, bins, patches = plt.hist(vals, df[x_var].unique().__len__(), stacked=<span class="hljs-literal">True</span>, density=<span class="hljs-literal">False</span>, color=colors[:len(vals)])
+
+<span class="hljs-comment"># Decoration</span>
+plt.legend(&#123;group:col <span class="hljs-keyword">for</span> group, col <span class="hljs-keyword">in</span> zip(np.unique(df[groupby_var]).tolist(), colors[:len(vals)])&#125;)
+plt.title(<span class="hljs-string">f"Stacked Histogram of $<span class="hljs-subst">&#123;x_var&#125;</span>$ colored by $<span class="hljs-subst">&#123;groupby_var&#125;</span>$"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.xlabel(x_var)
+plt.ylabel(<span class="hljs-string">"Frequency"</span>)
+plt.ylim(<span class="hljs-number">0</span>, <span class="hljs-number">40</span>)
+plt.xticks(ticks=bins, labels=np.unique(df[x_var]).tolist(), rotation=<span class="hljs-number">90</span>, horizontalalignment=<span class="hljs-string">'left'</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_48_0.png" class="">
+<h3 id="密度图-density-plot"><a class="markdownIt-Anchor" href="#密度图-density-plot"></a> 密度图 （Density Plot）</h3>
+<p>密度图是一种常用工具，用于可视化连续变量的分布。 通过“响应”变量对它们进行分组，您可以检查 X 和 Y 之间的关系。以下情况用于表示目的，以描述城市里程的分布如何随着汽缸数的变化而变化。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+sns.kdeplot(df.loc[df[<span class="hljs-string">'cyl'</span>] == <span class="hljs-number">4</span>, <span class="hljs-string">"cty"</span>], shade=<span class="hljs-literal">True</span>, color=<span class="hljs-string">"g"</span>, label=<span class="hljs-string">"Cyl=4"</span>, alpha=<span class="hljs-number">.7</span>)
+sns.kdeplot(df.loc[df[<span class="hljs-string">'cyl'</span>] == <span class="hljs-number">5</span>, <span class="hljs-string">"cty"</span>], shade=<span class="hljs-literal">True</span>, color=<span class="hljs-string">"deeppink"</span>, label=<span class="hljs-string">"Cyl=5"</span>, alpha=<span class="hljs-number">.7</span>)
+sns.kdeplot(df.loc[df[<span class="hljs-string">'cyl'</span>] == <span class="hljs-number">6</span>, <span class="hljs-string">"cty"</span>], shade=<span class="hljs-literal">True</span>, color=<span class="hljs-string">"dodgerblue"</span>, label=<span class="hljs-string">"Cyl=6"</span>, alpha=<span class="hljs-number">.7</span>)
+sns.kdeplot(df.loc[df[<span class="hljs-string">'cyl'</span>] == <span class="hljs-number">8</span>, <span class="hljs-string">"cty"</span>], shade=<span class="hljs-literal">True</span>, color=<span class="hljs-string">"orange"</span>, label=<span class="hljs-string">"Cyl=8"</span>, alpha=<span class="hljs-number">.7</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'Density Plot of City Mileage by n_Cylinders'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_50_0.png" class="">
+<h3 id="直方密度线图-density-curves-with-histogram"><a class="markdownIt-Anchor" href="#直方密度线图-density-curves-with-histogram"></a> 直方密度线图 （Density Curves with Histogram）</h3>
+<p>带有直方图的密度曲线汇集了两个图所传达的集体信息，因此您可以将它们放在一个图中而不是两个图中。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">13</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+sns.distplot(df.loc[df[<span class="hljs-string">'class'</span>] == <span class="hljs-string">'compact'</span>, <span class="hljs-string">"cty"</span>], color=<span class="hljs-string">"dodgerblue"</span>, label=<span class="hljs-string">"Compact"</span>, hist_kws=&#123;<span class="hljs-string">'alpha'</span>:<span class="hljs-number">.7</span>&#125;, kde_kws=&#123;<span class="hljs-string">'linewidth'</span>:<span class="hljs-number">3</span>&#125;)
+sns.distplot(df.loc[df[<span class="hljs-string">'class'</span>] == <span class="hljs-string">'suv'</span>, <span class="hljs-string">"cty"</span>], color=<span class="hljs-string">"orange"</span>, label=<span class="hljs-string">"SUV"</span>, hist_kws=&#123;<span class="hljs-string">'alpha'</span>:<span class="hljs-number">.7</span>&#125;, kde_kws=&#123;<span class="hljs-string">'linewidth'</span>:<span class="hljs-number">3</span>&#125;)
+sns.distplot(df.loc[df[<span class="hljs-string">'class'</span>] == <span class="hljs-string">'minivan'</span>, <span class="hljs-string">"cty"</span>], color=<span class="hljs-string">"g"</span>, label=<span class="hljs-string">"minivan"</span>, hist_kws=&#123;<span class="hljs-string">'alpha'</span>:<span class="hljs-number">.7</span>&#125;, kde_kws=&#123;<span class="hljs-string">'linewidth'</span>:<span class="hljs-number">3</span>&#125;)
+plt.ylim(<span class="hljs-number">0</span>, <span class="hljs-number">0.35</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'Density Plot of City Mileage by Vehicle Type'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_52_0.png" class="">
+<h3 id="joy-plot"><a class="markdownIt-Anchor" href="#joy-plot"></a> Joy Plot</h3>
+<p>Joy Plot允许不同组的密度曲线重叠，这是一种可视化大量分组数据的彼此关系分布的好方法。 它看起来很悦目，并清楚地传达了正确的信息。 它可以使用基于 matplotlib 的 joypy 包轻松构建。<br />
+（『Python数据之道』注：需要安装 joypy 库）</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># !pip install joypy</span>
+<span class="hljs-comment"># Python数据之道 备注</span>
+<span class="hljs-keyword">import</span> joypy
+
+<span class="hljs-comment"># Import Data</span>
+mpg = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+fig, axes = joypy.joyplot(mpg, column=[<span class="hljs-string">'hwy'</span>, <span class="hljs-string">'cty'</span>], by=<span class="hljs-string">"class"</span>, ylim=<span class="hljs-string">'own'</span>, figsize=(<span class="hljs-number">14</span>,<span class="hljs-number">10</span>))
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'Joy Plot of City and Highway Mileage by Class'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_54_1.png" class="">
+<h3 id="分布式包点图-distributed-dot-plot"><a class="markdownIt-Anchor" href="#分布式包点图-distributed-dot-plot"></a> 分布式包点图 （Distributed Dot Plot）</h3>
+<p>分布式包点图显示按组分割的点的单变量分布。 点数越暗，该区域的数据点集中度越高。 通过对中位数进行不同着色，组的真实定位立即变得明显。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> matplotlib.patches <span class="hljs-keyword">as</span> mpatches
+
+<span class="hljs-comment"># Prepare Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+cyl_colors = &#123;<span class="hljs-number">4</span>:<span class="hljs-string">'tab:red'</span>, <span class="hljs-number">5</span>:<span class="hljs-string">'tab:green'</span>, <span class="hljs-number">6</span>:<span class="hljs-string">'tab:blue'</span>, <span class="hljs-number">8</span>:<span class="hljs-string">'tab:orange'</span>&#125;
+df_raw[<span class="hljs-string">'cyl_color'</span>] = df_raw.cyl.map(cyl_colors)
+
+<span class="hljs-comment"># Mean and Median city mileage by make</span>
+df = df_raw[[<span class="hljs-string">'cty'</span>, <span class="hljs-string">'manufacturer'</span>]].groupby(<span class="hljs-string">'manufacturer'</span>).apply(<span class="hljs-keyword">lambda</span> x: x.mean())
+df.sort_values(<span class="hljs-string">'cty'</span>, ascending=<span class="hljs-literal">False</span>, inplace=<span class="hljs-literal">True</span>)
+df.reset_index(inplace=<span class="hljs-literal">True</span>)
+df_median = df_raw[[<span class="hljs-string">'cty'</span>, <span class="hljs-string">'manufacturer'</span>]].groupby(<span class="hljs-string">'manufacturer'</span>).apply(<span class="hljs-keyword">lambda</span> x: x.median())
+
+<span class="hljs-comment"># Draw horizontal lines</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+ax.hlines(y=df.index, xmin=<span class="hljs-number">0</span>, xmax=<span class="hljs-number">40</span>, color=<span class="hljs-string">'gray'</span>, alpha=<span class="hljs-number">0.5</span>, linewidth=<span class="hljs-number">.5</span>, linestyles=<span class="hljs-string">'dashdot'</span>)
+
+<span class="hljs-comment"># Draw the Dots</span>
+<span class="hljs-keyword">for</span> i, make <span class="hljs-keyword">in</span> enumerate(df.manufacturer):
+    df_make = df_raw.loc[df_raw.manufacturer==make, :]
+    ax.scatter(y=np.repeat(i, df_make.shape[<span class="hljs-number">0</span>]), x=<span class="hljs-string">'cty'</span>, data=df_make, s=<span class="hljs-number">75</span>, edgecolors=<span class="hljs-string">'gray'</span>, c=<span class="hljs-string">'w'</span>, alpha=<span class="hljs-number">0.5</span>)
+    ax.scatter(y=i, x=<span class="hljs-string">'cty'</span>, data=df_median.loc[df_median.index==make, :], s=<span class="hljs-number">75</span>, c=<span class="hljs-string">'firebrick'</span>)
+
+<span class="hljs-comment"># Annotate    </span>
+ax.text(<span class="hljs-number">33</span>, <span class="hljs-number">13</span>, <span class="hljs-string">"$red \; dots \; are \; the \: median$"</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">12</span>&#125;, color=<span class="hljs-string">'firebrick'</span>)
+
+<span class="hljs-comment"># Decorations</span>
+red_patch = plt.plot([],[], marker=<span class="hljs-string">"o"</span>, ms=<span class="hljs-number">10</span>, ls=<span class="hljs-string">""</span>, mec=<span class="hljs-literal">None</span>, color=<span class="hljs-string">'firebrick'</span>, label=<span class="hljs-string">"Median"</span>)
+plt.legend(handles=red_patch)
+ax.set_title(<span class="hljs-string">'Distribution of City Mileage by Make'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">22</span>&#125;)
+ax.set_xlabel(<span class="hljs-string">'Miles Per Gallon (City)'</span>, alpha=<span class="hljs-number">0.7</span>)
+ax.set_yticks(df.index)
+ax.set_yticklabels(df.manufacturer.str.title(), fontdict=&#123;<span class="hljs-string">'horizontalalignment'</span>: <span class="hljs-string">'right'</span>&#125;, alpha=<span class="hljs-number">0.7</span>)
+ax.set_xlim(<span class="hljs-number">1</span>, <span class="hljs-number">40</span>)
+plt.xticks(alpha=<span class="hljs-number">0.7</span>)
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_visible(<span class="hljs-literal">False</span>)    
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_visible(<span class="hljs-literal">False</span>)    
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_visible(<span class="hljs-literal">False</span>)    
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_visible(<span class="hljs-literal">False</span>)   
+plt.grid(axis=<span class="hljs-string">'both'</span>, alpha=<span class="hljs-number">.4</span>, linewidth=<span class="hljs-number">.1</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_56_0.png" class="">
+<h3 id="箱形图-box-plot"><a class="markdownIt-Anchor" href="#箱形图-box-plot"></a> 箱形图 （Box Plot）</h3>
+<p>箱形图是一种可视化分布的好方法，记住中位数、第25个第45个四分位数和异常值。 但是，您需要注意解释可能会扭曲该组中包含的点数的框的大小。 因此，手动提供每个框中的观察数量可以帮助克服这个缺点。</p>
+<p>例如，左边的前两个框具有相同大小的框，即使它们的值分别是5和47。 因此，写入该组中的观察数量是必要的。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">13</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+sns.boxplot(x=<span class="hljs-string">'class'</span>, y=<span class="hljs-string">'hwy'</span>, data=df, notch=<span class="hljs-literal">False</span>)
+
+<span class="hljs-comment"># Add N Obs inside boxplot (optional)</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_n_obs</span><span class="hljs-params">(df,group_col,y)</span>:</span>
+    medians_dict = &#123;grp[<span class="hljs-number">0</span>]:grp[<span class="hljs-number">1</span>][y].median() <span class="hljs-keyword">for</span> grp <span class="hljs-keyword">in</span> df.groupby(group_col)&#125;
+    xticklabels = [x.get_text() <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> plt.gca().get_xticklabels()]
+    n_obs = df.groupby(group_col)[y].size().values
+    <span class="hljs-keyword">for</span> (x, xticklabel), n_ob <span class="hljs-keyword">in</span> zip(enumerate(xticklabels), n_obs):
+        plt.text(x, medians_dict[xticklabel]*<span class="hljs-number">1.01</span>, <span class="hljs-string">"#obs : "</span>+str(n_ob), horizontalalignment=<span class="hljs-string">'center'</span>, fontdict=&#123;<span class="hljs-string">'size'</span>:<span class="hljs-number">14</span>&#125;, color=<span class="hljs-string">'white'</span>)
+
+add_n_obs(df,group_col=<span class="hljs-string">'class'</span>,y=<span class="hljs-string">'hwy'</span>)    
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'Box Plot of Highway Mileage by Vehicle Class'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.ylim(<span class="hljs-number">10</span>, <span class="hljs-number">40</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_58_0.png" class="">
+<h3 id="包点箱形图-dot-box-plot"><a class="markdownIt-Anchor" href="#包点箱形图-dot-box-plot"></a> 包点+箱形图 （Dot + Box Plot）</h3>
+<p>包点+箱形图 （Dot + Box Plot）传达类似于分组的箱形图信息。 此外，这些点可以了解每组中有多少数据点。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">13</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+sns.boxplot(x=<span class="hljs-string">'class'</span>, y=<span class="hljs-string">'hwy'</span>, data=df, hue=<span class="hljs-string">'cyl'</span>)
+sns.stripplot(x=<span class="hljs-string">'class'</span>, y=<span class="hljs-string">'hwy'</span>, data=df, color=<span class="hljs-string">'black'</span>, size=<span class="hljs-number">3</span>, jitter=<span class="hljs-number">1</span>)
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(df[<span class="hljs-string">'class'</span>].unique())<span class="hljs-number">-1</span>):
+    plt.vlines(i+<span class="hljs-number">.5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">45</span>, linestyles=<span class="hljs-string">'solid'</span>, colors=<span class="hljs-string">'gray'</span>, alpha=<span class="hljs-number">0.2</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'Box Plot of Highway Mileage by Vehicle Class'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.legend(title=<span class="hljs-string">'Cylinders'</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_60_0.png" class="">
+<h3 id="小提琴图-violin-plot"><a class="markdownIt-Anchor" href="#小提琴图-violin-plot"></a> 小提琴图 （Violin Plot）</h3>
+<p>小提琴图是箱形图在视觉上令人愉悦的替代品。 小提琴的形状或面积取决于它所持有的观察次数。 但是，小提琴图可能更难以阅读，并且在专业设置中不常用。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">13</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+sns.violinplot(x=<span class="hljs-string">'class'</span>, y=<span class="hljs-string">'hwy'</span>, data=df, scale=<span class="hljs-string">'width'</span>, inner=<span class="hljs-string">'quartile'</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'Violin Plot of Highway Mileage by Vehicle Class'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_62_0.png" class="">
+<h3 id="人口金字塔-population-pyramid"><a class="markdownIt-Anchor" href="#人口金字塔-population-pyramid"></a> 人口金字塔 （Population Pyramid）</h3>
+<p>人口金字塔可用于显示由数量排序的组的分布。 或者它也可以用于显示人口的逐级过滤，因为它在下面用于显示有多少人通过营销渠道的每个阶段。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Read data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/email_campaign_funnel.csv"</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">13</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+group_col = <span class="hljs-string">'Gender'</span>
+order_of_bars = df.Stage.unique()[::<span class="hljs-number">-1</span>]
+colors = [plt.cm.Spectral(i/float(len(df[group_col].unique())<span class="hljs-number">-1</span>)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(df[group_col].unique()))]
+
+<span class="hljs-keyword">for</span> c, group <span class="hljs-keyword">in</span> zip(colors, df[group_col].unique()):
+    sns.barplot(x=<span class="hljs-string">'Users'</span>, y=<span class="hljs-string">'Stage'</span>, data=df.loc[df[group_col]==group, :], order=order_of_bars, color=c, label=group)
+
+<span class="hljs-comment"># Decorations    </span>
+plt.xlabel(<span class="hljs-string">"$Users$"</span>)
+plt.ylabel(<span class="hljs-string">"Stage of Purchase"</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">"Population Pyramid of the Marketing Funnel"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.legend()
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_64_0.png" class="">
+<h3 id="分类图-categorical-plots"><a class="markdownIt-Anchor" href="#分类图-categorical-plots"></a> 分类图 （Categorical Plots）</h3>
+<p>由 seaborn库 提供的分类图可用于可视化彼此相关的2个或更多分类变量的计数分布。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Load Dataset</span>
+titanic = sns.load_dataset(<span class="hljs-string">"titanic"</span>)
+
+<span class="hljs-comment"># Plot</span>
+g = sns.catplot(<span class="hljs-string">"alive"</span>, col=<span class="hljs-string">"deck"</span>, col_wrap=<span class="hljs-number">4</span>,
+                data=titanic[titanic.deck.notnull()],
+                kind=<span class="hljs-string">"count"</span>, height=<span class="hljs-number">3.5</span>, aspect=<span class="hljs-number">.8</span>, 
+                palette=<span class="hljs-string">'tab20'</span>)
+
+fig.suptitle(<span class="hljs-string">'sf'</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_66_0.png" class="">
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Load Dataset</span>
+titanic = sns.load_dataset(<span class="hljs-string">"titanic"</span>)
+
+<span class="hljs-comment"># Plot</span>
+sns.catplot(x=<span class="hljs-string">"age"</span>, y=<span class="hljs-string">"embark_town"</span>,
+            hue=<span class="hljs-string">"sex"</span>, col=<span class="hljs-string">"class"</span>,
+            data=titanic[titanic.embark_town.notnull()],
+            orient=<span class="hljs-string">"h"</span>, height=<span class="hljs-number">5</span>, aspect=<span class="hljs-number">1</span>, palette=<span class="hljs-string">"tab10"</span>,
+            kind=<span class="hljs-string">"violin"</span>, dodge=<span class="hljs-literal">True</span>, cut=<span class="hljs-number">0</span>, bw=<span class="hljs-number">.2</span>)
+</code></pre>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0xdf18828&gt;
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_67_1.png" class="">
+<h2 id="组成-composition"><a class="markdownIt-Anchor" href="#组成-composition"></a> 组成 （Composition）</h2>
+<h3 id="华夫饼图-waffle-chart"><a class="markdownIt-Anchor" href="#华夫饼图-waffle-chart"></a> 华夫饼图 （Waffle Chart）</h3>
+<p>可以使用 pywaffle包 创建华夫饼图，并用于显示更大群体中的组的组成。</p>
+<p>（『Python数据之道』注：需要安装 pywaffle 库）</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment">#! pip install pywaffle</span>
+<span class="hljs-comment"># Reference: https://stackoverflow.com/questions/41400136/how-to-do-waffle-charts-in-python-square-piechart</span>
+<span class="hljs-keyword">from</span> pywaffle <span class="hljs-keyword">import</span> Waffle
+
+<span class="hljs-comment"># Import</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data</span>
+df = df_raw.groupby(<span class="hljs-string">'class'</span>).size().reset_index(name=<span class="hljs-string">'counts'</span>)
+n_categories = df.shape[<span class="hljs-number">0</span>]
+colors = [plt.cm.inferno_r(i/float(n_categories)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n_categories)]
+
+<span class="hljs-comment"># Draw Plot and Decorate</span>
+fig = plt.figure(
+    FigureClass=Waffle,
+    plots=&#123;
+        <span class="hljs-string">'111'</span>: &#123;
+            <span class="hljs-string">'values'</span>: df[<span class="hljs-string">'counts'</span>],
+            <span class="hljs-string">'labels'</span>: [<span class="hljs-string">"&#123;0&#125; (&#123;1&#125;)"</span>.format(n[<span class="hljs-number">0</span>], n[<span class="hljs-number">1</span>]) <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> df[[<span class="hljs-string">'class'</span>, <span class="hljs-string">'counts'</span>]].itertuples()],
+            <span class="hljs-string">'legend'</span>: &#123;<span class="hljs-string">'loc'</span>: <span class="hljs-string">'upper left'</span>, <span class="hljs-string">'bbox_to_anchor'</span>: (<span class="hljs-number">1.05</span>, <span class="hljs-number">1</span>), <span class="hljs-string">'fontsize'</span>: <span class="hljs-number">12</span>&#125;,
+            <span class="hljs-string">'title'</span>: &#123;<span class="hljs-string">'label'</span>: <span class="hljs-string">'# Vehicles by Class'</span>, <span class="hljs-string">'loc'</span>: <span class="hljs-string">'center'</span>, <span class="hljs-string">'fontsize'</span>:<span class="hljs-number">18</span>&#125;
+        &#125;,
+    &#125;,
+    rows=<span class="hljs-number">7</span>,
+    colors=colors,
+    figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">9</span>)
+)
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_69_0.png" class="">
+<pre class="highlight"><code class="python"><span class="hljs-comment">#! pip install pywaffle</span>
+<span class="hljs-keyword">from</span> pywaffle <span class="hljs-keyword">import</span> Waffle
+
+<span class="hljs-comment"># Import</span>
+<span class="hljs-comment"># df_raw = pd.read_csv("https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv")</span>
+
+<span class="hljs-comment"># Prepare Data</span>
+<span class="hljs-comment"># By Class Data</span>
+df_class = df_raw.groupby(<span class="hljs-string">'class'</span>).size().reset_index(name=<span class="hljs-string">'counts_class'</span>)
+n_categories = df_class.shape[<span class="hljs-number">0</span>]
+colors_class = [plt.cm.Set3(i/float(n_categories)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n_categories)]
+
+<span class="hljs-comment"># By Cylinders Data</span>
+df_cyl = df_raw.groupby(<span class="hljs-string">'cyl'</span>).size().reset_index(name=<span class="hljs-string">'counts_cyl'</span>)
+n_categories = df_cyl.shape[<span class="hljs-number">0</span>]
+colors_cyl = [plt.cm.Spectral(i/float(n_categories)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n_categories)]
+
+<span class="hljs-comment"># By Make Data</span>
+df_make = df_raw.groupby(<span class="hljs-string">'manufacturer'</span>).size().reset_index(name=<span class="hljs-string">'counts_make'</span>)
+n_categories = df_make.shape[<span class="hljs-number">0</span>]
+colors_make = [plt.cm.tab20b(i/float(n_categories)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n_categories)]
+
+
+<span class="hljs-comment"># Draw Plot and Decorate</span>
+fig = plt.figure(
+    FigureClass=Waffle,
+    plots=&#123;
+        <span class="hljs-string">'311'</span>: &#123;
+            <span class="hljs-string">'values'</span>: df_class[<span class="hljs-string">'counts_class'</span>],
+            <span class="hljs-string">'labels'</span>: [<span class="hljs-string">"&#123;1&#125;"</span>.format(n[<span class="hljs-number">0</span>], n[<span class="hljs-number">1</span>]) <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> df_class[[<span class="hljs-string">'class'</span>, <span class="hljs-string">'counts_class'</span>]].itertuples()],
+            <span class="hljs-string">'legend'</span>: &#123;<span class="hljs-string">'loc'</span>: <span class="hljs-string">'upper left'</span>, <span class="hljs-string">'bbox_to_anchor'</span>: (<span class="hljs-number">1.05</span>, <span class="hljs-number">1</span>), <span class="hljs-string">'fontsize'</span>: <span class="hljs-number">12</span>, <span class="hljs-string">'title'</span>:<span class="hljs-string">'Class'</span>&#125;,
+            <span class="hljs-string">'title'</span>: &#123;<span class="hljs-string">'label'</span>: <span class="hljs-string">'# Vehicles by Class'</span>, <span class="hljs-string">'loc'</span>: <span class="hljs-string">'center'</span>, <span class="hljs-string">'fontsize'</span>:<span class="hljs-number">18</span>&#125;,
+            <span class="hljs-string">'colors'</span>: colors_class
+        &#125;,
+        <span class="hljs-string">'312'</span>: &#123;
+            <span class="hljs-string">'values'</span>: df_cyl[<span class="hljs-string">'counts_cyl'</span>],
+            <span class="hljs-string">'labels'</span>: [<span class="hljs-string">"&#123;1&#125;"</span>.format(n[<span class="hljs-number">0</span>], n[<span class="hljs-number">1</span>]) <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> df_cyl[[<span class="hljs-string">'cyl'</span>, <span class="hljs-string">'counts_cyl'</span>]].itertuples()],
+            <span class="hljs-string">'legend'</span>: &#123;<span class="hljs-string">'loc'</span>: <span class="hljs-string">'upper left'</span>, <span class="hljs-string">'bbox_to_anchor'</span>: (<span class="hljs-number">1.05</span>, <span class="hljs-number">1</span>), <span class="hljs-string">'fontsize'</span>: <span class="hljs-number">12</span>, <span class="hljs-string">'title'</span>:<span class="hljs-string">'Cyl'</span>&#125;,
+            <span class="hljs-string">'title'</span>: &#123;<span class="hljs-string">'label'</span>: <span class="hljs-string">'# Vehicles by Cyl'</span>, <span class="hljs-string">'loc'</span>: <span class="hljs-string">'center'</span>, <span class="hljs-string">'fontsize'</span>:<span class="hljs-number">18</span>&#125;,
+            <span class="hljs-string">'colors'</span>: colors_cyl
+        &#125;,
+        <span class="hljs-string">'313'</span>: &#123;
+            <span class="hljs-string">'values'</span>: df_make[<span class="hljs-string">'counts_make'</span>],
+            <span class="hljs-string">'labels'</span>: [<span class="hljs-string">"&#123;1&#125;"</span>.format(n[<span class="hljs-number">0</span>], n[<span class="hljs-number">1</span>]) <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> df_make[[<span class="hljs-string">'manufacturer'</span>, <span class="hljs-string">'counts_make'</span>]].itertuples()],
+            <span class="hljs-string">'legend'</span>: &#123;<span class="hljs-string">'loc'</span>: <span class="hljs-string">'upper left'</span>, <span class="hljs-string">'bbox_to_anchor'</span>: (<span class="hljs-number">1.05</span>, <span class="hljs-number">1</span>), <span class="hljs-string">'fontsize'</span>: <span class="hljs-number">12</span>, <span class="hljs-string">'title'</span>:<span class="hljs-string">'Manufacturer'</span>&#125;,
+            <span class="hljs-string">'title'</span>: &#123;<span class="hljs-string">'label'</span>: <span class="hljs-string">'# Vehicles by Make'</span>, <span class="hljs-string">'loc'</span>: <span class="hljs-string">'center'</span>, <span class="hljs-string">'fontsize'</span>:<span class="hljs-number">18</span>&#125;,
+            <span class="hljs-string">'colors'</span>: colors_make
+        &#125;
+    &#125;,
+    rows=<span class="hljs-number">9</span>,
+    figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">14</span>)
+)
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_70_0.png" class="">
+<h3 id="饼图-pie-chart"><a class="markdownIt-Anchor" href="#饼图-pie-chart"></a> 饼图 （Pie Chart）</h3>
+<p>饼图是显示组成的经典方式。 然而，现在通常不建议使用它，因为馅饼部分的面积有时会变得误导。 因此，如果您要使用饼图，强烈建议明确记下饼图每个部分的百分比或数字。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data</span>
+df = df_raw.groupby(<span class="hljs-string">'class'</span>).size()
+
+<span class="hljs-comment"># Make the plot with pandas</span>
+df.plot(kind=<span class="hljs-string">'pie'</span>, subplots=<span class="hljs-literal">True</span>, figsize=(<span class="hljs-number">8</span>, <span class="hljs-number">8</span>))
+plt.title(<span class="hljs-string">"Pie Chart of Vehicle Class - Bad"</span>)
+plt.ylabel(<span class="hljs-string">""</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_72_0.png" class="">
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data</span>
+df = df_raw.groupby(<span class="hljs-string">'class'</span>).size().reset_index(name=<span class="hljs-string">'counts'</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+fig, ax = plt.subplots(figsize=(<span class="hljs-number">12</span>, <span class="hljs-number">7</span>), subplot_kw=dict(aspect=<span class="hljs-string">"equal"</span>), dpi= <span class="hljs-number">80</span>)
+
+data = df[<span class="hljs-string">'counts'</span>]
+categories = df[<span class="hljs-string">'class'</span>]
+explode = [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>,<span class="hljs-number">0</span>]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func</span><span class="hljs-params">(pct, allvals)</span>:</span>
+    absolute = int(pct/<span class="hljs-number">100.</span>*np.sum(allvals))
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"&#123;:.1f&#125;% (&#123;:d&#125; )"</span>.format(pct, absolute)
+
+wedges, texts, autotexts = ax.pie(data, 
+                                  autopct=<span class="hljs-keyword">lambda</span> pct: func(pct, data),
+                                  textprops=dict(color=<span class="hljs-string">"w"</span>), 
+                                  colors=plt.cm.Dark2.colors,
+                                 startangle=<span class="hljs-number">140</span>,
+                                 explode=explode)
+
+<span class="hljs-comment"># Decoration</span>
+ax.legend(wedges, categories, title=<span class="hljs-string">"Vehicle Class"</span>, loc=<span class="hljs-string">"center left"</span>, bbox_to_anchor=(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">1</span>))
+plt.setp(autotexts, size=<span class="hljs-number">10</span>, weight=<span class="hljs-number">700</span>)
+ax.set_title(<span class="hljs-string">"Class of Vehicles: Pie Chart"</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_73_0.png" class="">
+<h3 id="树形图-treemap"><a class="markdownIt-Anchor" href="#树形图-treemap"></a> 树形图 （Treemap）</h3>
+<p>树形图类似于饼图，它可以更好地完成工作而不会误导每个组的贡献。</p>
+<p>（『Python数据之道』注：需要安装 squarify 库）</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># pip install squarify</span>
+<span class="hljs-keyword">import</span> squarify 
+
+<span class="hljs-comment"># Import Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data</span>
+df = df_raw.groupby(<span class="hljs-string">'class'</span>).size().reset_index(name=<span class="hljs-string">'counts'</span>)
+labels = df.apply(<span class="hljs-keyword">lambda</span> x: str(x[<span class="hljs-number">0</span>]) + <span class="hljs-string">"\n ("</span> + str(x[<span class="hljs-number">1</span>]) + <span class="hljs-string">")"</span>, axis=<span class="hljs-number">1</span>)
+sizes = df[<span class="hljs-string">'counts'</span>].values.tolist()
+colors = [plt.cm.Spectral(i/float(len(labels))) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(labels))]
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">8</span>), dpi= <span class="hljs-number">80</span>)
+squarify.plot(sizes=sizes, label=labels, color=colors, alpha=<span class="hljs-number">.8</span>)
+
+<span class="hljs-comment"># Decorate</span>
+plt.title(<span class="hljs-string">'Treemap of Vechile Class'</span>)
+plt.axis(<span class="hljs-string">'off'</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_75_0.png" class="">
+<h3 id="条形图-bar-chart"><a class="markdownIt-Anchor" href="#条形图-bar-chart"></a> 条形图 （Bar Chart）</h3>
+<p>条形图是基于计数或任何给定指标可视化项目的经典方式。 在下面的图表中，我为每个项目使用了不同的颜色，但您通常可能希望为所有项目选择一种颜色，除非您按组对其进行着色。 颜色名称存储在下面代码中的all_colors中。 您可以通过在<code>plt.plot（）</code>中设置颜色参数来更改条的颜色。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> random
+
+<span class="hljs-comment"># Import Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mpg_ggplot2.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data</span>
+df = df_raw.groupby(<span class="hljs-string">'manufacturer'</span>).size().reset_index(name=<span class="hljs-string">'counts'</span>)
+n = df[<span class="hljs-string">'manufacturer'</span>].unique().__len__()+<span class="hljs-number">1</span>
+all_colors = list(plt.cm.colors.cnames.keys())
+random.seed(<span class="hljs-number">100</span>)
+c = random.choices(all_colors, k=n)
+
+<span class="hljs-comment"># Plot Bars</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.bar(df[<span class="hljs-string">'manufacturer'</span>], df[<span class="hljs-string">'counts'</span>], color=c, width=<span class="hljs-number">.5</span>)
+<span class="hljs-keyword">for</span> i, val <span class="hljs-keyword">in</span> enumerate(df[<span class="hljs-string">'counts'</span>].values):
+    plt.text(i, val, float(val), horizontalalignment=<span class="hljs-string">'center'</span>, verticalalignment=<span class="hljs-string">'bottom'</span>, fontdict=&#123;<span class="hljs-string">'fontweight'</span>:<span class="hljs-number">500</span>, <span class="hljs-string">'size'</span>:<span class="hljs-number">12</span>&#125;)
+
+<span class="hljs-comment"># Decoration</span>
+plt.gca().set_xticklabels(df[<span class="hljs-string">'manufacturer'</span>], rotation=<span class="hljs-number">60</span>, horizontalalignment= <span class="hljs-string">'right'</span>)
+plt.title(<span class="hljs-string">"Number of Vehicles by Manaufacturers"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.ylabel(<span class="hljs-string">'# Vehicles'</span>)
+plt.ylim(<span class="hljs-number">0</span>, <span class="hljs-number">45</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_77_0.png" class="">
+<h2 id="变化-change"><a class="markdownIt-Anchor" href="#变化-change"></a> 变化 （Change）</h2>
+<h3 id="时间序列图-time-series-plot"><a class="markdownIt-Anchor" href="#时间序列图-time-series-plot"></a> 时间序列图 （Time Series Plot）</h3>
+<p>时间序列图用于显示给定度量随时间变化的方式。 在这里，您可以看到 1949年 至 1969年间航空客运量的变化情况。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/AirPassengers.csv'</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.plot(<span class="hljs-string">'date'</span>, <span class="hljs-string">'traffic'</span>, data=df, color=<span class="hljs-string">'tab:red'</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.ylim(<span class="hljs-number">50</span>, <span class="hljs-number">750</span>)
+xtick_location = df.index.tolist()[::<span class="hljs-number">12</span>]
+xtick_labels = [x[<span class="hljs-number">-4</span>:] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> df.date.tolist()[::<span class="hljs-number">12</span>]]
+plt.xticks(ticks=xtick_location, labels=xtick_labels, rotation=<span class="hljs-number">0</span>, fontsize=<span class="hljs-number">12</span>, horizontalalignment=<span class="hljs-string">'center'</span>, alpha=<span class="hljs-number">.7</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>, alpha=<span class="hljs-number">.7</span>)
+plt.title(<span class="hljs-string">"Air Passengers Traffic (1949 - 1969)"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.grid(axis=<span class="hljs-string">'both'</span>, alpha=<span class="hljs-number">.3</span>)
+
+<span class="hljs-comment"># Remove borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0.0</span>)    
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">0.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0.0</span>)    
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">0.3</span>)   
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_79_0.png" class="">
+<h3 id="带波峰波谷标记的时序图-time-series-with-peaks-and-troughs-annotated"><a class="markdownIt-Anchor" href="#带波峰波谷标记的时序图-time-series-with-peaks-and-troughs-annotated"></a> 带波峰波谷标记的时序图 （Time Series with Peaks and Troughs Annotated）</h3>
+<p>下面的时间序列绘制了所有峰值和低谷，并注释了所选特殊事件的发生。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/AirPassengers.csv'</span>)
+
+<span class="hljs-comment"># Get the Peaks and Troughs</span>
+data = df[<span class="hljs-string">'traffic'</span>].values
+doublediff = np.diff(np.sign(np.diff(data)))
+peak_locations = np.where(doublediff == <span class="hljs-number">-2</span>)[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>
+
+doublediff2 = np.diff(np.sign(np.diff(<span class="hljs-number">-1</span>*data)))
+trough_locations = np.where(doublediff2 == <span class="hljs-number">-2</span>)[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.plot(<span class="hljs-string">'date'</span>, <span class="hljs-string">'traffic'</span>, data=df, color=<span class="hljs-string">'tab:blue'</span>, label=<span class="hljs-string">'Air Traffic'</span>)
+plt.scatter(df.date[peak_locations], df.traffic[peak_locations], marker=mpl.markers.CARETUPBASE, color=<span class="hljs-string">'tab:green'</span>, s=<span class="hljs-number">100</span>, label=<span class="hljs-string">'Peaks'</span>)
+plt.scatter(df.date[trough_locations], df.traffic[trough_locations], marker=mpl.markers.CARETDOWNBASE, color=<span class="hljs-string">'tab:red'</span>, s=<span class="hljs-number">100</span>, label=<span class="hljs-string">'Troughs'</span>)
+
+<span class="hljs-comment"># Annotate</span>
+<span class="hljs-keyword">for</span> t, p <span class="hljs-keyword">in</span> zip(trough_locations[<span class="hljs-number">1</span>::<span class="hljs-number">5</span>], peak_locations[::<span class="hljs-number">3</span>]):
+    plt.text(df.date[p], df.traffic[p]+<span class="hljs-number">15</span>, df.date[p], horizontalalignment=<span class="hljs-string">'center'</span>, color=<span class="hljs-string">'darkgreen'</span>)
+    plt.text(df.date[t], df.traffic[t]<span class="hljs-number">-35</span>, df.date[t], horizontalalignment=<span class="hljs-string">'center'</span>, color=<span class="hljs-string">'darkred'</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.ylim(<span class="hljs-number">50</span>,<span class="hljs-number">750</span>)
+xtick_location = df.index.tolist()[::<span class="hljs-number">6</span>]
+xtick_labels = df.date.tolist()[::<span class="hljs-number">6</span>]
+plt.xticks(ticks=xtick_location, labels=xtick_labels, rotation=<span class="hljs-number">90</span>, fontsize=<span class="hljs-number">12</span>, alpha=<span class="hljs-number">.7</span>)
+plt.title(<span class="hljs-string">"Peak and Troughs of Air Passengers Traffic (1949 - 1969)"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>, alpha=<span class="hljs-number">.7</span>)
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">.0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">.0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+plt.legend(loc=<span class="hljs-string">'upper left'</span>)
+plt.grid(axis=<span class="hljs-string">'y'</span>, alpha=<span class="hljs-number">.3</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_81_0.png" class="">
+<h3 id="自相关和部分自相关图-autocorrelation-acf-and-partial-autocorrelation-pacf-plot"><a class="markdownIt-Anchor" href="#自相关和部分自相关图-autocorrelation-acf-and-partial-autocorrelation-pacf-plot"></a> 自相关和部分自相关图 （Autocorrelation (ACF) and Partial Autocorrelation (PACF) Plot）</h3>
+<p>自相关图（ACF图）显示时间序列与其自身滞后的相关性。 每条垂直线（在自相关图上）表示系列与滞后0之间的滞后之间的相关性。图中的蓝色阴影区域是显着性水平。 那些位于蓝线之上的滞后是显着的滞后。</p>
+<p>那么如何解读呢？</p>
+<p>对于空乘旅客，我们看到多达14个滞后跨越蓝线，因此非常重要。 这意味着，14年前的航空旅客交通量对今天的交通状况有影响。</p>
+<p>PACF在另一方面显示了任何给定滞后（时间序列）与当前序列的自相关，但是删除了滞后的贡献。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> statsmodels.graphics.tsaplots <span class="hljs-keyword">import</span> plot_acf, plot_pacf
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/AirPassengers.csv'</span>)
+
+<span class="hljs-comment"># Draw Plot</span>
+fig, (ax1, ax2) = plt.subplots(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>,figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">6</span>), dpi= <span class="hljs-number">80</span>)
+plot_acf(df.traffic.tolist(), ax=ax1, lags=<span class="hljs-number">50</span>)
+plot_pacf(df.traffic.tolist(), ax=ax2, lags=<span class="hljs-number">20</span>)
+
+<span class="hljs-comment"># Decorate</span>
+<span class="hljs-comment"># lighten the borders</span>
+ax1.spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">.3</span>); ax2.spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">.3</span>)
+ax1.spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>); ax2.spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+ax1.spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">.3</span>); ax2.spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">.3</span>)
+ax1.spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>); ax2.spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+<span class="hljs-comment"># font size of tick labels</span>
+ax1.tick_params(axis=<span class="hljs-string">'both'</span>, labelsize=<span class="hljs-number">12</span>)
+ax2.tick_params(axis=<span class="hljs-string">'both'</span>, labelsize=<span class="hljs-number">12</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_83_0.png" class="">
+<h3 id="交叉相关图-cross-correlation-plot"><a class="markdownIt-Anchor" href="#交叉相关图-cross-correlation-plot"></a> 交叉相关图 （Cross Correlation plot）</h3>
+<p>交叉相关图显示了两个时间序列相互之间的滞后。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> statsmodels.tsa.stattools <span class="hljs-keyword">as</span> stattools
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/mortality.csv'</span>)
+x = df[<span class="hljs-string">'mdeaths'</span>]
+y = df[<span class="hljs-string">'fdeaths'</span>]
+
+<span class="hljs-comment"># Compute Cross Correlations</span>
+ccs = stattools.ccf(x, y)[:<span class="hljs-number">100</span>]
+nlags = len(ccs)
+
+<span class="hljs-comment"># Compute the Significance level</span>
+<span class="hljs-comment"># ref: https://stats.stackexchange.com/questions/3115/cross-correlation-significance-in-r/3128#3128</span>
+conf_level = <span class="hljs-number">2</span> / np.sqrt(nlags)
+
+<span class="hljs-comment"># Draw Plot</span>
+plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">7</span>), dpi= <span class="hljs-number">80</span>)
+
+plt.hlines(<span class="hljs-number">0</span>, xmin=<span class="hljs-number">0</span>, xmax=<span class="hljs-number">100</span>, color=<span class="hljs-string">'gray'</span>)  <span class="hljs-comment"># 0 axis</span>
+plt.hlines(conf_level, xmin=<span class="hljs-number">0</span>, xmax=<span class="hljs-number">100</span>, color=<span class="hljs-string">'gray'</span>)
+plt.hlines(-conf_level, xmin=<span class="hljs-number">0</span>, xmax=<span class="hljs-number">100</span>, color=<span class="hljs-string">'gray'</span>)
+
+plt.bar(x=np.arange(len(ccs)), height=ccs, width=<span class="hljs-number">.3</span>)
+
+<span class="hljs-comment"># Decoration</span>
+plt.title(<span class="hljs-string">'$Cross\; Correlation\; Plot:\; mdeaths\; vs\; fdeaths$'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.xlim(<span class="hljs-number">0</span>,len(ccs))
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_85_0.png" class="">
+<h3 id="时间序列分解图-time-series-decomposition-plot"><a class="markdownIt-Anchor" href="#时间序列分解图-time-series-decomposition-plot"></a> 时间序列分解图 （Time Series Decomposition Plot）</h3>
+<p>时间序列分解图显示时间序列分解为趋势，季节和残差分量。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> statsmodels.tsa.seasonal <span class="hljs-keyword">import</span> seasonal_decompose
+<span class="hljs-keyword">from</span> dateutil.parser <span class="hljs-keyword">import</span> parse
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/AirPassengers.csv'</span>)
+dates = pd.DatetimeIndex([parse(d).strftime(<span class="hljs-string">'%Y-%m-01'</span>) <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> df[<span class="hljs-string">'date'</span>]])
+df.set_index(dates, inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Decompose </span>
+result = seasonal_decompose(df[<span class="hljs-string">'traffic'</span>], model=<span class="hljs-string">'multiplicative'</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.rcParams.update(&#123;<span class="hljs-string">'figure.figsize'</span>: (<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)&#125;)
+result.plot().suptitle(<span class="hljs-string">'Time Series Decomposition of Air Passengers'</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_87_0.png" class="">
+<h3 id="多个时间序列-multiple-time-series"><a class="markdownIt-Anchor" href="#多个时间序列-multiple-time-series"></a> 多个时间序列 （Multiple Time Series）</h3>
+<p>您可以绘制多个时间序列，在同一图表上测量相同的值，如下所示。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/mortality.csv'</span>)
+
+<span class="hljs-comment"># Define the upper limit, lower limit, interval of Y axis and colors</span>
+y_LL = <span class="hljs-number">100</span>
+y_UL = int(df.iloc[:, <span class="hljs-number">1</span>:].max().max()*<span class="hljs-number">1.1</span>)
+y_interval = <span class="hljs-number">400</span>
+mycolors = [<span class="hljs-string">'tab:red'</span>, <span class="hljs-string">'tab:blue'</span>, <span class="hljs-string">'tab:green'</span>, <span class="hljs-string">'tab:orange'</span>]    
+
+<span class="hljs-comment"># Draw Plot and Annotate</span>
+fig, ax = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)    
+
+columns = df.columns[<span class="hljs-number">1</span>:]  
+<span class="hljs-keyword">for</span> i, column <span class="hljs-keyword">in</span> enumerate(columns):
+    <span class="hljs-comment"># 原文此处有误，Python数据之道 备注</span>
+    <span class="hljs-comment"># 访问 liyangbit.com ， 查看本文完整内容</span>
+    plt.plot(df.date.values, df[column].values, lw=<span class="hljs-number">1.5</span>, color=mycolors[i])    
+    plt.text(df.shape[<span class="hljs-number">0</span>]+<span class="hljs-number">1</span>, df[column].values[<span class="hljs-number">-1</span>], column, fontsize=<span class="hljs-number">14</span>, color=mycolors[i])
+
+<span class="hljs-comment"># Draw Tick lines  </span>
+<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(y_LL, y_UL, y_interval):    
+    plt.hlines(y, xmin=<span class="hljs-number">0</span>, xmax=<span class="hljs-number">71</span>, colors=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.3</span>, linestyles=<span class="hljs-string">"--"</span>, lw=<span class="hljs-number">0.5</span>)
+
+<span class="hljs-comment"># Decorations    </span>
+plt.tick_params(axis=<span class="hljs-string">"both"</span>, which=<span class="hljs-string">"both"</span>, bottom=<span class="hljs-literal">False</span>, top=<span class="hljs-literal">False</span>,    
+                labelbottom=<span class="hljs-literal">True</span>, left=<span class="hljs-literal">False</span>, right=<span class="hljs-literal">False</span>, labelleft=<span class="hljs-literal">True</span>)        
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+plt.title(<span class="hljs-string">'Number of Deaths from Lung Diseases in the UK (1974-1979)'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.yticks(range(y_LL, y_UL, y_interval), [str(y) <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(y_LL, y_UL, y_interval)], fontsize=<span class="hljs-number">12</span>)    
+plt.xticks(range(<span class="hljs-number">0</span>, df.shape[<span class="hljs-number">0</span>], <span class="hljs-number">12</span>), df.date.values[::<span class="hljs-number">12</span>], horizontalalignment=<span class="hljs-string">'left'</span>, fontsize=<span class="hljs-number">12</span>)    
+plt.ylim(y_LL, y_UL)    
+plt.xlim(<span class="hljs-number">-2</span>, <span class="hljs-number">80</span>)    
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_89_0.png" class="">
+<h3 id="使用辅助-y-轴来绘制不同范围的图形-plotting-with-different-scales-using-secondary-y-axis"><a class="markdownIt-Anchor" href="#使用辅助-y-轴来绘制不同范围的图形-plotting-with-different-scales-using-secondary-y-axis"></a> 使用辅助 Y 轴来绘制不同范围的图形 （Plotting with different scales using secondary Y axis）</h3>
+<p>如果要显示在同一时间点测量两个不同数量的两个时间序列，则可以在右侧的辅助Y轴上再绘制第二个系列。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/economics.csv"</span>)
+
+x = df[<span class="hljs-string">'date'</span>]
+y1 = df[<span class="hljs-string">'psavert'</span>]
+y2 = df[<span class="hljs-string">'unemploy'</span>]
+
+<span class="hljs-comment"># Plot Line1 (Left Y Axis)</span>
+fig, ax1 = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+ax1.plot(x, y1, color=<span class="hljs-string">'tab:red'</span>)
+
+<span class="hljs-comment"># Plot Line2 (Right Y Axis)</span>
+ax2 = ax1.twinx()  <span class="hljs-comment"># instantiate a second axes that shares the same x-axis</span>
+ax2.plot(x, y2, color=<span class="hljs-string">'tab:blue'</span>)
+
+<span class="hljs-comment"># Decorations</span>
+<span class="hljs-comment"># ax1 (left Y axis)</span>
+ax1.set_xlabel(<span class="hljs-string">'Year'</span>, fontsize=<span class="hljs-number">20</span>)
+ax1.tick_params(axis=<span class="hljs-string">'x'</span>, rotation=<span class="hljs-number">0</span>, labelsize=<span class="hljs-number">12</span>)
+ax1.set_ylabel(<span class="hljs-string">'Personal Savings Rate'</span>, color=<span class="hljs-string">'tab:red'</span>, fontsize=<span class="hljs-number">20</span>)
+ax1.tick_params(axis=<span class="hljs-string">'y'</span>, rotation=<span class="hljs-number">0</span>, labelcolor=<span class="hljs-string">'tab:red'</span> )
+ax1.grid(alpha=<span class="hljs-number">.4</span>)
+
+<span class="hljs-comment"># ax2 (right Y axis)</span>
+ax2.set_ylabel(<span class="hljs-string">"# Unemployed (1000's)"</span>, color=<span class="hljs-string">'tab:blue'</span>, fontsize=<span class="hljs-number">20</span>)
+ax2.tick_params(axis=<span class="hljs-string">'y'</span>, labelcolor=<span class="hljs-string">'tab:blue'</span>)
+ax2.set_xticks(np.arange(<span class="hljs-number">0</span>, len(x), <span class="hljs-number">60</span>))
+ax2.set_xticklabels(x[::<span class="hljs-number">60</span>], rotation=<span class="hljs-number">90</span>, fontdict=&#123;<span class="hljs-string">'fontsize'</span>:<span class="hljs-number">10</span>&#125;)
+ax2.set_title(<span class="hljs-string">"Personal Savings Rate vs Unemployed: Plotting in Secondary Y Axis"</span>, fontsize=<span class="hljs-number">22</span>)
+fig.tight_layout()
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_91_0.png" class="">
+<h3 id="带有误差带的时间序列-time-series-with-error-bands"><a class="markdownIt-Anchor" href="#带有误差带的时间序列-time-series-with-error-bands"></a> 带有误差带的时间序列 （Time Series with Error Bands）</h3>
+<p>如果您有一个时间序列数据集，每个时间点（日期/时间戳）有多个观测值，则可以构建带有误差带的时间序列。 您可以在下面看到一些基于每天不同时间订单的示例。 另一个关于45天持续到达的订单数量的例子。</p>
+<p>在该方法中，订单数量的平均值由白线表示。 并且计算95％置信区间并围绕均值绘制。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> sem
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/user_orders_hourofday.csv"</span>)
+df_mean = df.groupby(<span class="hljs-string">'order_hour_of_day'</span>).quantity.mean()
+df_se = df.groupby(<span class="hljs-string">'order_hour_of_day'</span>).quantity.apply(sem).mul(<span class="hljs-number">1.96</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.ylabel(<span class="hljs-string">"# Orders"</span>, fontsize=<span class="hljs-number">16</span>)  
+x = df_mean.index
+plt.plot(x, df_mean, color=<span class="hljs-string">"white"</span>, lw=<span class="hljs-number">2</span>) 
+plt.fill_between(x, df_mean - df_se, df_mean + df_se, color=<span class="hljs-string">"#3F5D7D"</span>)  
+
+<span class="hljs-comment"># Decorations</span>
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">1</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">1</span>)
+plt.xticks(x[::<span class="hljs-number">2</span>], [str(d) <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> x[::<span class="hljs-number">2</span>]] , fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">"User Orders by Hour of Day (95% confidence)"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.xlabel(<span class="hljs-string">"Hour of Day"</span>)
+
+s, e = plt.gca().get_xlim()
+plt.xlim(s, e)
+
+<span class="hljs-comment"># Draw Horizontal Tick lines  </span>
+<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(<span class="hljs-number">8</span>, <span class="hljs-number">20</span>, <span class="hljs-number">2</span>):    
+    plt.hlines(y, xmin=s, xmax=e, colors=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.5</span>, linestyles=<span class="hljs-string">"--"</span>, lw=<span class="hljs-number">0.5</span>)
+
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_93_0.png" class="">
+<pre class="highlight"><code class="python"><span class="hljs-comment"># "Data Source: https://www.kaggle.com/olistbr/brazilian-ecommerce#olist_orders_dataset.csv"</span>
+<span class="hljs-keyword">from</span> dateutil.parser <span class="hljs-keyword">import</span> parse
+<span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> sem
+
+<span class="hljs-comment"># Import Data</span>
+df_raw = pd.read_csv(<span class="hljs-string">'https://raw.githubusercontent.com/selva86/datasets/master/orders_45d.csv'</span>, 
+                     parse_dates=[<span class="hljs-string">'purchase_time'</span>, <span class="hljs-string">'purchase_date'</span>])
+
+<span class="hljs-comment"># Prepare Data: Daily Mean and SE Bands</span>
+df_mean = df_raw.groupby(<span class="hljs-string">'purchase_date'</span>).quantity.mean()
+df_se = df_raw.groupby(<span class="hljs-string">'purchase_date'</span>).quantity.apply(sem).mul(<span class="hljs-number">1.96</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+plt.ylabel(<span class="hljs-string">"# Daily Orders"</span>, fontsize=<span class="hljs-number">16</span>)  
+x = [d.date().strftime(<span class="hljs-string">'%Y-%m-%d'</span>) <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> df_mean.index]
+plt.plot(x, df_mean, color=<span class="hljs-string">"white"</span>, lw=<span class="hljs-number">2</span>) 
+plt.fill_between(x, df_mean - df_se, df_mean + df_se, color=<span class="hljs-string">"#3F5D7D"</span>)  
+
+<span class="hljs-comment"># Decorations</span>
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">1</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">1</span>)
+plt.xticks(x[::<span class="hljs-number">6</span>], [str(d) <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> x[::<span class="hljs-number">6</span>]] , fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">"Daily Order Quantity of Brazilian Retail with Error Bands (95% confidence)"</span>, fontsize=<span class="hljs-number">20</span>)
+
+<span class="hljs-comment"># Axis limits</span>
+s, e = plt.gca().get_xlim()
+plt.xlim(s, e<span class="hljs-number">-2</span>)
+plt.ylim(<span class="hljs-number">4</span>, <span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># Draw Horizontal Tick lines  </span>
+<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>):    
+    plt.hlines(y, xmin=s, xmax=e, colors=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.5</span>, linestyles=<span class="hljs-string">"--"</span>, lw=<span class="hljs-number">0.5</span>)
+
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_94_0.png" class="">
+<h3 id="堆积面积图-stacked-area-chart"><a class="markdownIt-Anchor" href="#堆积面积图-stacked-area-chart"></a> 堆积面积图 （Stacked Area Chart）</h3>
+<p>堆积面积图可以直观地显示多个时间序列的贡献程度，因此很容易相互比较。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://raw.githubusercontent.com/selva86/datasets/master/nightvisitors.csv'</span>)
+
+<span class="hljs-comment"># Decide Colors </span>
+mycolors = [<span class="hljs-string">'tab:red'</span>, <span class="hljs-string">'tab:blue'</span>, <span class="hljs-string">'tab:green'</span>, <span class="hljs-string">'tab:orange'</span>, <span class="hljs-string">'tab:brown'</span>, <span class="hljs-string">'tab:grey'</span>, <span class="hljs-string">'tab:pink'</span>, <span class="hljs-string">'tab:olive'</span>]      
+
+<span class="hljs-comment"># Draw Plot and Annotate</span>
+fig, ax = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+columns = df.columns[<span class="hljs-number">1</span>:]
+labs = columns.values.tolist()
+
+<span class="hljs-comment"># Prepare data</span>
+x  = df[<span class="hljs-string">'yearmon'</span>].values.tolist()
+y0 = df[columns[<span class="hljs-number">0</span>]].values.tolist()
+y1 = df[columns[<span class="hljs-number">1</span>]].values.tolist()
+y2 = df[columns[<span class="hljs-number">2</span>]].values.tolist()
+y3 = df[columns[<span class="hljs-number">3</span>]].values.tolist()
+y4 = df[columns[<span class="hljs-number">4</span>]].values.tolist()
+y5 = df[columns[<span class="hljs-number">5</span>]].values.tolist()
+y6 = df[columns[<span class="hljs-number">6</span>]].values.tolist()
+y7 = df[columns[<span class="hljs-number">7</span>]].values.tolist()
+y = np.vstack([y0, y2, y4, y6, y7, y5, y1, y3])
+
+<span class="hljs-comment"># Plot for each column</span>
+labs = columns.values.tolist()
+ax = plt.gca()
+ax.stackplot(x, y, labels=labs, colors=mycolors, alpha=<span class="hljs-number">0.8</span>)
+
+<span class="hljs-comment"># Decorations</span>
+ax.set_title(<span class="hljs-string">'Night Visitors in Australian Regions'</span>, fontsize=<span class="hljs-number">18</span>)
+ax.set(ylim=[<span class="hljs-number">0</span>, <span class="hljs-number">100000</span>])
+ax.legend(fontsize=<span class="hljs-number">10</span>, ncol=<span class="hljs-number">4</span>)
+plt.xticks(x[::<span class="hljs-number">5</span>], fontsize=<span class="hljs-number">10</span>, horizontalalignment=<span class="hljs-string">'center'</span>)
+plt.yticks(np.arange(<span class="hljs-number">10000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">20000</span>), fontsize=<span class="hljs-number">10</span>)
+plt.xlim(x[<span class="hljs-number">0</span>], x[<span class="hljs-number">-1</span>])
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_96_0.png" class="">
+<h3 id="未堆积的面积图-area-chart-unstacked"><a class="markdownIt-Anchor" href="#未堆积的面积图-area-chart-unstacked"></a> 未堆积的面积图 （Area Chart UnStacked）</h3>
+<p>未堆积面积图用于可视化两个或更多个系列相对于彼此的进度（起伏）。 在下面的图表中，您可以清楚地看到随着失业中位数持续时间的增加，个人储蓄率会下降。 未堆积面积图表很好地展示了这种现象。</p>
+<pre class="highlight"><code class="python"><span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/economics.csv"</span>)
+
+<span class="hljs-comment"># Prepare Data</span>
+x = df[<span class="hljs-string">'date'</span>].values.tolist()
+y1 = df[<span class="hljs-string">'psavert'</span>].values.tolist()
+y2 = df[<span class="hljs-string">'uempmed'</span>].values.tolist()
+mycolors = [<span class="hljs-string">'tab:red'</span>, <span class="hljs-string">'tab:blue'</span>, <span class="hljs-string">'tab:green'</span>, <span class="hljs-string">'tab:orange'</span>, <span class="hljs-string">'tab:brown'</span>, <span class="hljs-string">'tab:grey'</span>, <span class="hljs-string">'tab:pink'</span>, <span class="hljs-string">'tab:olive'</span>]      
+columns = [<span class="hljs-string">'psavert'</span>, <span class="hljs-string">'uempmed'</span>]
+
+<span class="hljs-comment"># Draw Plot </span>
+fig, ax = plt.subplots(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+ax.fill_between(x, y1=y1, y2=<span class="hljs-number">0</span>, label=columns[<span class="hljs-number">1</span>], alpha=<span class="hljs-number">0.5</span>, color=mycolors[<span class="hljs-number">1</span>], linewidth=<span class="hljs-number">2</span>)
+ax.fill_between(x, y1=y2, y2=<span class="hljs-number">0</span>, label=columns[<span class="hljs-number">0</span>], alpha=<span class="hljs-number">0.5</span>, color=mycolors[<span class="hljs-number">0</span>], linewidth=<span class="hljs-number">2</span>)
+
+<span class="hljs-comment"># Decorations</span>
+ax.set_title(<span class="hljs-string">'Personal Savings Rate vs Median Duration of Unemployment'</span>, fontsize=<span class="hljs-number">18</span>)
+ax.set(ylim=[<span class="hljs-number">0</span>, <span class="hljs-number">30</span>])
+ax.legend(loc=<span class="hljs-string">'best'</span>, fontsize=<span class="hljs-number">12</span>)
+plt.xticks(x[::<span class="hljs-number">50</span>], fontsize=<span class="hljs-number">10</span>, horizontalalignment=<span class="hljs-string">'center'</span>)
+plt.yticks(np.arange(<span class="hljs-number">2.5</span>, <span class="hljs-number">30.0</span>, <span class="hljs-number">2.5</span>), fontsize=<span class="hljs-number">10</span>)
+plt.xlim(<span class="hljs-number">-10</span>, x[<span class="hljs-number">-1</span>])
+
+<span class="hljs-comment"># Draw Tick lines  </span>
+<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> np.arange(<span class="hljs-number">2.5</span>, <span class="hljs-number">30.0</span>, <span class="hljs-number">2.5</span>):    
+    plt.hlines(y, xmin=<span class="hljs-number">0</span>, xmax=len(x), colors=<span class="hljs-string">'black'</span>, alpha=<span class="hljs-number">0.3</span>, linestyles=<span class="hljs-string">"--"</span>, lw=<span class="hljs-number">0.5</span>)
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_98_0.png" class="">
+<h3 id="日历热力图-calendar-heat-map"><a class="markdownIt-Anchor" href="#日历热力图-calendar-heat-map"></a> 日历热力图 （Calendar Heat Map）</h3>
+<p>与时间序列相比，日历地图是可视化基于时间的数据的备选和不太优选的选项。 虽然可以在视觉上吸引人，但数值并不十分明显。 然而，它可以很好地描绘极端值和假日效果。</p>
+<p>（『Python数据之道』注：需要安装 calmap 库）</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> matplotlib <span class="hljs-keyword">as</span> mpl
+
+<span class="hljs-comment"># pip install calmap  </span>
+<span class="hljs-comment"># Python数据之道 备注</span>
+<span class="hljs-keyword">import</span> calmap
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/yahoo.csv"</span>, parse_dates=[<span class="hljs-string">'date'</span>])
+df.set_index(<span class="hljs-string">'date'</span>, inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+calmap.calendarplot(df[<span class="hljs-string">'2014'</span>][<span class="hljs-string">'VIX.Close'</span>], fig_kws=&#123;<span class="hljs-string">'figsize'</span>: (<span class="hljs-number">16</span>,<span class="hljs-number">10</span>)&#125;, yearlabel_kws=&#123;<span class="hljs-string">'color'</span>:<span class="hljs-string">'black'</span>, <span class="hljs-string">'fontsize'</span>:<span class="hljs-number">14</span>&#125;, subplot_kws=&#123;<span class="hljs-string">'title'</span>:<span class="hljs-string">'Yahoo Stock Prices'</span>&#125;)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_100_1.png" class="">
+<h3 id="季节图-seasonal-plot"><a class="markdownIt-Anchor" href="#季节图-seasonal-plot"></a> 季节图 （Seasonal Plot）</h3>
+<p>季节图可用于比较上一季中同一天（年/月/周等）的时间序列。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> dateutil.parser <span class="hljs-keyword">import</span> parse 
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://github.com/selva86/datasets/raw/master/AirPassengers.csv'</span>)
+
+<span class="hljs-comment"># Prepare data</span>
+df[<span class="hljs-string">'year'</span>] = [parse(d).year <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> df.date]
+df[<span class="hljs-string">'month'</span>] = [parse(d).strftime(<span class="hljs-string">'%b'</span>) <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> df.date]
+years = df[<span class="hljs-string">'year'</span>].unique()
+
+<span class="hljs-comment"># Draw Plot</span>
+mycolors = [<span class="hljs-string">'tab:red'</span>, <span class="hljs-string">'tab:blue'</span>, <span class="hljs-string">'tab:green'</span>, <span class="hljs-string">'tab:orange'</span>, <span class="hljs-string">'tab:brown'</span>, <span class="hljs-string">'tab:grey'</span>, <span class="hljs-string">'tab:pink'</span>, <span class="hljs-string">'tab:olive'</span>, <span class="hljs-string">'deeppink'</span>, <span class="hljs-string">'steelblue'</span>, <span class="hljs-string">'firebrick'</span>, <span class="hljs-string">'mediumseagreen'</span>]      
+plt.figure(figsize=(<span class="hljs-number">16</span>,<span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)
+
+<span class="hljs-keyword">for</span> i, y <span class="hljs-keyword">in</span> enumerate(years):
+    plt.plot(<span class="hljs-string">'month'</span>, <span class="hljs-string">'traffic'</span>, data=df.loc[df.year==y, :], color=mycolors[i], label=y)
+    plt.text(df.loc[df.year==y, :].shape[<span class="hljs-number">0</span>]<span class="hljs-number">-.9</span>, df.loc[df.year==y, <span class="hljs-string">'traffic'</span>][<span class="hljs-number">-1</span>:].values[<span class="hljs-number">0</span>], y, fontsize=<span class="hljs-number">12</span>, color=mycolors[i])
+
+<span class="hljs-comment"># Decoration</span>
+plt.ylim(<span class="hljs-number">50</span>,<span class="hljs-number">750</span>)
+plt.xlim(<span class="hljs-number">-0.3</span>, <span class="hljs-number">11</span>)
+plt.ylabel(<span class="hljs-string">'$Air Traffic$'</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>, alpha=<span class="hljs-number">.7</span>)
+plt.title(<span class="hljs-string">"Monthly Seasonal Plot: Air Passengers Traffic (1949 - 1969)"</span>, fontsize=<span class="hljs-number">22</span>)
+plt.grid(axis=<span class="hljs-string">'y'</span>, alpha=<span class="hljs-number">.3</span>)
+
+<span class="hljs-comment"># Remove borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0.0</span>)    
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">0.5</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0.0</span>)    
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">0.5</span>)   
+<span class="hljs-comment"># plt.legend(loc='upper right', ncol=2, fontsize=12)</span>
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_102_0.png" class="">
+<h2 id="分组-groups"><a class="markdownIt-Anchor" href="#分组-groups"></a> 分组 （Groups）</h2>
+<h3 id="树状图-dendrogram"><a class="markdownIt-Anchor" href="#树状图-dendrogram"></a> 树状图 （Dendrogram）</h3>
+<p>树形图基于给定的距离度量将相似的点组合在一起，并基于点的相似性将它们组织在树状链接中。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> scipy.cluster.hierarchy <span class="hljs-keyword">as</span> shc
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://raw.githubusercontent.com/selva86/datasets/master/USArrests.csv'</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">16</span>, <span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)  
+plt.title(<span class="hljs-string">"USArrests Dendograms"</span>, fontsize=<span class="hljs-number">22</span>)  
+dend = shc.dendrogram(shc.linkage(df[[<span class="hljs-string">'Murder'</span>, <span class="hljs-string">'Assault'</span>, <span class="hljs-string">'UrbanPop'</span>, <span class="hljs-string">'Rape'</span>]], method=<span class="hljs-string">'ward'</span>), labels=df.State.values, color_threshold=<span class="hljs-number">100</span>)  
+plt.xticks(fontsize=<span class="hljs-number">12</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_104_0.png" class="">
+<h3 id="簇状图-cluster-plot"><a class="markdownIt-Anchor" href="#簇状图-cluster-plot"></a> 簇状图 （Cluster Plot）</h3>
+<p>簇状图 （Cluster Plot）可用于划分属于同一群集的点。 下面是根据USArrests数据集将美国各州分为5组的代表性示例。 此图使用“谋杀”和“攻击”列作为X和Y轴。 或者，您可以将第一个到主要组件用作X轴和Y轴。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> sklearn.cluster <span class="hljs-keyword">import</span> AgglomerativeClustering
+<span class="hljs-keyword">from</span> scipy.spatial <span class="hljs-keyword">import</span> ConvexHull
+
+<span class="hljs-comment"># Import Data</span>
+df = pd.read_csv(<span class="hljs-string">'https://raw.githubusercontent.com/selva86/datasets/master/USArrests.csv'</span>)
+
+<span class="hljs-comment"># Agglomerative Clustering</span>
+cluster = AgglomerativeClustering(n_clusters=<span class="hljs-number">5</span>, affinity=<span class="hljs-string">'euclidean'</span>, linkage=<span class="hljs-string">'ward'</span>)  
+cluster.fit_predict(df[[<span class="hljs-string">'Murder'</span>, <span class="hljs-string">'Assault'</span>, <span class="hljs-string">'UrbanPop'</span>, <span class="hljs-string">'Rape'</span>]])  
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">14</span>, <span class="hljs-number">10</span>), dpi= <span class="hljs-number">80</span>)  
+plt.scatter(df.iloc[:,<span class="hljs-number">0</span>], df.iloc[:,<span class="hljs-number">1</span>], c=cluster.labels_, cmap=<span class="hljs-string">'tab10'</span>)  
+
+<span class="hljs-comment"># Encircle</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encircle</span><span class="hljs-params">(x,y, ax=None, **kw)</span>:</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ax: ax=plt.gca()
+    p = np.c_[x,y]
+    hull = ConvexHull(p)
+    poly = plt.Polygon(p[hull.vertices,:], **kw)
+    ax.add_patch(poly)
+
+<span class="hljs-comment"># Draw polygon surrounding vertices    </span>
+encircle(df.loc[cluster.labels_ == <span class="hljs-number">0</span>, <span class="hljs-string">'Murder'</span>], df.loc[cluster.labels_ == <span class="hljs-number">0</span>, <span class="hljs-string">'Assault'</span>], ec=<span class="hljs-string">"k"</span>, fc=<span class="hljs-string">"gold"</span>, alpha=<span class="hljs-number">0.2</span>, linewidth=<span class="hljs-number">0</span>)
+encircle(df.loc[cluster.labels_ == <span class="hljs-number">1</span>, <span class="hljs-string">'Murder'</span>], df.loc[cluster.labels_ == <span class="hljs-number">1</span>, <span class="hljs-string">'Assault'</span>], ec=<span class="hljs-string">"k"</span>, fc=<span class="hljs-string">"tab:blue"</span>, alpha=<span class="hljs-number">0.2</span>, linewidth=<span class="hljs-number">0</span>)
+encircle(df.loc[cluster.labels_ == <span class="hljs-number">2</span>, <span class="hljs-string">'Murder'</span>], df.loc[cluster.labels_ == <span class="hljs-number">2</span>, <span class="hljs-string">'Assault'</span>], ec=<span class="hljs-string">"k"</span>, fc=<span class="hljs-string">"tab:red"</span>, alpha=<span class="hljs-number">0.2</span>, linewidth=<span class="hljs-number">0</span>)
+encircle(df.loc[cluster.labels_ == <span class="hljs-number">3</span>, <span class="hljs-string">'Murder'</span>], df.loc[cluster.labels_ == <span class="hljs-number">3</span>, <span class="hljs-string">'Assault'</span>], ec=<span class="hljs-string">"k"</span>, fc=<span class="hljs-string">"tab:green"</span>, alpha=<span class="hljs-number">0.2</span>, linewidth=<span class="hljs-number">0</span>)
+encircle(df.loc[cluster.labels_ == <span class="hljs-number">4</span>, <span class="hljs-string">'Murder'</span>], df.loc[cluster.labels_ == <span class="hljs-number">4</span>, <span class="hljs-string">'Assault'</span>], ec=<span class="hljs-string">"k"</span>, fc=<span class="hljs-string">"tab:orange"</span>, alpha=<span class="hljs-number">0.2</span>, linewidth=<span class="hljs-number">0</span>)
+
+<span class="hljs-comment"># Decorations</span>
+plt.xlabel(<span class="hljs-string">'Murder'</span>); plt.xticks(fontsize=<span class="hljs-number">12</span>)
+plt.ylabel(<span class="hljs-string">'Assault'</span>); plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.title(<span class="hljs-string">'Agglomerative Clustering of USArrests (5 Groups)'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.show()
+
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_106_0.png" class="">
+<h3 id="安德鲁斯曲线-andrews-curve"><a class="markdownIt-Anchor" href="#安德鲁斯曲线-andrews-curve"></a> 安德鲁斯曲线 （Andrews Curve）</h3>
+<p>安德鲁斯曲线有助于可视化是否存在基于给定分组的数字特征的固有分组。 如果要素（数据集中的列）无法区分组（cyl），那么这些线将不会很好地隔离，如下所示。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> pandas.plotting <span class="hljs-keyword">import</span> andrews_curves
+
+<span class="hljs-comment"># Import</span>
+df = pd.read_csv(<span class="hljs-string">"https://github.com/selva86/datasets/raw/master/mtcars.csv"</span>)
+df.drop([<span class="hljs-string">'cars'</span>, <span class="hljs-string">'carname'</span>], axis=<span class="hljs-number">1</span>, inplace=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+andrews_curves(df, <span class="hljs-string">'cyl'</span>, colormap=<span class="hljs-string">'Set1'</span>)
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+plt.title(<span class="hljs-string">'Andrews Curves of mtcars'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.xlim(<span class="hljs-number">-3</span>,<span class="hljs-number">3</span>)
+plt.grid(alpha=<span class="hljs-number">0.3</span>)
+plt.xticks(fontsize=<span class="hljs-number">12</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_108_0.png" class="">
+<h3 id="平行坐标-parallel-coordinates"><a class="markdownIt-Anchor" href="#平行坐标-parallel-coordinates"></a> 平行坐标 （Parallel Coordinates）</h3>
+<p>平行坐标有助于可视化特征是否有助于有效地隔离组。 如果实现隔离，则该特征可能在预测该组时非常有用。</p>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> pandas.plotting <span class="hljs-keyword">import</span> parallel_coordinates
+
+<span class="hljs-comment"># Import Data</span>
+df_final = pd.read_csv(<span class="hljs-string">"https://raw.githubusercontent.com/selva86/datasets/master/diamonds_filter.csv"</span>)
+
+<span class="hljs-comment"># Plot</span>
+plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">9</span>), dpi= <span class="hljs-number">80</span>)
+parallel_coordinates(df_final, <span class="hljs-string">'cut'</span>, colormap=<span class="hljs-string">'Dark2'</span>)
+
+<span class="hljs-comment"># Lighten borders</span>
+plt.gca().spines[<span class="hljs-string">"top"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"bottom"</span>].set_alpha(<span class="hljs-number">.3</span>)
+plt.gca().spines[<span class="hljs-string">"right"</span>].set_alpha(<span class="hljs-number">0</span>)
+plt.gca().spines[<span class="hljs-string">"left"</span>].set_alpha(<span class="hljs-number">.3</span>)
+
+plt.title(<span class="hljs-string">'Parallel Coordinated of Diamonds'</span>, fontsize=<span class="hljs-number">22</span>)
+plt.grid(alpha=<span class="hljs-number">0.3</span>)
+plt.xticks(fontsize=<span class="hljs-number">12</span>)
+plt.yticks(fontsize=<span class="hljs-number">12</span>)
+plt.show()
+</code></pre>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/8d8eb3e8/output_110_0.png" class="">
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a><a class="post-meta__tags" href="/tags/Matplotlib/">Matplotlib</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/dc34c405.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">常用网站</div></div></a></div><div class="next-post pull-right"><a href="/articles/a9068803.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">书籍</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/articles/5501fa44.html" title="python知识点"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-02</div><div class="title">python知识点</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">叶小白</div><div class="author-info__description">用智慧丈量人生</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lukeaust"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lukeaust" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lukeaust@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">一入学术深似海</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#matplotlib-%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84-50-%E4%B8%AA%E5%8F%AF%E8%A7%86%E5%8C%96%E5%9B%BE%E8%A1%A8%E9%99%84%E5%AE%8C%E6%95%B4-python-%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text"> Matplotlib 必须掌握的 50 个可视化图表（附完整 Python 源代码）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text"> 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text"> 准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94-correlation"><span class="toc-number">1.3.</span> <span class="toc-text"> 关联 （Correlation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BEscatter-plot"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 散点图（Scatter plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E8%BE%B9%E7%95%8C%E7%9A%84%E6%B0%94%E6%B3%A1%E5%9B%BEbubble-plot-with-encircling"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 带边界的气泡图（Bubble plot with Encircling）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%9C%80%E4%BD%B3%E6%8B%9F%E5%90%88%E7%BA%BF%E7%9A%84%E6%95%A3%E7%82%B9%E5%9B%BE-scatter-plot-with-linear-regression-line-of-best-fit"><span class="toc-number">1.3.3.</span> <span class="toc-text"> 带线性回归最佳拟合线的散点图 （Scatter plot with linear regression line of best fit）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%96%E5%8A%A8%E5%9B%BE-jittering-with-stripplot"><span class="toc-number">1.3.4.</span> <span class="toc-text"> 抖动图 （Jittering with stripplot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E5%9B%BE-counts-plot"><span class="toc-number">1.3.5.</span> <span class="toc-text"> 计数图 （Counts Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E7%9B%B4%E6%96%B9%E5%9B%BE-marginal-histogram"><span class="toc-number">1.3.6.</span> <span class="toc-text"> 边缘直方图 （Marginal Histogram）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E7%AE%B1%E5%BD%A2%E5%9B%BE-marginal-boxplot"><span class="toc-number">1.3.7.</span> <span class="toc-text"> 边缘箱形图 （Marginal Boxplot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%9B%BE-correllogram"><span class="toc-number">1.3.8.</span> <span class="toc-text"> 相关图 （Correllogram）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%9B%BE-pairwise-plot"><span class="toc-number">1.3.9.</span> <span class="toc-text"> 矩阵图 （Pairwise Plot）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%8F%E5%B7%AE-deviation"><span class="toc-number">1.4.</span> <span class="toc-text"> 偏差 （Deviation）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E6%95%A3%E5%9E%8B%E6%9D%A1%E5%BD%A2%E5%9B%BE-diverging-bars"><span class="toc-number">1.4.1.</span> <span class="toc-text"> 发散型条形图 （Diverging Bars）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E6%95%A3%E5%9E%8B%E6%96%87%E6%9C%AC-diverging-texts"><span class="toc-number">1.4.2.</span> <span class="toc-text"> 发散型文本 （Diverging Texts）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E6%95%A3%E5%9E%8B%E5%8C%85%E7%82%B9%E5%9B%BE-diverging-dot-plot"><span class="toc-number">1.4.3.</span> <span class="toc-text"> 发散型包点图 （Diverging Dot Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%A0%87%E8%AE%B0%E7%9A%84%E5%8F%91%E6%95%A3%E5%9E%8B%E6%A3%92%E6%A3%92%E7%B3%96%E5%9B%BE-diverging-lollipop-chart-with-markers"><span class="toc-number">1.4.4.</span> <span class="toc-text"> 带标记的发散型棒棒糖图 （Diverging Lollipop Chart with Markers）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E7%A7%AF%E5%9B%BE-area-chart"><span class="toc-number">1.4.5.</span> <span class="toc-text"> 面积图 （Area Chart）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F-ranking"><span class="toc-number">1.5.</span> <span class="toc-text"> 排序 （Ranking）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%9D%A1%E5%BD%A2%E5%9B%BE-ordered-bar-chart"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 有序条形图 （Ordered Bar Chart）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%92%E6%A3%92%E7%B3%96%E5%9B%BE-lollipop-chart"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 棒棒糖图 （Lollipop Chart）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%82%B9%E5%9B%BE-dot-plot"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 包点图 （Dot Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%A1%E5%BA%A6%E5%9B%BE-slope-chart"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 坡度图 （Slope Chart）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%91%E9%93%83%E5%9B%BE-dumbbell-plot"><span class="toc-number">1.5.5.</span> <span class="toc-text"> 哑铃图 （Dumbbell Plot）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83-distribution"><span class="toc-number">1.6.</span> <span class="toc-text"> 分布 （Distribution）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E5%8F%98%E9%87%8F%E7%9A%84%E7%9B%B4%E6%96%B9%E5%9B%BE-histogram-for-continuous-variable"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 连续变量的直方图 （Histogram for Continuous Variable）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E7%9A%84%E7%9B%B4%E6%96%B9%E5%9B%BE-histogram-for-categorical-variable"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 类型变量的直方图 （Histogram for Categorical Variable）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E5%BA%A6%E5%9B%BE-density-plot"><span class="toc-number">1.6.3.</span> <span class="toc-text"> 密度图 （Density Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%AF%86%E5%BA%A6%E7%BA%BF%E5%9B%BE-density-curves-with-histogram"><span class="toc-number">1.6.4.</span> <span class="toc-text"> 直方密度线图 （Density Curves with Histogram）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#joy-plot"><span class="toc-number">1.6.5.</span> <span class="toc-text"> Joy Plot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E5%8C%85%E7%82%B9%E5%9B%BE-distributed-dot-plot"><span class="toc-number">1.6.6.</span> <span class="toc-text"> 分布式包点图 （Distributed Dot Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%B1%E5%BD%A2%E5%9B%BE-box-plot"><span class="toc-number">1.6.7.</span> <span class="toc-text"> 箱形图 （Box Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%82%B9%E7%AE%B1%E5%BD%A2%E5%9B%BE-dot-box-plot"><span class="toc-number">1.6.8.</span> <span class="toc-text"> 包点+箱形图 （Dot + Box Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE-violin-plot"><span class="toc-number">1.6.9.</span> <span class="toc-text"> 小提琴图 （Violin Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E5%8F%A3%E9%87%91%E5%AD%97%E5%A1%94-population-pyramid"><span class="toc-number">1.6.10.</span> <span class="toc-text"> 人口金字塔 （Population Pyramid）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E5%9B%BE-categorical-plots"><span class="toc-number">1.6.11.</span> <span class="toc-text"> 分类图 （Categorical Plots）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E6%88%90-composition"><span class="toc-number">1.7.</span> <span class="toc-text"> 组成 （Composition）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8E%E5%A4%AB%E9%A5%BC%E5%9B%BE-waffle-chart"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 华夫饼图 （Waffle Chart）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A5%BC%E5%9B%BE-pie-chart"><span class="toc-number">1.7.2.</span> <span class="toc-text"> 饼图 （Pie Chart）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E5%9B%BE-treemap"><span class="toc-number">1.7.3.</span> <span class="toc-text"> 树形图 （Treemap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE-bar-chart"><span class="toc-number">1.7.4.</span> <span class="toc-text"> 条形图 （Bar Chart）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E5%8C%96-change"><span class="toc-number">1.8.</span> <span class="toc-text"> 变化 （Change）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%9B%BE-time-series-plot"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 时间序列图 （Time Series Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%B3%A2%E5%B3%B0%E6%B3%A2%E8%B0%B7%E6%A0%87%E8%AE%B0%E7%9A%84%E6%97%B6%E5%BA%8F%E5%9B%BE-time-series-with-peaks-and-troughs-annotated"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 带波峰波谷标记的时序图 （Time Series with Peaks and Troughs Annotated）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%9B%B8%E5%85%B3%E5%92%8C%E9%83%A8%E5%88%86%E8%87%AA%E7%9B%B8%E5%85%B3%E5%9B%BE-autocorrelation-acf-and-partial-autocorrelation-pacf-plot"><span class="toc-number">1.8.3.</span> <span class="toc-text"> 自相关和部分自相关图 （Autocorrelation (ACF) and Partial Autocorrelation (PACF) Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%9B%B8%E5%85%B3%E5%9B%BE-cross-correlation-plot"><span class="toc-number">1.8.4.</span> <span class="toc-text"> 交叉相关图 （Cross Correlation plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E5%88%86%E8%A7%A3%E5%9B%BE-time-series-decomposition-plot"><span class="toc-number">1.8.5.</span> <span class="toc-text"> 时间序列分解图 （Time Series Decomposition Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97-multiple-time-series"><span class="toc-number">1.8.6.</span> <span class="toc-text"> 多个时间序列 （Multiple Time Series）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%BE%85%E5%8A%A9-y-%E8%BD%B4%E6%9D%A5%E7%BB%98%E5%88%B6%E4%B8%8D%E5%90%8C%E8%8C%83%E5%9B%B4%E7%9A%84%E5%9B%BE%E5%BD%A2-plotting-with-different-scales-using-secondary-y-axis"><span class="toc-number">1.8.7.</span> <span class="toc-text"> 使用辅助 Y 轴来绘制不同范围的图形 （Plotting with different scales using secondary Y axis）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89%E8%AF%AF%E5%B7%AE%E5%B8%A6%E7%9A%84%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97-time-series-with-error-bands"><span class="toc-number">1.8.8.</span> <span class="toc-text"> 带有误差带的时间序列 （Time Series with Error Bands）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E7%A7%AF%E9%9D%A2%E7%A7%AF%E5%9B%BE-stacked-area-chart"><span class="toc-number">1.8.9.</span> <span class="toc-text"> 堆积面积图 （Stacked Area Chart）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E5%A0%86%E7%A7%AF%E7%9A%84%E9%9D%A2%E7%A7%AF%E5%9B%BE-area-chart-unstacked"><span class="toc-number">1.8.10.</span> <span class="toc-text"> 未堆积的面积图 （Area Chart UnStacked）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%8E%86%E7%83%AD%E5%8A%9B%E5%9B%BE-calendar-heat-map"><span class="toc-number">1.8.11.</span> <span class="toc-text"> 日历热力图 （Calendar Heat Map）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A3%E8%8A%82%E5%9B%BE-seasonal-plot"><span class="toc-number">1.8.12.</span> <span class="toc-text"> 季节图 （Seasonal Plot）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84-groups"><span class="toc-number">1.9.</span> <span class="toc-text"> 分组 （Groups）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%8A%B6%E5%9B%BE-dendrogram"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 树状图 （Dendrogram）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B0%87%E7%8A%B6%E5%9B%BE-cluster-plot"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 簇状图 （Cluster Plot）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%BE%B7%E9%B2%81%E6%96%AF%E6%9B%B2%E7%BA%BF-andrews-curve"><span class="toc-number">1.9.3.</span> <span class="toc-text"> 安德鲁斯曲线 （Andrews Curve）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E8%A1%8C%E5%9D%90%E6%A0%87-parallel-coordinates"><span class="toc-number">1.9.4.</span> <span class="toc-text"> 平行坐标 （Parallel Coordinates）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/a57c573c.html" title="从事件日志到目标"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从事件日志到目标"/></a><div class="content"><a class="title" href="/articles/a57c573c.html" title="从事件日志到目标">从事件日志到目标</a><time datetime="2021-06-29T08:17:57.735Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/d737cada.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/d737cada.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.731Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/aecffc40.html" title="论文题目"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论文题目"/></a><div class="content"><a class="title" href="/articles/aecffc40.html" title="论文题目">论文题目</a><time datetime="2021-06-29T08:17:57.619Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/85537cbc.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/85537cbc.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.611Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Poll的笔记 - 转载"/></a><div class="content"><a class="title" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载">Poll的笔记 - 转载</a><time datetime="2020-09-27T12:40:06.000Z" title="发表于 2020-09-27 20:40:06">2020-09-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 叶小白</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Sa9Gr02xMinB8aMKhiaxPCsP-gzGzoHsz',
+      appKey: 'Q99L5wMhgk70QnUTbJxiEcA5',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

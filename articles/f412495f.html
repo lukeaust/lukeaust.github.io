@@ -1,0 +1,361 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Neural Approach to the Discovery Problem in Process Mining | 叶小白</title><meta name="keywords" content="process discovery,neural"><meta name="author" content="叶小白"><meta name="copyright" content="叶小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="备注  算法没完全理解 日志到向量？   一、文章速览  1.论文信息  时间-题目-作者-出版社-影响因子  (2018). Neural Approach to the Discovery Problem in Process Mining.Shunin, T., Zubkova, N., &amp; Shershakov, S. AIST. https:&#x2F;&#x2F;doi.org&#x2F;10.1007&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neural Approach to the Discovery Problem in Process Mining">
+<meta property="og:url" content="https://lukeaust.gitee.io/articles/f412495f.html">
+<meta property="og:site_name" content="叶小白">
+<meta property="og:description" content="备注  算法没完全理解 日志到向量？   一、文章速览  1.论文信息  时间-题目-作者-出版社-影响因子  (2018). Neural Approach to the Discovery Problem in Process Mining.Shunin, T., Zubkova, N., &amp; Shershakov, S. AIST. https:&#x2F;&#x2F;doi.org&#x2F;10.1007&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg">
+<meta property="article:published_time" content="2020-06-18T15:42:45.000Z">
+<meta property="article:modified_time" content="2021-06-29T07:50:09.000Z">
+<meta property="article:author" content="叶小白">
+<meta property="article:tag" content="process discovery">
+<meta property="article:tag" content="neural">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://lukeaust.gitee.io/articles/f412495f"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?effc5e1b8b82b656e64a5c2817817fc2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Neural Approach to the Discovery Problem in Process Mining',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-29 15:50:09'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="叶小白" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">叶小白</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"><i class="fa-fw fas fa-thumbs-up"></i><span> 论文摘要</span></a></li><li><a class="site-page child" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"><i class="fa-fw fas fa-book"></i><span> 论文品读</span></a></li><li><a class="site-page child" href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"><i class="fa-fw fas fa-ship"></i><span> 深度学习</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/files/nav.html"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Neural Approach to the Discovery Problem in Process Mining</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-18T15:42:45.000Z" title="发表于 2020-06-18 23:42:45">2020-06-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-29T07:50:09.000Z" title="更新于 2021-06-29 15:50:09">2021-06-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/">论文品读</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/ML-PL/">ML&amp;PL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Neural Approach to the Discovery Problem in Process Mining"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="备注"><a class="markdownIt-Anchor" href="#备注"></a> 备注</h2>
+<ul>
+<li>算法没完全理解</li>
+<li>日志到向量？</li>
+</ul>
+<h2 id="一-文章速览"><a class="markdownIt-Anchor" href="#一-文章速览"></a> 一、文章速览</h2>
+<h3 id="1论文信息"><a class="markdownIt-Anchor" href="#1论文信息"></a> 1.论文信息</h3>
+<blockquote>
+<p>时间-题目-作者-出版社-影响因子</p>
+</blockquote>
+<p>(2018). Neural Approach to the Discovery Problem in Process Mining.Shunin, T., Zubkova, N., &amp; Shershakov, S. <em>AIST</em>. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://doi.org/10.1007/978-3-030-11027-7_25">https://doi.org/10.1007/978-3-030-11027-7_25</a></p>
+<h3 id="2背景"><a class="markdownIt-Anchor" href="#2背景"></a> 2.背景</h3>
+<p>过程挖掘处理各种形式模型。其中一些用于合成和分析的中间阶段，而另一些则是预期目标本身。变迁系统(TS)在这两种场景中被广泛使用。</p>
+<h3 id="3方法"><a class="markdownIt-Anchor" href="#3方法"></a> 3.方法</h3>
+<p>本文提出了一种基于循环神经网络RNN的新方法。使用事件日志作为训练集，提取RNN的中间状态作为TS来描述日志中的行为。<br />
+特点：</p>
+<ul>
+<li>模型适合度高。包含了日志中的所有行为、简洁、精确。</li>
+<li>神经方法的主要优点之一是能够检测和合并分散在日志中的常见行为部分。</li>
+</ul>
+<h3 id="4概述"><a class="markdownIt-Anchor" href="#4概述"></a> 4.概述</h3>
+<p>我们研究的主要目标之一是分析所提方法的效率，即，看看不同的质量度量如何依赖于输入数据和用户指定的参数。<br />
+主要贡献如下:</p>
+<ul>
+<li>
+<p>(1) 描述和实现了一种<strong>使用循环神经网络建立变迁系统</strong>的方法;</p>
+</li>
+<li>
+<p>(2) 将所述方法构建的模型质量度量与基于频率约简算法(FQR)[10]和前缀树[3]推导的模型质量度量进行<strong>比较</strong>;</p>
+</li>
+<li>
+<p>(3) 总结事件日志的特性，其中RNN方法比FQR方法有更好的结果。</p>
+<p>算法步骤<strong>见第二部分</strong>。</p>
+</li>
+</ul>
+<p><em><strong>适合度高</strong></em>。这种方法通过构造合成<strong>完全适合的FSM</strong>(即它们总是可以重放整个日志)。用与[10]中定理1相同的步骤，用归纳法很容易地证明它。<br />
+<em><strong>能够控制创建的状态和变迁</strong></em>。这使得我们可以制作出不完全匹配的模型，尽管给了它们其他的特性，例如对噪声的鲁棒性。<strong>这为进一步的研究提供了坚实的基础，因为有很多方法可以分析上面提到的标识概率的预测。</strong></p>
+<p><em><strong>超参数</strong></em>。上述神经网络有一个<strong>超参数</strong>：密集层中的神经元数量。每增加一个神经元，不仅直接影响学习质量，而且使输出状态空间增加一倍。从技术上讲，模型有更多的超参数。输出矢量中的神经元数目和前面提到的嵌入方法也可以看作是这样的。我们认为它们不那么重要，因此在我们的实验中将它们排除在外。然而，在进一步的实验中可以考虑它们。</p>
+<h3 id="5局限"><a class="markdownIt-Anchor" href="#5局限"></a> 5.局限</h3>
+<p><em><strong>未充分利用神经网络处理噪音数据的能力</strong></em>。在本文中，我们仅为日志构建了完全适合的TSs，因此可能还没有发现此方法的全部潜力。</p>
+<h3 id="6未来方向"><a class="markdownIt-Anchor" href="#6未来方向"></a> 6.未来方向</h3>
+<p>需要<strong>对不需要完美拟合模型的任务领域进行进一步研究</strong>，以便找到可以使用这种模型的任务。如果我们考虑这个方法，可以考虑<strong>网络内层的不同架构</strong>，因为现在只对一个简单的神经网络进行实验，只有一个隐藏的稠密层。此外，使用5.2中提到的技术<strong>处理过拟合</strong>可能提供更好的结果。</p>
+<hr />
+<h2 id="二-方法的具体描述"><a class="markdownIt-Anchor" href="#二-方法的具体描述"></a> 二、方法的具体描述</h2>
+<h3 id="1-预备知识"><a class="markdownIt-Anchor" href="#1-预备知识"></a> 1. 预备知识</h3>
+<h4 id="1过程挖掘相关概念"><a class="markdownIt-Anchor" href="#1过程挖掘相关概念"></a> (1)过程挖掘相关概念</h4>
+<ul>
+<li>
+<p>A：流程产生的活动集</p>
+</li>
+<li>
+<p>An event e：日志中某个活动的发生</p>
+</li>
+<li>
+<p>A token：传递给神经网络的日志的一个元素。</p>
+<blockquote>
+<p>**文中假设一个事件event和一个标识token是在不同上下文中使用的同义词。**与平时见到的不一样。</p>
+</blockquote>
+</li>
+<li>
+<p>Λ：日志的所有唯一事件的集合Λ被称为输入字母(A set Λ of all unique events of the log is called an input alphabet.)。</p>
+</li>
+<li>
+<p>|Λ|：表示输入字母的基数。</p>
+</li>
+<li>
+<p>A+：是A上所有非空有限序列的集合。</p>
+</li>
+</ul>
+<h4 id="2神经网络"><a class="markdownIt-Anchor" href="#2神经网络"></a> (2)神经网络</h4>
+<ul>
+<li>
+<p><strong>结构。</strong></p>
+<p>包含三个主要部分：输入层、隐层和输出层。每一层都是一组神经元，每个神经元都是一个计算单元，对流经它的数据应用某些激活函数。这些层是通过<strong>有权重的连接</strong>联系起来的，这些连接将信号从一层的神经元传输到下一层的一个或多个神经元。传递到输入层的数据的<strong>最终变迁</strong>应该满足网络所解决的问题所隐含的条件。在神经网络中，这种情况用一个<strong>损失函数</strong>来表示。为了实现这种变迁，绑定连接的<strong>权重</strong>被配置。</p>
+</li>
+<li>
+<p><strong>学习。<strong>配置权重的过程称为</strong>学习</strong>或<strong>训练过程</strong>。它包括优化损失函数，或误差，使用反向传播[12]。在每次训练迭代中，当前的误差被传播到前一层，在那里它被用来修改权值，以使误差最小化。在[1]Bishop对神经网络中存在的计算的意义和目的提供了更完整的见解。</p>
+</li>
+<li>
+<p><strong>超参数。<strong>在学习过程中，神经网络的一些参数不能得到优化，也会影响计算结果。这样的参数称为</strong>超参数</strong>，应该在学习过程开始之前定义。隐层中的神经元数就是这样一个参数。</p>
+</li>
+</ul>
+<p>本文所描述的方法是基于循环神经网络的(RNN)。这样的网络有一个或多个循环连接连接输出层和输入层，这允许网络使用它之前的计算来进行下面的预测。RNN的训练通常与普通神经网络的训练相似，通常涉及随机梯度下降[12]。</p>
+<h3 id="2神经网络方法的描述"><a class="markdownIt-Anchor" href="#2神经网络方法的描述"></a> 2.神经网络方法的描述</h3>
+<ol>
+<li>
+<p>**预处理。**需要对数据进行预处理：将迹的长度补齐，开头和结尾分别添加’$'和‘#’。</p>
+<p>L =[&lt;a, b, c, d, e&gt;,&lt;a, b, d&gt;]–&gt;L˜ =[&lt;, a, b, c, d, e,#> , <,a,b,d,#,#,#&gt;]。</p>
+<p>|L˜ |=7，<strong>将其用0~|Λ|+1=6进行编码。</strong></p>
+<p>如果将预测标识问题视为分类任务，就可以使用特定的方法和架构。对于每个标识(事件)，我们想要确定后面的标识的<strong>一类标识</strong>，即由它表示的一个活动。此外，我们应该考虑历史的<strong>迹</strong>;否则，预测将只依赖于之前的标记，这将导致学习<strong>单个事件</strong>之间的关系图。这就是出现<strong>周期性连接</strong>的原因，它构成了更复杂的输入向量。如果网络有能力生成可信的迹，那么内部状态，从中做出预测，是可信的，并且代表了迹的历史和当前标识，因此可以作为TS的一种状态。为了解决这个问题，我们开发了如图1所示的神经网络架构。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/f412495f/architecture.png" class="">
+</li>
+<li>
+<p><strong>算法架构解释</strong></p>
+<ul>
+<li>
+<p>嵌入层(embedding layer)：将迹中的下一个编码(整数)转换为一个标识向量。</p>
+</li>
+<li>
+<p>输入层(input layer)：包括以下两部分，随后应用一个线性变换，编程一个向量，进入密集(隐藏)层—dense(hidden) layer</p>
+<ul>
+<li>一个二元向量：表示前面状态</li>
+<li>标识向量</li>
+</ul>
+<p>对计算得到的向量应用不同的激活函数，从输出层提取两个不同的实体。</p>
+</li>
+<li>
+<p>输出层(output layer)</p>
+<ul>
+<li>
+<p>一个新的离散二进制向量：由Gumbel Sigmoid函数计算得到，解释为RNN的新状态，并返回作为下一次迭代的新参数。</p>
+</li>
+<li>
+<p>标识概率p：应用regular sigmoid函数得到。<em><strong>将用于计算损失函数。</strong></em></p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/f412495f/tab1_tab2.png" class="">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>**损失矩阵。**构建<code>mxr</code>损失(交叉熵)矩阵-loss(cross entropy) matrix。</p>
+<ul>
+<li>
+<p>m：输入日志中的迹的数量</p>
+</li>
+<li>
+<p>r：预处理的迹的最大长度。</p>
+<p>每一行对应一条迹，每个元素对应一条迹中的一个标识。<strong>每一步要计算元素的交叉熵H(yi^,yi)。</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>舍弃无用符号</strong>。预处理时填充了一些符号，此时通过掩模矩阵(<strong>mask matrix</strong>)处理：实数对应‘1’；’$’、‘0’和’#‘对应’0’。然后将<strong>损失函数计算为每一行的和的平均值</strong>。</p>
+</li>
+<li>
+<p><strong>训练的形式</strong>。将事件日志逐条地呈现给神经网络，通过<strong>随机梯度下降</strong>最小化上述损失函数，从而<strong>更新</strong>层间连接的<strong>权值</strong>。</p>
+</li>
+<li>
+<p>从神经网络方法推断FSM(有限自动机)的步骤。</p>
+<ul>
+<li>
+<p>神经网络的状态如何对应于合成的变迁系统的状态(图2)。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/f412495f/inner.png" class="">
+</li>
+<li>
+<p>定义三个双射函数，Ω → N, ψ : N → S and φ : Ω → S。</p>
+<ul>
+<li>Ω：由输出层中神经元的状态表示的神经网络的一组状态。</li>
+<li>ωi ∈Ω：我们表示循环神经网络在算法第i步的状态。</li>
+<li>双射函数ξ : Ω → N, ψ : N → S and φ : Ω → S 。ωi是二进制向量，ξ将其解释为一个二进制数，并将其转换为等效的十进制数；ψ 转换数字j从N到状态sj；φ是ψ和ξ的组合；Ω是通过N到S的同构。</li>
+</ul>
+</li>
+<li>
+<p>TS = (S, E, T, s0, AS)的构造按照以下步骤进行。</p>
+<ul>
+<li>我们从把状态s0加到原来空的TS开始。神经网络的初始状态ω0是一个零向量。</li>
+<li>第i步时，RNN的当前状态是ωi ，新的输入标识是从原输入标识得到的αi。两者构成了RNN的输入向量，而输出向量分别为ωi+1和pi+1。</li>
+<li>TS的当前状态是si=φ(ωi)；如果它不存在或以其他方式重用，那么下一个标识si+1 = φ(ωi+1)就添加到TS中。</li>
+<li>这些状态通过变迁ti=(si, αi, si+1)连接。</li>
+<li>对每个迹的所有非“#”标记重复以上步骤。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>删t0</strong>。提取的TS具有惟一的变迁t0 = (s0， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">，</mi><mi>s</mi><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">，</mi><mi mathvariant="normal">这</mi><mi mathvariant="normal">是</mi><mi mathvariant="normal">因</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">我</mi><mi mathvariant="normal">们</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">“</mi></mrow><annotation encoding="application/x-tex">， s1)，这是因为我们用“</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">s</span><span class="mord">1</span><span class="mclose">)</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">因</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">我</span><span class="mord cjk_fallback">们</span><span class="mord cjk_fallback">用</span><span class="mord">“</span></span></span></span>”标记了所有迹的开始。</p>
+<p>变迁和标识都具有纯技术性质，并且<strong>不包含与输入日志行为相关</strong>的任何有意义的信息。因此，我们可以简单地删除变迁t0，并将状态s1视为Ts的初始起始点。如果其他有效的变迁将状态s0连接到其他状态，则TS中仍然存在状态s0。图3给出了两个不同超参数值的Log1的TS提取示例。</p>
+<img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/articles/f412495f/ts.png" class="">
+</li>
+</ol>
+<hr />
+<h2 id="三-他评"><a class="markdownIt-Anchor" href="#三-他评"></a> 三、他评</h2>
+<p>待续</p>
+<hr />
+<p>下载：</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/process-discovery/">process discovery</a><a class="post-meta__tags" href="/tags/neural/">neural</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/2e73a29e.html"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Inductive Miner</div></div></a></div><div class="next-post pull-right"><a href="/articles/9077a64f.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"> An interdisciplinary comparison of sequence modeling methods for next-element prediction</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">叶小白</div><div class="author-info__description">用智慧丈量人生</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/lukeaust"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lukeaust" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lukeaust@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">一入学术深似海</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E6%B3%A8"><span class="toc-number">1.</span> <span class="toc-text"> 备注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%96%87%E7%AB%A0%E9%80%9F%E8%A7%88"><span class="toc-number">2.</span> <span class="toc-text"> 一、文章速览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E8%AE%BA%E6%96%87%E4%BF%A1%E6%81%AF"><span class="toc-number">2.1.</span> <span class="toc-text"> 1.论文信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E8%83%8C%E6%99%AF"><span class="toc-number">2.2.</span> <span class="toc-text"> 2.背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text"> 3.方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E6%A6%82%E8%BF%B0"><span class="toc-number">2.4.</span> <span class="toc-text"> 4.概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E5%B1%80%E9%99%90"><span class="toc-number">2.5.</span> <span class="toc-text"> 5.局限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E6%9C%AA%E6%9D%A5%E6%96%B9%E5%90%91"><span class="toc-number">2.6.</span> <span class="toc-text"> 6.未来方向</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B7%E4%BD%93%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.</span> <span class="toc-text"> 二、方法的具体描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. 预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E8%BF%87%E7%A8%8B%E6%8C%96%E6%8E%98%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.1.</span> <span class="toc-text"> (1)过程挖掘相关概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">3.1.2.</span> <span class="toc-text"> (2)神经网络</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%96%B9%E6%B3%95%E7%9A%84%E6%8F%8F%E8%BF%B0"><span class="toc-number">3.2.</span> <span class="toc-text"> 2.神经网络方法的描述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BB%96%E8%AF%84"><span class="toc-number">4.</span> <span class="toc-text"> 三、他评</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/a57c573c.html" title="从事件日志到目标"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从事件日志到目标"/></a><div class="content"><a class="title" href="/articles/a57c573c.html" title="从事件日志到目标">从事件日志到目标</a><time datetime="2021-06-29T08:17:57.735Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/d737cada.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/d737cada.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.731Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/aecffc40.html" title="论文题目"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论文题目"/></a><div class="content"><a class="title" href="/articles/aecffc40.html" title="论文题目">论文题目</a><time datetime="2021-06-29T08:17:57.619Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/85537cbc.html" title="无题"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/articles/85537cbc.html" title="无题">无题</a><time datetime="2021-06-29T08:17:57.611Z" title="发表于 2021-06-29 16:17:57">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/lukeaust/blog/img/fairy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Poll的笔记 - 转载"/></a><div class="content"><a class="title" href="/articles/110aeb3a.html" title="Poll的笔记 - 转载">Poll的笔记 - 转载</a><time datetime="2020-09-27T12:40:06.000Z" title="发表于 2020-09-27 20:40:06">2020-09-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 叶小白</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Sa9Gr02xMinB8aMKhiaxPCsP-gzGzoHsz',
+      appKey: 'Q99L5wMhgk70QnUTbJxiEcA5',
+      placeholder: '记得留下你的昵称和邮箱....可以快速收到回复',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+      requiredFields: ["nick"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
