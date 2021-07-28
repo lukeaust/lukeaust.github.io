@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lukeaust.github.io/"/>
-  <updated>2021-06-29T07:50:09.000Z</updated>
+  <updated>2021-07-28T07:11:16.055Z</updated>
   <id>https://lukeaust.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>从事件日志到目标</title>
-    <link href="https://lukeaust.github.io/articles/a57c573c.html"/>
-    <id>https://lukeaust.github.io/articles/a57c573c.html</id>
-    <published>2021-06-29T08:17:57.735Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <title></title>
+    <link href="https://lukeaust.github.io/articles/0.html"/>
+    <id>https://lukeaust.github.io/articles/0.html</id>
+    <published>2021-06-30T10:40:24.104Z</published>
+    <updated>2021-07-28T07:11:16.055Z</updated>
     
     <summary type="html">
     
@@ -29,21 +29,37 @@
       
         
         
-          &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;
-&lt;script&gt;
-function doDecrypt (pwd, onError) {
-	console.log(&#39;in doDecrypt&#39;);
-	const txt =
+          &lt;h3 id=&quot;vscode使用latexindent格式化latex&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vscode使用latexindent格式化latex&quot;&gt;&lt;/a&gt;
         
       
     
     </summary>
     
     
-      <category term="综述" scheme="https://lukeaust.github.io/categories/%E7%BB%BC%E8%BF%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://lukeaust.github.io/articles/0.html"/>
+    <id>https://lukeaust.github.io/articles/0.html</id>
+    <published>2021-06-30T01:52:56.702Z</published>
+    <updated>2021-06-30T10:03:54.608Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;安装pycharm&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#安装pycharm&quot;&gt;&lt;/a&gt; 安装pycharm&lt;/h2&gt;
+&lt;h3 id=&quot;先安装snap&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;
+        
+      
+    
+    </summary>
     
     
-      <category term="goal PM" scheme="https://lukeaust.github.io/tags/goal-PM/"/>
     
   </entry>
   
@@ -72,38 +88,6 @@ function doDecrypt (pwd, onError) {
   </entry>
   
   <entry>
-    <title>论文题目</title>
-    <link href="https://lukeaust.github.io/articles/aecffc40.html"/>
-    <id>https://lukeaust.github.io/articles/aecffc40.html</id>
-    <published>2021-06-29T08:17:57.619Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;论文导读&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#论文导读&quot;&gt;&lt;/a&gt; 论文导读&lt;/h1&gt;
-&lt;p&gt;（一段话概括全文以及我的观点/思考）&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2 id=&quot;一-文章速览&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="论文品读" scheme="https://lukeaust.github.io/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"/>
-    
-    
-      <category term="标签1" scheme="https://lukeaust.github.io/tags/%E6%A0%87%E7%AD%BE1/"/>
-    
-      <category term="标签2" scheme="https://lukeaust.github.io/tags/%E6%A0%87%E7%AD%BE2/"/>
-    
-  </entry>
-  
-  <entry>
     <title></title>
     <link href="https://lukeaust.github.io/articles/85537cbc.html"/>
     <id>https://lukeaust.github.io/articles/85537cbc.html</id>
@@ -127,11 +111,38 @@ function doDecrypt (pwd, onError) {
   </entry>
   
   <entry>
+    <title>使用Aurora+Algorithm2e在word中输入伪码</title>
+    <link href="https://lukeaust.github.io/articles/bd53aba9.html"/>
+    <id>https://lukeaust.github.io/articles/bd53aba9.html</id>
+    <published>2021-04-26T02:49:03.346Z</published>
+    <updated>2021-07-17T16:29:45.468Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;准备工作&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#准备工作&quot;&gt;&lt;/a&gt; 准备工作&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;选择插入—对象—Aurora Equation，确定。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Poll的笔记 - 转载</title>
     <link href="https://lukeaust.github.io/articles/110aeb3a.html"/>
     <id>https://lukeaust.github.io/articles/110aeb3a.html</id>
     <published>2020-09-27T12:40:06.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-09-27T12:45:47.060Z</updated>
     
     <summary type="html">
     
@@ -164,7 +175,7 @@ function doDecrypt (pwd, onError) {
     <link href="https://lukeaust.github.io/articles/dbacfd48.html"/>
     <id>https://lukeaust.github.io/articles/dbacfd48.html</id>
     <published>2020-09-23T08:55:00.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-09-23T09:19:46.915Z</updated>
     
     <summary type="html">
     
@@ -191,11 +202,43 @@ function doDecrypt (pwd, onError) {
   </entry>
   
   <entry>
-    <title>群晖</title>
+    <title>论文题目</title>
+    <link href="https://lukeaust.github.io/articles/aecffc40.html"/>
+    <id>https://lukeaust.github.io/articles/aecffc40.html</id>
+    <published>2020-09-18T03:54:04.735Z</published>
+    <updated>2020-09-19T08:14:44.843Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;论文导读&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#论文导读&quot;&gt;&lt;/a&gt; 论文导读&lt;/h1&gt;
+&lt;p&gt;（一段话概括全文以及我的观点/思考）&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;一-文章速览&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文品读" scheme="https://lukeaust.github.io/categories/%E8%AE%BA%E6%96%87%E5%93%81%E8%AF%BB/"/>
+    
+    
+      <category term="标签1" scheme="https://lukeaust.github.io/tags/%E6%A0%87%E7%AD%BE1/"/>
+    
+      <category term="标签2" scheme="https://lukeaust.github.io/tags/%E6%A0%87%E7%AD%BE2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在docker中运行jupyter notebook</title>
     <link href="https://lukeaust.github.io/articles/c3fd198e.html"/>
     <id>https://lukeaust.github.io/articles/c3fd198e.html</id>
     <published>2020-09-12T12:39:55.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2021-07-28T07:13:02.092Z</updated>
     
     <summary type="html">
     
@@ -216,11 +259,42 @@ $ docker
   </entry>
   
   <entry>
+    <title>从事件日志到目标</title>
+    <link href="https://lukeaust.github.io/articles/a57c573c.html"/>
+    <id>https://lukeaust.github.io/articles/a57c573c.html</id>
+    <published>2020-09-09T13:04:44.269Z</published>
+    <updated>2020-09-16T10:44:48.724Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;
+&lt;script&gt;
+function doDecrypt (pwd, onError) {
+	console.log(&#39;in doDecrypt&#39;);
+	const txt =
+        
+      
+    
+    </summary>
+    
+    
+      <category term="综述" scheme="https://lukeaust.github.io/categories/%E7%BB%BC%E8%BF%B0/"/>
+    
+    
+      <category term="goal PM" scheme="https://lukeaust.github.io/tags/goal-PM/"/>
+    
+  </entry>
+  
+  <entry>
     <title>过程挖掘综述(一)的参考文献</title>
     <link href="https://lukeaust.github.io/articles/b0604bee.html"/>
     <id>https://lukeaust.github.io/articles/b0604bee.html</id>
     <published>2020-08-03T00:39:22.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:33:00.335Z</updated>
     
     <summary type="html">
     
@@ -248,7 +322,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/5501fa44.html"/>
     <id>https://lukeaust.github.io/articles/5501fa44.html</id>
     <published>2020-08-02T07:45:17.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-02T07:55:19.784Z</updated>
     
     <summary type="html">
     
@@ -278,7 +352,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/8a13261d.html"/>
     <id>https://lukeaust.github.io/articles/8a13261d.html</id>
     <published>2020-08-01T04:29:52.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T05:23:55.763Z</updated>
     
     <summary type="html">
     
@@ -306,7 +380,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/6f90666c.html"/>
     <id>https://lukeaust.github.io/articles/6f90666c.html</id>
     <published>2020-08-01T04:28:03.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:32:39.798Z</updated>
     
     <summary type="html">
     
@@ -334,7 +408,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/a9b26a16.html"/>
     <id>https://lukeaust.github.io/articles/a9b26a16.html</id>
     <published>2020-08-01T03:48:38.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-09-10T03:15:06.753Z</updated>
     
     <summary type="html">
     
@@ -362,7 +436,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/79636068.html"/>
     <id>https://lukeaust.github.io/articles/79636068.html</id>
     <published>2020-08-01T01:41:06.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:32:39.810Z</updated>
     
     <summary type="html">
     
@@ -390,7 +464,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/887ecb96.html"/>
     <id>https://lukeaust.github.io/articles/887ecb96.html</id>
     <published>2020-08-01T01:40:55.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:24:42.938Z</updated>
     
     <summary type="html">
     
@@ -418,7 +492,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/ae589eec.html"/>
     <id>https://lukeaust.github.io/articles/ae589eec.html</id>
     <published>2020-08-01T01:40:50.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:32:46.727Z</updated>
     
     <summary type="html">
     
@@ -446,7 +520,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/8a2a61f.html"/>
     <id>https://lukeaust.github.io/articles/8a2a61f.html</id>
     <published>2020-08-01T01:37:35.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:25:56.481Z</updated>
     
     <summary type="html">
     
@@ -478,7 +552,7 @@ $ docker
     <link href="https://lukeaust.github.io/articles/344b61d3.html"/>
     <id>https://lukeaust.github.io/articles/344b61d3.html</id>
     <published>2020-07-31T11:45:36.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
+    <updated>2020-08-04T02:32:39.818Z</updated>
     
     <summary type="html">
     
@@ -498,94 +572,6 @@ $ docker
     
     
       <category term="机器学习" scheme="https://lukeaust.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习路线</title>
-    <link href="https://lukeaust.github.io/articles/f50bee0c.html"/>
-    <id>https://lukeaust.github.io/articles/f50bee0c.html</id>
-    <published>2020-07-31T11:00:30.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A Neural Algorithm of Artistic Style &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="论文摘要" scheme="https://lukeaust.github.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
-    
-    
-      <category term="DeepLearning" scheme="https://lukeaust.github.io/tags/DeepLearning/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>预测类过程挖掘</title>
-    <link href="https://lukeaust.github.io/articles/321740e4.html"/>
-    <id>https://lukeaust.github.io/articles/321740e4.html</id>
-    <published>2020-07-31T04:20:40.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;目录&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#目录&quot;&gt;&lt;/a&gt; 目录&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; A Data Mining Approach to Predict E-Commerce
-        
-      
-    
-    </summary>
-    
-    
-      <category term="论文摘要" scheme="https://lukeaust.github.io/categories/%E8%AE%BA%E6%96%87%E6%91%98%E8%A6%81/"/>
-    
-    
-      <category term="预测" scheme="https://lukeaust.github.io/tags/%E9%A2%84%E6%B5%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用网站</title>
-    <link href="https://lukeaust.github.io/articles/dc34c405.html"/>
-    <id>https://lukeaust.github.io/articles/dc34c405.html</id>
-    <published>2020-07-25T02:08:44.000Z</published>
-    <updated>2021-06-29T07:50:09.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;在线学习数据科学&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#在线学习数据科学&quot;&gt;&lt;/a&gt; 在线学习数据科学&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="技巧积累" scheme="https://lukeaust.github.io/categories/%E6%8A%80%E5%B7%A7%E7%A7%AF%E7%B4%AF/"/>
-    
-      <category term="网站" scheme="https://lukeaust.github.io/categories/%E6%8A%80%E5%B7%A7%E7%A7%AF%E7%B4%AF/%E7%BD%91%E7%AB%99/"/>
-    
-    
-      <category term="网页" scheme="https://lukeaust.github.io/tags/%E7%BD%91%E9%A1%B5/"/>
     
   </entry>
   
